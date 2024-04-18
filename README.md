@@ -77,7 +77,7 @@ Ainda não pronto
 
 |name|email|password|token|
 | -------- |-------- |-------- |-------- |
-|Lais Lima|laislima98@hotmail.com|lais123|true|
+|-|-|-|true|
 
 ## Como rodar os testes
 
