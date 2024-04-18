@@ -91,7 +91,7 @@ ainda não pronto
 
 Equipe responsável pelo desenvolvimento do projeto
 
-| [<img src="" width=115><br><sub>Joseph Serpa Alexandre</sub>](https://github.com/JosephSAlexandre) |  [<img src="https://avatars2.githubusercontent.com/u/46378210?s=400&u=071f7791bb03f8e102d835bdb9c2f0d3d24e8a34&v=4" width=115><br><sub>Priscila Przezdziecki</sub>](https://github.com/Diana-ops) |  [<img src="https://avatars2.githubusercontent.com/u/46378210?s=400&u=071f7791bb03f8e102d835bdb9c2f0d3d24e8a34&v=4" width=115><br><sub>Raquel da Silva</sub>](https://github.com/Diana-ops) | [<img src="./ApuriShare-doc/img/davi.jpeg" width=115><br><sub>Davi Bernardo</sub>](https://github.com/Diana-ops) |
+| [<img src="https://avatars.githubusercontent.com/u/160176206?s=400&v=4" width=115><br><sub>Joseph Serpa Alexandre</sub>](https://github.com/JosephSAlexandre) |  [<img src="" width=115><br><sub> Lucas Gabriel Ferreira Vaez</sub>](https://github.com/) |  [<img src="https://avatars2.githubusercontent.com/u/46378210?s=400&u=071f7791bb03f8e102d835bdb9c2f0d3d24e8a34&v=4" width=115><br><sub>---</sub>](https://github.com/) | [<img src="" width=115><br><sub>Frank Juergen Knaesel</sub>](https://github.com/) |
 | :---: | :---: | :---: | :---:|
 ## Licença 
 
