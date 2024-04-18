@@ -26,7 +26,7 @@
 ## Descrição do projeto 
 
 <p align="justify">
-  O ApuriShare é uma plataforma web de criação de atividades, que surgiu com princípio de ajudar os estudantes que se deparam com desafios educacionais contemporâneos, por conta do método de ensino usado em sala de aula, que está ultrapassado. O objetivo deste projeto é desenvolver uma plataforma web para a criação de atividades em sala de aula explorando a metodologia ativa Think-Pair-Share (TPS).
+  
 </p>
 
 ## Funcionalidades
