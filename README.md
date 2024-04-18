@@ -31,27 +31,29 @@
 
 ## Funcionalidades
 
-:heavy_check_mark: O sistema deve permitir ao usuário cadastrar-se no site  
+:heavy_check_mark:  O sistema deve permitir ao usuário gerenciar o seu cadastro
 
-:heavy_check_mark: O sistema deve permitir ao usuário entrar em uma conta existente  
+:heavy_check_mark: O sistema deve permitir ao usuário realizar o login
 
-:heavy_check_mark: O sistema deve permitir ao usuário entrar em uma sala  
+:heavy_check_mark: O sistema deve permitir ao usuário gerenciar as suas publicações
 
-:heavy_check_mark: O sistema  deve permitir ao usuário/criador criar uma sala
+:heavy_check_mark: O sistema deve permitir ao usuário realizar uma busca de publicações cadastradas
 
-:heavy_check_mark: O sistema deve permitir ao usuário/criador iniciar a atividade
+:heavy_check_mark: O sistema deve permitir ao usuário visualizar em detalhes uma publicação
 
-:heavy_check_mark: O sistema deve permitir ao usuário/aluno visualizar a atividade
+:heavy_check_mark: O sistema deve permitir ao usuário carregar fotos no gerenciamento de suas publicações
 
-:heavy_check_mark: O sistema deve permitir ao usuário/aluno enviar resposta
+:heavy_check_mark: O sistema deve mostrar ao usuário as publicações recentes
 
-:heavy_check_mark: O sistema deve permitir ao usuário/aluno a visualizar a atividade de seu par
+:heavy_check_mark: O sistema deve permitir ao usuário favoritar as publicações de outros usuários
 
-:heavy_check_mark: O sistema deve permitir ao usuário/aluno visualizar a resposta do criador
+:heavy_check_mark: O sistema deve permitir ao usuário arquivar as suas publicações
 
-:heavy_check_mark: O sistema deve permitir ao usuário/criador iniciar a atividade 
+:heavy_check_mark: O sistema deve permitir ao usuário utilizar filtros durante a busca de publicações cadastradas
 
+:heavy_check_mark: O sistema deve permitir ao usuário denunciar as publicações feitas por outros usuários
 
+:heavy_check_mark:
 
 <span style="color: red;">Liste todas as linguagens, dependencias e libs que o usuário deve ter instalado na máquina antes de rodar a aplicação</span>
 
