@@ -91,7 +91,7 @@ ainda não pronto
 
 Equipe responsável pelo desenvolvimento do projeto
 
-| [<img src="https://avatars.githubusercontent.com/u/160176206?s=400&v=4" width=115><br><sub>Joseph Serpa Alexandre</sub>](https://github.com/JosephSAlexandre) |  [<img src="" width=115><br><sub> Lucas Gabriel Ferreira Vaez</sub>](https://github.com/) |   [<img src="" width=115><br><sub>Frank Juergen Knaesel</sub>](https://github.com/) |
+| [<img src="https://avatars.githubusercontent.com/u/160176206?s=400&v=4" width=115><br><sub>Joseph Serpa Alexandre</sub>](https://github.com/JosephSAlexandre) |  [<img src="https://avatars.githubusercontent.com/u/161767627?v=4" width=115><br><sub> Lucas Gabriel Ferreira Vaez</sub>](https://github.com/) |   [<img src="" width=115><br><sub>Frank Juergen Knaesel</sub>](https://github.com/) |
 | :---: | :---: | :---: |
 ## Licença 
 
