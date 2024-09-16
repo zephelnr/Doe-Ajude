@@ -22,57 +22,56 @@
         <main>
         <div class="mb-3">
             <div class="container text-left">
-                <div class="row align-items-center">
+                <div class="row g-3 align-items-center">
                     <div class="col">
                         1 of 3
                     </div>
-                    <div class="col-6 ">
-                        <div>
+                    <div class="col-6 bg-success-subtle rounded-3">
+                        <div class="mb-3 text-center">
                             <h2>Cadastro</h2>
                         </div>
                         <form action="" class="">
-                            <div>
+                            <div class="mb-3">
                                 <label for="" class="form-label">Usuário</label>
-                                <input type="text" class="form-control" id="usuarioCadastro" placeholder="Usuário">    
+                                <input type="text" class="form-control rounded-pill" id="usuarioCadastro" placeholder="Usuário" required>    
                             </div>
-                            <div>
+                            <div class="mb-3">
                                 <label for="" class="form-label">Nome Completo</label>
-                                <input type="text" class="form-control" id="nomeCompletoCadastro" placeholder="Nome Completo">
+                                <input type="text" class="form-control rounded-pill" id="nomeCompletoCadastro" placeholder="Nome Completo" required>
                             </div>
-                            <div>
+                            <div class="mb-3">
                                 <label for="" class="form-label">CPF</label>
-                                <input type="text" class="form-control" id="cpfCadastro" placeholder="000.000.000-00">
+                                <input type="text" class="form-control rounded-pill" id="cpfCadastro" placeholder="000.000.000-00" required>
                             </div>
-                            <div>
+                            <div class="mb-3">
                                 <label for="" class="form-label">Email</label>
-                                <input type="email" class="form-control" id="emailCadastro" placeholder="name@example.com">
+                                <input type="email" class="form-control rounded-pill" id="emailCadastro" placeholder="name@example.com" required>
                             </div>
-                            <div>
+                            <div class="mb-3">
                                 <label for="" class="form-label">Endereço</label>
-                                <input type="text" class="form-control" id="enderecoCadastro" placeholder="">
+                                <input type="text" class="form-control rounded-pill" id="enderecoCadastro" placeholder="">
                             </div>
-                            <div>
+                            <div class="mb-3">
                                 <label for="" class="form-label">Telefone</label>
-                                <input type="text" class="form-control" id="telefoneCadastro" placeholder="00900000000">
+                                <input type="text" class="form-control rounded-pill" id="telefoneCadastro" placeholder="00900000000">
                             </div>
-                            <div>
+                            <div class="mb-3">
                                 <label for="" class="form-label">Senha</label>
-                                <input type="password" id="senhaCadastro" class="form-control" aria-describedby="blocoAjudaSenha">
-                            </div>
-                            <div id="blocoAjudaSenha" class="form-text">
-                                Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
-                            </div>
-                            <div class="col-sm-9">
+                                <input type="password" id="senhaCadastro" class="form-control rounded-pill" aria-describedby="blocoAjudaSenha" required>
+                                <div id="blocoAjudaSenha" class="form-text">
+                                    Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
+                                </div>
+                            </div>                         
+                            <div class="col-sm-9 mb-3">
                                 <div class="row">
                                     <div class="col-8 col-sm-6">
-                                        <a class="btn btn-primary" href="#" role="button">Já Tenho Cadastro</a>
+                                        <a class="btn btn-success rounded-pill" href="#" role="button">Já Tenho Cadastro</a>
                                     </div>
                                     <div class="col-4 col-sm-6">
-                                        <button class="btn btn-primary" type="submit">Cadastrar</button>
+                                        <button class="btn btn-success rounded-pill" type="submit">Cadastrar</button>
                                     </div>
                                 </div>
                             </div>
-  
                         </form>
                     </div>
                 </div>
