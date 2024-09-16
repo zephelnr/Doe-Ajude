@@ -11,7 +11,8 @@
 
         <!-- Bootstrap CSS v5.2.1 -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-        <link href="/src/css/style.css">
+        <link rel="stylesheet" href="/src/css/style.css">
+        <link rel="stylesheet" href="/src/scss/_utilities.scss">
     </head>
 
     <body>
@@ -25,23 +26,39 @@
                     <div class="col">
                         1 of 3
                     </div>
-                    <div class="col-6">
-                        <h2>Cadastro</h2>
+                    <div class="col-6 ">
+                        <div>
+                            <h2>Cadastro</h2>
+                        </div>
                         <form action="" class="">
-                            <label for="" class="form-label">Usuário</label>
-                            <input type="text" class="form-control" id="usuarioCadastro" placeholder="Usuário">
-                            <label for="" class="form-label">Nome Completo</label>
-                            <input type="text" class="form-control" id="nomeCompletoCadastro" placeholder="Nome Completo">
-                            <label for="" class="form-label">CPF</label>
-                            <input type="text" class="form-control" id="cpfCadastro" placeholder="000.000.000-00">
-                            <label for="" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="emailCadastro" placeholder="name@example.com">
-                            <label for="" class="form-label">Endereço</label>
-                            <input type="text" class="form-control" id="enderecoCadastro" placeholder="">
-                            <label for="" class="form-label">Telefone</label>
-                            <input type="text" class="form-control" id="telefoneCadastro" placeholder="00900000000">
-                            <label for="" class="form-label">Senha</label>
-                            <input type="password" id="senhaCadastro" class="form-control" aria-describedby="blocoAjudaSenha">
+                            <div>
+                                <label for="" class="form-label">Usuário</label>
+                                <input type="text" class="form-control" id="usuarioCadastro" placeholder="Usuário">    
+                            </div>
+                            <div>
+                                <label for="" class="form-label">Nome Completo</label>
+                                <input type="text" class="form-control" id="nomeCompletoCadastro" placeholder="Nome Completo">
+                            </div>
+                            <div>
+                                <label for="" class="form-label">CPF</label>
+                                <input type="text" class="form-control" id="cpfCadastro" placeholder="000.000.000-00">
+                            </div>
+                            <div>
+                                <label for="" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="emailCadastro" placeholder="name@example.com">
+                            </div>
+                            <div>
+                                <label for="" class="form-label">Endereço</label>
+                                <input type="text" class="form-control" id="enderecoCadastro" placeholder="">
+                            </div>
+                            <div>
+                                <label for="" class="form-label">Telefone</label>
+                                <input type="text" class="form-control" id="telefoneCadastro" placeholder="00900000000">
+                            </div>
+                            <div>
+                                <label for="" class="form-label">Senha</label>
+                                <input type="password" id="senhaCadastro" class="form-control" aria-describedby="blocoAjudaSenha">
+                            </div>
                             <div id="blocoAjudaSenha" class="form-text">
                                 Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
                             </div>
