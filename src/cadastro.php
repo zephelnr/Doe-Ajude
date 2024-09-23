@@ -18,10 +18,15 @@
     <body>
         <header>
             <!-- place navbar here -->
+            <nav class="navbar bg-body-tertiary">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="#">Doe&Ajude</a>
+                </div>
+            </nav>
         </header>
         <main>
         <div class="mb-3">
-            <div class="container text-left">
+            <div class="container text-left vstack gap-5 p-5">
                 <div class="row g-3 align-items-center">
                     <div class="col-6">
                         1 of 3
@@ -68,7 +73,7 @@
                             <div class="col-sm-9 mb-3">
                                 <div class="row">
                                     <div class="col-8 col-sm-6">
-                                        <a class="btn btn-success rounded-pill" href="#" role="button">Já Tenho Cadastro</a>
+                                        <a class="btn btn-success rounded-pill" href="login.php" role="button">Já Tenho Cadastro</a>
                                     </div>
                                     <div class="col-4 col-sm-6">
                                         <button class="btn btn-success rounded-pill" type="submit">Cadastrar</button>

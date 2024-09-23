@@ -16,7 +16,7 @@
     </head>
 
     <body>
-        <header>
+    <header>
             <!-- place navbar here -->
             <nav class="navbar bg-body-tertiary">
                 <div class="container-fluid">
@@ -25,8 +25,8 @@
             </nav>
         </header>
         <main>
-            <div class="container vstack gap-5 p-5"> 
-                <div class="row p-5">
+            <div class="container" style="height: 100px;"> 
+                <div class="row align-bottom" style="height: 100px;">
                     <div class="col-4 p-3 mb-2 offset-md-4 bg-success-subtle rounded-3">
                         <h2 class="mb-3 text-center">Login</h2>
                         <form action="" class="">
