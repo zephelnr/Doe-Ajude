@@ -25,16 +25,16 @@
             </nav>
         </header>
         <main>
-        <div class="mb-3">
+        
             <div class="container text-left vstack gap-5 p-5">
-                <div class="row g-3 align-items-center">
-                    <div class="col-6">
-                        1 of 3
+                <div class="row g-3  grid gap-5">
+                    <div class="col-6 bg-success text-white align-self-start">
+                        <div class="" style="height: 800px;"></div>
                     </div>
 
 
 
-                    <div class="col-6 bg-success-subtle rounded-3">
+                    <div class="col bg-success-subtle rounded-3">
                         <div class="mb-3 text-center">
                             <h2>Cadastro</h2>
                         </div>
@@ -69,17 +69,11 @@
                                     <div id="blocoAjudaSenha" class="form-text">
                                     Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
                                 </div>
-                            </div>                         
-                            <div class="col-sm-9 mb-3">
-                                <div class="row">
-                                    <div class="col-8 col-sm-6">
-                                        <a class="btn btn-success rounded-pill" href="login.php" role="button">Já Tenho Cadastro</a>
-                                    </div>
-                                    <div class="col-4 col-sm-6">
-                                        <button class="btn btn-success rounded-pill" type="submit">Cadastrar</button>
-                                    </div>
-                                </div>
                             </div>
+                            <div class="mb-3 d-grid gap-5 d-md-flex justify-content-md-center">
+                                <a class="btn btn-success rounded-pill" href="login.php" role="button">Já Tenho Cadastro</a>
+                                <button class="btn btn-success rounded-pill" type="submit">Cadastrar</button>
+                            </div>                         
                         </form>
                               
                           
@@ -87,7 +81,7 @@
                 </div>
             </div>
                 
-        </div>
+       
 
         </main>
         <footer>

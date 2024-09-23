@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="pt-br">
     <head>
-        <title>Login</title>
+        <title>teste</title>
         <!-- Required meta tags -->
         <meta charset="utf-8" />
         <meta
@@ -18,34 +18,67 @@
     <body>
     <header>
             <!-- place navbar here -->
-            <nav class="navbar bg-body-tertiary">
-                <div class="container-fluid">
-                    <a class="navbar-brand" href="#">Doe&Ajude</a>
-                </div>
-            </nav>
+            
         </header>
         <main>
-            <div class="container" style="height: 100px;"> 
-                <div class="row align-bottom" style="height: 100px;">
-                    <div class="col-4 p-3 mb-2 offset-md-4 bg-success-subtle rounded-3">
-                        <h2 class="mb-3 text-center">Login</h2>
-                        <form action="" class="">
-                            <div class="mb-3">
-                                <label for="" class="form-label">Usuário</label>
-                                <input type="text" class="form-control rounded-pill" id="usuarioCadastro" placeholder="Usuário" required>    
+        <div class="">
+            <div class="row grid">
+                <div class="col bg-success text-white position-relative" style="height: 880px;">
+                    <div class="row position-absolute top-50 start-50 translate-middle">
+                        <div class="col text-center w-100 p-5"><h2>Doe&Ajude</h2></div>
+                    </div>
+                    <p class="text-center">Slogan arrumar</p>
+                </div>
+                <div class="col-sm-1 w-25">
+                </div>
+                <div class="col">
+                    <div class="row vstack gap-5 p-5">
+                        <div class="col bg-success-subtle rounded-3">
+                            <div class="mb-3 text-center">
+                                <h2>Cadastro</h2>
                             </div>
-                            <div class="mb-3">
-                                <label for="" class="form-label">Senha</label>
-                                <input type="password" id="senhaCadastro" class="form-control rounded-pill" required>
-                            </div>
-                            <div class="d-grid gap-5 d-md-flex justify-content-md-center">
-                                <button class="btn btn-success rounded-pill" type="submit">Entrar</button>
-                                <a class="btn btn-success rounded-pill" href="cadastro.php" role="button">Realizar Cadastro</a>
-                            </div>                         
-                        </form>
-                    </div>    
-                </div>    
+                            <form action="" class="">
+                                <div class="mb-3">
+                                    <label for="" class="form-label">Usuário</label>
+                                    <input type="text" class="form-control rounded-pill" id="usuarioCadastro" placeholder="Usuário" required>    
+                                </div>
+                                <div class="mb-3">
+                                    <label for="" class="form-label">Nome Completo</label>
+                                    <input type="text" class="form-control rounded-pill" id="nomeCompletoCadastro" placeholder="Nome Completo" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="" class="form-label">CPF</label>
+                                    <input type="text" class="form-control rounded-pill" id="cpfCadastro" placeholder="000.000.000-00" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="" class="form-label">Email</label>
+                                    <input type="email" class="form-control rounded-pill" id="emailCadastro" placeholder="name@example.com" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="" class="form-label">Endereço</label>
+                                    <input type="text" class="form-control rounded-pill" id="enderecoCadastro" placeholder="">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="" class="form-label">Telefone</label>
+                                    <input type="text" class="form-control rounded-pill" id="telefoneCadastro" placeholder="00900000000">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="" class="form-label">Senha</label>
+                                    <input type="password" id="senhaCadastro" class="form-control rounded-pill" aria-describedby="blocoAjudaSenha" required>
+                                        <div id="blocoAjudaSenha" class="form-text">
+                                        Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
+                                    </div>
+                                </div>
+                                <div class="mb-3 d-grid gap-5 d-md-flex justify-content-md-center">
+                                    <a class="btn btn-success rounded-pill" href="login.php" role="button">Já Tenho Cadastro</a>
+                                    <button class="btn btn-success rounded-pill" type="submit">Cadastrar</button>
+                                </div>                         
+                            </form>
+                        </div> 
+                    </div>
+                </div>  
             </div>
+        </div>
         </main>
         <footer>
             <!-- place footer here -->
