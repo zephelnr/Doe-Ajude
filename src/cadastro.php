@@ -23,9 +23,12 @@
         <div class="mb-3">
             <div class="container text-left">
                 <div class="row g-3 align-items-center">
-                    <div class="col">
+                    <div class="col-6">
                         1 of 3
                     </div>
+
+
+
                     <div class="col-6 bg-success-subtle rounded-3">
                         <div class="mb-3 text-center">
                             <h2>Cadastro</h2>
@@ -58,7 +61,7 @@
                             <div class="mb-3">
                                 <label for="" class="form-label">Senha</label>
                                 <input type="password" id="senhaCadastro" class="form-control rounded-pill" aria-describedby="blocoAjudaSenha" required>
-                                <div id="blocoAjudaSenha" class="form-text">
+                                    <div id="blocoAjudaSenha" class="form-text">
                                     Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
                                 </div>
                             </div>                         
@@ -73,6 +76,8 @@
                                 </div>
                             </div>
                         </form>
+                              
+                          
                     </div>
                 </div>
             </div>
