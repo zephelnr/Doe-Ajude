@@ -1,3 +1,68 @@
+<?php
+session_start()
+?>
+<?php
+require_once("conexao.php");
+if(filter_input(INPUT_SERVER, "REQUEST_METHOD") === "POST"){
+    try{
+        $dados = [];
+
+        $cpf = filter_input(INPUT_POST, "cpf", FILTER_SANITIZE_NUMBER_INT);
+        if(!$cpf){    
+        }
+        $dados["cpf"] = $cpf;
+
+        $nomeCompleto = filter_input(INPUT_POST, "nomeCompleto");
+        if(!$nomeCompleto){}
+        $dados["nomeCompleto"] = $nomeCompleto;
+
+        $usuario = filter_input(INPUT_POST, "usuario");
+        if(!$usuario){
+        }
+        $dados["usuario"] = $usuario;
+
+        $email = filter_input(INPUT_POST, "email", FILTER_SANITIZE_EMAIL);
+        if(!$email){}
+        $dados["email"] = $email;
+
+        $senha = filter_input(INPUT_POST, "senha");
+        if(!$senha){}
+        $dados["senha"] = $senha;
+
+        $_SESSION["dados"] = $dados;
+        $conexao = new PDO("mysql:host=" . SERVIDOR . ";bdname=" . BANCO, USUARIO, SENHA);
+
+        $sql = "SELECT * FROM usuario WHERE usuario = ?";
+        $pre = $conexao->prepare($sql);
+        $pre->execute(array(
+            $usuario
+        ));
+        $resultado = $pre->fetch();
+        if($resultado){
+            throw new Exception("Usuario já cadastrado!");
+        }
+        $senha = password_hash($senha, PASSWORD_BCRYPT, ['cost' => 12]);
+        
+        $sql = "INSERT INTO usuario(cpf, nomeCompleto, usuario, senha, email) VALUES (?,?,?,?,?)";
+
+        $pre = $conexao->prepare($sql);
+        $pre->execute(array(
+            $cpf,
+            $nomeCompleto,
+            $usuario,
+            $email,
+            $senha
+        ));
+
+        header("HTTP 1/1 302 Redirect");
+        header("Location: login.php");
+    } catch(Exception $e){
+
+    } finally {
+        $conexao = null;
+    }
+}
+?>
 <!doctype html>
 <html lang="pt-br">
     <head>
@@ -29,26 +94,26 @@
                 <div class="row p-5">
                     <div class="col-4 p-3 mb-2 offset-md-4 bg-success-subtle rounded-3">
                         <h2 class="mb-3 text-center">Cadastro de usuário</h2>
-                        <form action="" class="">
+                        <form id="cadastroUsuario" action="cadastro.php" method="$_POST" class="">
                                 <div class="mb-3">
-                                    <label for="" class="form-label">Usuário</label>
-                                    <input type="text" class="form-control rounded-pill" id="usuarioCadastro" placeholder="Digite um usuário" required>    
+                                    <label for="usuario" class="form-label">Usuário</label>
+                                    <input type="text" class="form-control rounded-pill" id="usuario" placeholder="Digite um usuário" value="<?php echo isset($_SESSION['dados']['usuario']) ? $_SESSION['dados']['usuario'] : '' ?>" required>    
                                 </div>
                                 <div class="mb-3">
-                                    <label for="" class="form-label">Nome Completo</label>
-                                    <input type="text" class="form-control rounded-pill" id="nomeCompletoCadastro" placeholder="Digite o seu nome completo" required>
+                                    <label for="nomeCompleto" class="form-label">Nome Completo</label>
+                                    <input type="text" class="form-control rounded-pill" id="nomeCompleto" placeholder="Digite o seu nome completo" value="<?php echo isset($_SESSION['dados']['nomeCompleto']) ? $_SESSION['dados']['nomeCompleto'] : '' ?>" required>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="" class="form-label">CPF</label>
-                                    <input type="text" class="form-control rounded-pill" id="cpfCadastro" placeholder="Digite o seu CPF(Apenas números)" required>
+                                    <label for="cpf" class="form-label">CPF</label>
+                                    <input type="text" class="form-control rounded-pill" id="cpf" placeholder="Digite o seu CPF(Apenas números)" value="<?php echo isset($_SESSION['dados']['cpf']) ? $_SESSION['dados']['cpf'] : '' ?>" required>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="" class="form-label">Email</label>
-                                    <input type="email" class="form-control rounded-pill" id="emailCadastro" placeholder="Digite o seu e-mail" required>
+                                    <label for="email" class="form-label">Email</label>
+                                    <input type="email" class="form-control rounded-pill" id="email" placeholder="Digite o seu e-mail" value="<?php echo isset($_SESSION['dados']['email']) ? $_SESSION['dados']['email'] : '' ?>" required>
                                 </div>
                                 <div class="row mb-3">
                                     <div class="col">
-                                        <label for="" class="form-label">Estado</label>
+                                        <label for="estado" class="form-label">Estado</label>
                                         <select class="form-select" aria-label="Default select example">
                                             <option selected></option>
                                             <option value="1">One</option>
@@ -57,7 +122,7 @@
                                         </select>
                                     </div>
                                     <div class="col">
-                                        <label for="" class="form-label">Cidade</label>   
+                                        <label for="cidade" class="form-label">Cidade</label>   
                                         <select class="form-select" aria-label="Default select example">
                                             <option selected></option>
                                             <option value="1">One</option>
@@ -67,12 +132,12 @@
                                     </div>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="" class="form-label">Telefone</label>
-                                    <input type="text" class="form-control rounded-pill" id="telefoneCadastro" placeholder="Digite o seu telefone(Apenas números)">
+                                    <label for="telefone" class="form-label">Telefone</label>
+                                    <input type="text" class="form-control rounded-pill" id="telefone" placeholder="Digite o seu telefone(Apenas números)">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="" class="form-label">Senha</label>
-                                    <input type="password" id="senhaCadastro" class="form-control rounded-pill" aria-describedby="blocoAjudaSenha" placeholder="Digite uma senha" required>
+                                    <label for="senha" class="form-label">Senha</label>
+                                    <input type="password" id="senha" class="form-control rounded-pill" aria-describedby="blocoAjudaSenha" placeholder="Digite uma senha" value="<?php echo isset($_SESSION['dados']['senha']) ? $_SESSION['dados']['senha'] : '' ?>" required>
                                         <div id="blocoAjudaSenha" class="form-text">
                                         Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
                                     </div>
@@ -81,7 +146,10 @@
                                     <a class="btn btn-success rounded-pill" href="login.php" role="button">Já Tenho Cadastro</a>
                                     <button class="btn btn-success rounded-pill" type="submit">Cadastrar</button>
                                 </div>                         
-                            </form>
+                        </form>
+                        <?php
+                        unset($_SESSION["dados"]);
+                        ?>
                     </div>    
                 </div>    
             </div>
