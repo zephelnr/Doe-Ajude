@@ -20,7 +20,7 @@
             <!-- place navbar here -->
             <nav class="navbar bg-body-tertiary">
                 <div class="container-fluid">
-                    <a class="navbar-brand" href="#">Doe&Ajude</a>
+                    <a class="navbar-brand" href="paginaPrincipal.php">Doe&Ajude</a>
                 </div>
             </nav>
         </header>
@@ -32,11 +32,11 @@
                         <form action="" class="">
                             <div class="mb-3">
                                 <label for="" class="form-label">Usuário</label>
-                                <input type="text" class="form-control rounded-pill" id="usuarioCadastro" placeholder="Usuário" required>    
+                                <input type="text" class="form-control rounded-pill" id="usuarioCadastro" placeholder="Digite o usuário" required>    
                             </div>
                             <div class="mb-3">
                                 <label for="" class="form-label">Senha</label>
-                                <input type="password" id="senhaCadastro" class="form-control rounded-pill" required>
+                                <input type="password" id="senhaCadastro" class="form-control rounded-pill" placeholder="Digite a senha" required>
                             </div>
                             <div class="d-grid gap-5 d-md-flex justify-content-md-center">
                                 <button class="btn btn-success rounded-pill" type="submit">Entrar</button>
