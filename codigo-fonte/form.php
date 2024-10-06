@@ -20,3 +20,4 @@ elseif ($_SERVER['REQUEST_METHOD']=='DELETE') {
    parse_str(file_get_contents('php://input'),$data);
    print_r($data);
 }
+
