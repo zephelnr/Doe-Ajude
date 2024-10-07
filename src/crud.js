@@ -11,7 +11,7 @@ btnIncluir.addEventListener("click", (e) => {
          console.log(xhr.responseText);
       }
    }
-   xhr.open("PUT","cadastro.php");
+   xhr.open("POST","crud.php");
    xhr.setRequestHeader("Content-Type", 'application/x-www-form-urlencoded; charset=UTF-8');
    xhr.send(formData);
 })

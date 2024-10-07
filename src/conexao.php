@@ -6,7 +6,7 @@ const BANCO = "mydb";
 const USUARIO = "root";
 
 const SENHA = "";
-/*
+
 $DSN = "mysql:dbname=mydb;host=localhost";
 
 try{
@@ -15,5 +15,5 @@ try{
 } catch(PDOException $e){
     echo "Falha na conexão com o banco de dados: " . $e->getMessage();
     die();
-}*/
+}
 ?>
