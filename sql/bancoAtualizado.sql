@@ -10,10 +10,6 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 -- -----------------------------------------------------
 -- Schema mydb
 -- -----------------------------------------------------
-
--- -----------------------------------------------------
--- Schema mydb
--- -----------------------------------------------------
 CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8 ;
 USE `mydb` ;
 
@@ -25,14 +21,13 @@ DROP TABLE IF EXISTS `mydb`.`usuario` ;
 CREATE TABLE IF NOT EXISTS `mydb`.`usuario` (
   `cpf` INT(11) NOT NULL,
   `nomeCompleto` VARCHAR(100) NOT NULL,
-  `usuario` VARCHAR(100) NOT NULL,
+  `nomeUsuario` VARCHAR(100) NOT NULL,
   `senha` VARCHAR(100) NOT NULL,
   `email` VARCHAR(100) NOT NULL,
   `estado` VARCHAR(45) NOT NULL,
   `cidade` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`cpf`))
 ENGINE = InnoDB;
-
 
 -- -----------------------------------------------------
 -- Table `mydb`.`publicacao`
@@ -47,7 +42,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`publicacao` (
   `cidade` VARCHAR(45) NOT NULL,
   `foto` VARCHAR(150) NULL,
   `status` VARCHAR(45) NOT NULL,
-  `data` DATE NOT NULL,
+  `dataPublicacao` DATE NOT NULL,
   `usuario_cpf` INT(11) NOT NULL,
   PRIMARY KEY (`idpublicacao`),
   INDEX `fk_publicacao_usuario_idx` (`usuario_cpf` ASC),
@@ -57,7 +52,6 @@ CREATE TABLE IF NOT EXISTS `mydb`.`publicacao` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
-
 
 -- -----------------------------------------------------
 -- Table `mydb`.`interesse`
@@ -82,7 +76,6 @@ CREATE TABLE IF NOT EXISTS `mydb`.`interesse` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
-
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
