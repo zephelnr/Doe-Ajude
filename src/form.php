@@ -42,6 +42,9 @@ elseif ($_SERVER['REQUEST_METHOD']=='POST') {
           die(json_encode(["status" => "error", "message" => "Falha na conexão: " . $conn->connect_error]));
       }
 
+      // Criptografa a senha
+      $senha = password_hash($senha, PASSWORD_BCRYPT);
+
       // Prepara a consulta SQL para inserir os dados
       $sql = "INSERT INTO usuario (email, cpf, nomeCompleto, senha) VALUES (?, ?, ?, ?)";
 
@@ -69,7 +72,7 @@ elseif ($_SERVER['REQUEST_METHOD']=='POST') {
       $conn->close();
   } else {
       // Retorna um erro se algum campo estiver vazio
-      echo json_encode(["status" => "error", "message" => "Todos os campos são obrigatórios!"]);
+      echo json_encode(["status" => "error", "message" => "Todos os campos sao obrigatorios!"]);
   }
 
 }
