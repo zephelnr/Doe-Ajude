@@ -9,63 +9,69 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
 }
 elseif ($_SERVER['REQUEST_METHOD']=='POST') {
    
-   // Recebe o JSON (por exemplo, de uma solicitação POST)
-   $plainData = file_get_contents('php://input');
+  // Coleta os dados enviados pelo FormData
+  $email = $_POST['email'] ?? '';
+  $cpf = $_POST['cpf'] ?? '';
+  $nomeCompleto = $_POST['nomeCompleto'] ?? '';
+  $senha = $_POST['senha'] ?? '';
 
-   // Decodifica o JSON para um array associativo
-   $array = json_decode($plainData, true);
+  // Verifica se todos os campos foram enviados corretamente
+  if (!empty($email) && !empty($cpf) && !empty($nomeCompleto) && !empty($senha)) {
+      // Cria um array associativo com os dados recebidos
+      $dados = array(
+          "email" => $email,
+          "cpf" => $cpf,
+          "nomeCompleto" => $nomeCompleto,
+          "senha" => $senha
+      );
 
-   // Verifica se o JSON foi decodificado corretamente
-   if (json_last_error() === JSON_ERROR_NONE) {
-      // Dados extraídos do JSON
-      $email = $dados['email'];
-      $cpf = $dados['cpf'];
-      $nomeCompleto = $dados['nomeCompleto'];
-      $senha = $dados['senha'];
-      
+      // Converte o array em JSON
+      $jsonData = json_encode($dados);
+
       // Conectar ao banco de dados MySQL
-      $servername = "localhost";  // Exemplo: localhost
-      $username = "root";      // Seu usuário do banco
-      $password = "";        // Sua senha do banco
-      $dbname = "mydb";       // Nome do seu banco de dados
+      $servername = "localhost";
+      $username = "root";
+      $password = "";
+      $dbname = "mydb";
 
       // Cria a conexão
-      $conn = new mysqli($servername, $username, $password, $dbname, 3306);
+      $conn = new mysqli($servername, $username, $password, $dbname);
 
       // Verifica se a conexão foi bem-sucedida
       if ($conn->connect_error) {
-         die("Falha na conexão: " . $conn->connect_error);
+          die(json_encode(["status" => "error", "message" => "Falha na conexão: " . $conn->connect_error]));
       }
 
       // Prepara a consulta SQL para inserir os dados
       $sql = "INSERT INTO usuario (email, cpf, nomeCompleto, senha) VALUES (?, ?, ?, ?)";
 
-      // Prepara a declaração (statement) e vincula os parâmetros
+      // Prepara a declaração e vincula os parâmetros
       if ($stmt = $conn->prepare($sql)) {
-         $stmt->bind_param("ssss", $email, $cpf, $nomeCompleto, $senha);
+          // Usa "siss" porque CPF é um inteiro, e os outros campos são strings
+          $stmt->bind_param("siss", $email, $cpf, $nomeCompleto, $senha);
 
-         // Executa a inserção
-         if ($stmt->execute()) {
-               echo "Dados inseridos com sucesso!";
-         } else {
-               echo "Erro ao inserir os dados: " . $stmt->error;
-         }
+          // Executa a inserção
+          if ($stmt->execute()) {
+              // Retorna uma resposta de sucesso
+              echo json_encode(["status" => "success", "message" => "Dados inseridos com sucesso!"]);
+          } else {
+              // Retorna uma resposta de erro se falhar
+              echo json_encode(["status" => "error", "message" => "Erro ao inserir os dados: " . $stmt->error]);
+          }
 
-         // Fecha a declaração
-         $stmt->close();
+          // Fecha a declaração
+          $stmt->close();
       } else {
-         echo "Erro ao preparar a consulta: " . $conn->error;
+          echo json_encode(["status" => "error", "message" => "Erro ao preparar a consulta: " . $conn->error]);
       }
 
       // Fecha a conexão
       $conn->close();
-   } else {
-      echo "Erro ao decodificar JSON: " . json_last_error_msg();
-   }
+  } else {
+      // Retorna um erro se algum campo estiver vazio
+      echo json_encode(["status" => "error", "message" => "Todos os campos são obrigatórios!"]);
+  }
 
-
-   //print("<h1>_POST</h1>");
-   print_r($_POST);
 }
 elseif ($_SERVER['REQUEST_METHOD']=='PUT') {
    print("<h1>_PUT</h1>");
