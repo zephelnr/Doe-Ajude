@@ -4,8 +4,8 @@ btnIncluir.addEventListener("click", (e) => {
    let formData = new FormData(frmIncluir);
    
    // as 2 linhas abaixo são no caso de uma alterção ou exclusão
-   let jsonData = JSON.stringify(Object.fromEntries(formData));
-   console.log(jsonData);
+   ///let jsonData = JSON.stringify(Object.fromEntries(formData));
+   ///console.log(jsonData);
 
    let xhr = new XMLHttpRequest();
    xhr.onload = function() {
@@ -19,10 +19,10 @@ btnIncluir.addEventListener("click", (e) => {
    // troque o DELETE abaixo pelo método que vc precisa
    // GET, POST, PUT, DELETE
    // lembrando que no caso de consultas (GET), vc deve enviar os parâmetros diretamente no URL
-   xhr.open("DELETE","form.php");
+   xhr.open("POST","form.php");
    // se for inclusão(POST) vc envia o formData
    // se for alteração ou exclusão (PUT ou DELETE) você envia o jsonData
    // se for uma consulta (GET), vc deve enviar os dados pelo URL, como mencionei acima
-   xhr.send(jsonData);
+   xhr.send(formData);
 })
 
