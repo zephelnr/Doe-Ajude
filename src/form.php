@@ -70,6 +70,8 @@ elseif ($_SERVER['REQUEST_METHOD']=='POST') {
 
       // Fecha a conexão
       $conn->close();
+      //header("HTTP 1/1 302 Redirect");
+      //header("Location: login.php");
   } else {
       // Retorna um erro se algum campo estiver vazio
       echo json_encode(["status" => "error", "message" => "Todos os campos sao obrigatorios!"]);
