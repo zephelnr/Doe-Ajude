@@ -24,7 +24,7 @@ DROP TABLE IF EXISTS `mydb`.`usuario` ;
 
 CREATE TABLE IF NOT EXISTS `mydb`.`usuario` (
   `email` VARCHAR(100) NOT NULL,
-  `cpf` INT(11) NOT NULL,
+  `cpf` VARCHAR(11) NOT NULL,
   `nomeCompleto` VARCHAR(100) NOT NULL,
   `senha` VARCHAR(100) NOT NULL,
   PRIMARY KEY (`email`),

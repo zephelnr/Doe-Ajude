@@ -1,19 +1,14 @@
 <?php
-const SERVIDOR = "localhost:3306";
+// Conectar ao banco de dados MySQL
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "mydb";
 
-const BANCO = "mydb";
-
-const USUARIO = "root";
-
-const SENHA = "";
-
-$DSN = "mysql:dbname=mydb;host=localhost";
-
-try{
-    $pdo = new PDO($DSN, USUARIO, SENHA);
-    echo "Sucesso na conexão";
-} catch(PDOException $e){
-    echo "Falha na conexão com o banco de dados: " . $e->getMessage();
-    die();
+try {
+    // Cria a conexão
+    $conn = new mysqli($servername, $username, $password, $dbname);
+} catch (PDOException $e) {
+    die(json_encode(["status" => "error", "message" => "Falha na conexão: " . $conn->connect_error]));
 }
 ?>
