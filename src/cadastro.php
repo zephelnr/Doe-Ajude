@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
       
             // Prepara a declaração e vincula os parâmetros
             if ($stmt = $conn->prepare($sql)) {
-                // Usa "siss" porque CPF é um inteiro, e os outros campos são strings
+                // Usa "ssss" porque os campos são strings
                 $stmt->bind_param("ssss", $email, $cpf, $nomeCompleto, $senha);
       
                 // Executa a inserção
@@ -41,13 +41,15 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
                     echo json_encode(["status" => "success", "message" => "Dados inseridos com sucesso!"]);
                 } else {
                     // Retorna uma resposta de erro se falhar
-                    echo json_encode(["status" => "error", "message" => "Erro ao inserir os dados: " . $stmt->error]);
+                    throw new Exception("Erro ao inserir os dados" . $stmt->error);
+                    //echo json_encode(["status" => "error", "message" => "Erro ao inserir os dados: " . $stmt->error]);
                 }
                 
                 // Fecha a declaração
                 $stmt->close();
             } else {
-                echo json_encode(["status" => "error", "message" => "Erro ao preparar a consulta: " . $conn->error]);
+                throw new Exception("Erro ao preparar a consulta" . $conn->error);
+                //echo json_encode(["status" => "error", "message" => "Erro ao preparar a consulta: " . $conn->error]);
             }
             
             // Fecha a conexão
@@ -59,7 +61,7 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
         header("Location: login.html");
 
     } catch (Exception $e) {
-        echo json_encode(["status" => "error", "message" => "Erro geral!" . $e->getMessage()]);
+        echo json_encode(["Erro! " . $e->getMessage()]);
     }
    
 
