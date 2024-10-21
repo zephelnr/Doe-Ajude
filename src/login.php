@@ -15,7 +15,6 @@ if (filter_input(INPUT_SERVER, "REQUEST_METHOD") === "POST") {
         $sql = "select * from usuario where email = ?";
 
         $conn = new PDO("mysql:host=" . $servername. ";dbname=" . $dbname, $username, $password);
-        //$DSN = "mysql:dbname=mydb;host=localhost";
 
         $pre = $conn->prepare($sql);
         $pre->execute(array(
@@ -27,8 +26,6 @@ if (filter_input(INPUT_SERVER, "REQUEST_METHOD") === "POST") {
         if (!$resultado) {
             throw new Exception("Login invalido!");
         } else {
-            //$senha = password_hash($senha, PASSWORD_BCRYPT, ['cost' => 12]);
-            //error_log("\n senha: '$senha''", 3, "../file.log");
             if (password_verify($senha, $resultado["senha"]) === false) {
                 throw new Exception("Senha invalida!");
             } else {
@@ -36,10 +33,10 @@ if (filter_input(INPUT_SERVER, "REQUEST_METHOD") === "POST") {
             }
         }
         
-
         header("Location: telaPrincipal.html");
+        //echo json_encode($response);
     } catch (Exception $e) {
-        echo json_encode(["status" => "error", "message" => "Erro geral!" . $e->getMessage()]);
+        echo json_encode(["Erro!" . $e->getMessage()]);
     } finally {
         $conexao = null;
     }

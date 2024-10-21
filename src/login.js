@@ -12,7 +12,7 @@ btnLogin.addEventListener("click", (e) => {
          console.log("XMLHttpRequest Error");
       }
    }
-
+   
    xhr.open("POST","login.php");
    xhr.send(formData);
 })
