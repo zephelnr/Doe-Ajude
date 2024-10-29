@@ -56,10 +56,11 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
             $conn->close();
         } else {
             // Retorna um erro se algum campo estiver vazio
-            echo json_encode(["status" => "error", "message" => "Todos os campos sao obrigatorios!"]);
+            //echo json_encode(["status" => "error", "message" => "Todos os campos sao obrigatorios!"]);
+            throw new Exception("Todos os campos sao obrigatorios!");
         }
-        header("Location: login.html");
-
+        //header("Location: login.html");
+        echo json_encode("response");
     } catch (Exception $e) {
         echo json_encode(["Erro! " . $e->getMessage()]);
     }

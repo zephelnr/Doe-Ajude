@@ -33,8 +33,8 @@ if (filter_input(INPUT_SERVER, "REQUEST_METHOD") === "POST") {
             }
         }
         
-        header("Location: telaPrincipal.html");
-        //echo json_encode($response);
+        //header("Location: telaPrincipal.html");
+        echo json_encode("response");
     } catch (Exception $e) {
         echo json_encode(["Erro!" . $e->getMessage()]);
     } finally {
