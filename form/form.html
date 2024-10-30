@@ -25,6 +25,9 @@
          <button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#modalId">
             Inserir Novo
          </button>
+         <button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#modalIdVisualizar">
+            visualizar
+         </button>
 
          <!-- Modal Body -->
          <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
@@ -55,6 +58,40 @@
                         Close
                      </button>
                      <button type="button" class="btn btn-primary" id="btnIncluir">Save</button>
+                  </div>
+               </div>
+            </div>
+         </div>
+
+         <!-- Modal Body visualizar-->
+         <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
+         <div class="modal fade" id="modalIdVisualizar" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false"
+            role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm" role="document">
+               <div class="modal-content">
+                  <div class="modal-header">
+                     <h5 class="modal-title" id="modalTitleId">
+                        Modal Visualizar
+                     </h5>
+                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                     <form id="frmIncluir">
+                        <label for="email">Email</label>
+                        <input type='email' name="email" id="email">
+                        <label for="cpf">CPF</label>
+                        <input type='text' name="cpf" id="cpf">
+                        <label for="nomeCompleto">Nome Completo</label>
+                        <input type='text' name="nomeCompleto" id="nomeCompleto">
+                        <label for="senha">Senha</label>
+                        <input type='password' name="senha" id="senha">
+                     </form>
+                  </div>
+                  <div class="modal-footer">
+                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                        Close
+                     </button>
+                     <button type="button" class="btn btn-primary" id="btnVisualizar">Save</button>
                   </div>
                </div>
             </div>
