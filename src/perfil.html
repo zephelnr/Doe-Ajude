@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="pt-br">
     <head>
-        <title>Login</title>
+        <title>Perfil</title>
         <!-- Required meta tags -->
         <meta charset="utf-8" />
         <meta
@@ -18,7 +18,11 @@
             <!-- place navbar here -->
             <nav class="navbar bg-body-tertiary">
                 <div class="container-fluid">
-                    <a class="navbar-brand" href="index.html">Doe&Ajude</a>
+                    <a class="navbar-brand" href="telaPrincipal.html">Doe&Ajude</a>
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+                        <a class="btn btn-success rounded-pill" href="perfil.html" role="button">Menu</a>
+                        <a class="btn btn-success rounded-pill" href="" role="button">Sair</a>
+                    </div>   
                 </div>
             </nav>
         </header>
@@ -26,21 +30,28 @@
             <div class="container vstack gap-5 p-5"> 
                 <div class="row p-5">
                     <div class="col-4 p-3 mb-2 offset-md-4 bg-success-subtle rounded-3">
-                        <h2 class="mb-3 text-center">Login</h2>
-                        <form action="" class="" id="frmLogin" method="post">
+                        <h2 class="mb-3 text-center">Perfil</h2>
+                        
                             <div class="mb-3">
-                                <label for="" class="form-label">Email</label>
-                                <input type="text" name="email" class="form-control rounded-pill" id="email" placeholder="Digite o seu E-mail" required>    
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" name="email" class="form-control rounded-pill" id="email">
                             </div>
                             <div class="mb-3">
-                                <label for="" class="form-label">Senha</label>
-                                <input type="password" name="senha" id="senha" class="form-control rounded-pill" placeholder="Digite a senha" required>
+                                <label for="cpf" class="form-label">CPF</label>
+                                <input type="text" name="cpf" class="form-control rounded-pill" id="cpf">
                             </div>
-                            <div class="d-grid gap-5 d-md-flex justify-content-md-center">
-                                <button class="btn btn-success rounded-pill" type="button" id="btnLogin">Entrar</button>
-                                <a class="btn btn-success rounded-pill" href="cadastro.html" role="button">Realizar Cadastro</a>
+                            <div class="mb-3">
+                                <label for="nomeCompleto" class="form-label">Nome Completo</label>
+                                <input type="text" name="nomeCompleto" class="form-control rounded-pill" id="nomeCompleto">
+                            </div>
+                            <div class="mb-3">
+                                <label for="senha" class="form-label">Senha</label>
+                                <input type="password" name="senha" id="senha" class="form-control rounded-pill">
+                            </div>
+                            <div class="mb-3 d-grid gap-5 d-md-flex justify-content-md-center">
+                                <button class="btn btn-success rounded-pill" type="button" id="btnEditar">Editar</button>
                             </div>                         
-                        </form>
+                        
                     </div>    
                 </div>    
             </div>
