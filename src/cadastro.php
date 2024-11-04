@@ -55,6 +55,20 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
             // Fecha a conexão
             $conn->close();
         } else {
+            //verifica se os campos estão vazios e manda um aviso
+            if (empty($email)) {
+                echo json_encode(["Email vazio"]);
+            }
+            if (empty($cpf)) {
+                echo json_encode(["Cpf vazio"]);
+            }
+            if (empty($nomeCompleto)) {
+                echo json_encode(["NomeCompleto vazio"]);
+            }
+            if (empty($senha)) {
+                echo json_encode(["Senha vazia"]);
+            }
+
             // Retorna um erro se algum campo estiver vazio
             //echo json_encode(["status" => "error", "message" => "Todos os campos sao obrigatorios!"]);
             throw new Exception("Todos os campos sao obrigatorios!");

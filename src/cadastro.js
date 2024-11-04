@@ -1,4 +1,9 @@
-const btnIncluir = document.getElementById("btnIncluir");
+const btnIncluir = document.getElementById("btnCadastrar");
+const respEmailLCad = document.querySelector("#respEmailCad");
+const respCpfLCad = document.querySelector("#respCpfCad");
+const respNomeCompletoLCad = document.querySelector("#respNomeCompletoCad");
+const respSenhaLCad = document.querySelector("#respSenhaCad");
+
 btnIncluir.addEventListener("click", (e) => {
    const frmIncluir = document.getElementById("frmIncluir");
    let formData = new FormData(frmIncluir);
@@ -15,6 +20,31 @@ btnIncluir.addEventListener("click", (e) => {
         if (response.includes("response")) {
             window.location.href = "login.html";
         }
+
+         //verifica a resposta e se for "Email vazio" aparece o texto, se não retorna vazio
+         if (response.includes("Email vazio")) {
+            respEmailCad.innerHTML = `O campo Email está vazio!`;
+         } else {
+            respEmailCad.innerHTML = ``;
+         }
+         //verifica a resposta e se for "CPF vazio" aparece o texto, se não retorna vazio
+         if (response.includes("Cpf vazio")) {
+            respCpfCad.innerHTML = `O campo CPF está vazio!`;
+         } else {
+            respCpfCad.innerHTML = ``;
+         }
+         //verifica a resposta e se for "NomeCompleto vazio" aparece o texto, se não retorna vazio
+         if (response.includes("NomeCompleto vazio")) {
+            respNomeCompletoCad.innerHTML = `O campo Nome Completo está vazio!`;
+         } else {
+            respCpfCad.innerHTML = ``;
+         }
+         //verifica a resposta e se for "Senha vazia" aparece o texto, se não retorna vazio
+         if (response.includes("Senha vazia")) {
+            respSenhaCad.innerHTML = `O campo Senha está vazio!`;
+         } else {
+            respCpfCad.innerHTML = ``;
+         }
       }
       else {
          console.log("XMLHttpRequest Error");

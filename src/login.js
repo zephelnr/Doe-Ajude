@@ -17,12 +17,13 @@ btnLogin.addEventListener("click", (e) => {
         if (response.includes("response")) {
             window.location.href = "telaPrincipal.html";
         }
-        //verifica a resposta e se for "Email" aparece o texto
+        //verifica a resposta e se for "Email" aparece o texto, se não retorna vazio
         if (response.includes("Email")) {
             respEmailLog.innerHTML = `O Email digitado é inválido`;
          } else {
             respEmailLog.innerHTML = ``;
          }
+         //verifica a resposta e se for "Senha" aparece o texto, se não retorna vazio
          if (response.includes("Senha")) {
             respSenhaLog.innerHTML = `A senha digitada está incorreta`;
          } else {
