@@ -45,6 +45,19 @@ btnIncluir.addEventListener("click", (e) => {
          } else {
             respCpfCad.innerHTML = ``;
          }
+
+         //verifica a resposta e se for "PRIMARY" aparece o texto, se não retorna vazio
+         if (response.includes("PRIMARY")) {
+            respEmailCad.innerHTML = `O Email já está cadastrado!`;
+         } else {
+            respEmailCad.innerHTML = ``;
+         }
+         //verifica a resposta e se for "UNIQUE" aparece o texto, se não retorna vazio
+         if (response.includes("UNIQUE")) {
+            respCpfCad.innerHTML = `O CPF já está cadastrado!`;
+         } else {
+            respCpfCad.innerHTML = ``;
+         }
       }
       else {
          console.log("XMLHttpRequest Error");
