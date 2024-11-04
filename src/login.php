@@ -24,7 +24,7 @@ if (filter_input(INPUT_SERVER, "REQUEST_METHOD") === "POST") {
         $resultado = $pre->fetch();
 
         if (!$resultado) {
-            throw new Exception("Login invalido!");
+            throw new Exception("Email invalido!");
         } else {
             if (password_verify($senha, $resultado["senha"]) === false) {
                 throw new Exception("Senha invalida!");
