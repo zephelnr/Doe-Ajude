@@ -6,48 +6,63 @@ const respSenhaLCad = document.querySelector("#respSenhaCad");
 
 btnCadastrar.addEventListener("click", (e) => {
    const frmCadastrar = document.getElementById("frmCadastrar");
+
+   const emailInput = frmCadastrar.querySelector("#email");
+   const cpfInput = frmCadastrar.querySelector("#cpf");
+   const nomeCompletoInput = frmCadastrar.querySelector("#nomeCompleto");
+   const senhaInput = frmCadastrar.querySelector("#senha");
+
    let formData = new FormData(frmCadastrar);
 
    let xhr = new XMLHttpRequest();
-   xhr.onload = function() {
-      if (xhr.status==200 && xhr.readyState==4) {
+   xhr.onload = function () {
+      if (xhr.status == 200 && xhr.readyState == 4) {
          console.log(xhr.responseText);
 
          // Verifica o conteúdo da resposta ou outras condições
-        const response = xhr.responseText;
+         const response = xhr.responseText;
 
-        // Supondo que você verifique algo na resposta para decidir o redirecionamento
-        if (response.includes("response")) {
+         // Supondo que você verifique algo na resposta para decidir o redirecionamento
+         if (response.includes("response")) {
             window.location.href = "login.html";
-        }
+         }
 
-         //verifica a resposta e se for "Email vazio" ou "PRIMARY" aparece o texto, se não retorna vazio
-         if (response.includes("Email vazio")) {
+         //verifica se o campo email esta vazio
+         if (emailInput.value != "") {
+            //verifica a resposta e se for "Email vazio" ou "PRIMARY" aparece o texto, se não retorna vazio
+            if (response.includes("PRIMARY")) {
+               respEmailCad.innerHTML = `O Email já está cadastrado!`;
+            } else {
+               respEmailCad.innerHTML = ``;
+            }
+         } else {
             respEmailCad.innerHTML = `O campo Email está vazio!`;
-         } else if (response.includes("PRIMARY")){
-            respEmailCad.innerHTML = `O Email já está cadastrado!`;
-         } else {
-            respEmailCad.innerHTML = ``;
          }
-         //verifica a resposta e se for "CPF vazio" ou "UNIQUE" aparece o texto, se não retorna vazio
-         if (response.includes("Cpf vazio")) {
+
+         //verifica se o campo cpf esta vazio
+         if (cpfInput.value != "") {
+            //verifica a resposta e se for "CPF vazio" ou "UNIQUE" aparece o texto
+            if (response.includes("UNIQUE")) {
+               respCpfCad.innerHTML = `O CPF já está vazio!`;
+            } else {
+               respCpfCad.innerHTML = ``;
+            }
+         } else {
             respCpfCad.innerHTML = `O campo CPF está vazio!`;
-         } else if (response.includes("UNIQUE")) {
-            respCpfCad.innerHTML = `O CPF já está vazio!`;
-         } else {
-            respCpfCad.innerHTML = ``;
          }
-         //verifica a resposta e se for "NomeCompleto vazio" aparece o texto, se não retorna vazio
-         if (response.includes("NomeCompleto vazio")) {
+
+         //verifica se o campo nomeCompleto esta vazio
+         if (nomeCompletoInput.value != "") {
+            respCpfCad.innerHTML = ``;
+         } else {
             respNomeCompletoCad.innerHTML = `O campo Nome Completo está vazio!`;
-         } else {
-            respCpfCad.innerHTML = ``;
          }
-         //verifica a resposta e se for "Senha vazia" aparece o texto, se não retorna vazio
-         if (response.includes("Senha vazia")) {
-            respSenhaCad.innerHTML = `O campo Senha está vazio!`;
+
+         //verifica se o campo senha esta vazio
+         if (senhaInput.value != "") {
+            respSenhaCad.innerHTML = ``;
          } else {
-            respCpfCad.innerHTML = ``;
+            respSenhaCad.innerHTML = `O campo Senha está vazio!`;
          }
       }
       else {
@@ -55,6 +70,6 @@ btnCadastrar.addEventListener("click", (e) => {
       }
    }
 
-   xhr.open("POST","cadastro.php");
+   xhr.open("POST", "cadastro.php");
    xhr.send(formData);
 })

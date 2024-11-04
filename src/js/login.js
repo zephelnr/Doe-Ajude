@@ -27,8 +27,9 @@ btnLogin.addEventListener("click", (e) => {
             window.location.href = "telaPrincipal.html";
         }
 
-        //verifica se o campo email está vazio, se não estiver verifica a resposta, caso seja "Email", o email é inválido
+        //verifica se o campo email está vazio
         if (emailInput.value != ""){
+            //verifica a resposta, caso seja "Email", o email é inválido
             if (response.includes("Email")) {
                respEmailLog.innerHTML = `O E-mail digitado é inválido`;
             } else {
