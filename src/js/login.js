@@ -3,6 +3,15 @@ const respEmailLog = document.querySelector("#respEmailLog");
 const respSenhaLog = document.querySelector("#respSenhaLog");
 btnLogin.addEventListener("click", (e) => {
    const frmLogin = document.getElementById("frmLogin");
+
+   
+   const emailInput = frmLogin.querySelector("#email");
+   const senhaInput = frmLogin.querySelector("#senha");
+   //const cpfTam = cpfInput.value
+   //if(cpfTam == ""){
+   //   console.log("vazio");
+   //}
+
    let formData = new FormData(frmLogin);
 
    let xhr = new XMLHttpRequest();
@@ -17,18 +26,29 @@ btnLogin.addEventListener("click", (e) => {
         if (response.includes("response")) {
             window.location.href = "telaPrincipal.html";
         }
-        //verifica a resposta e se for "Email" aparece o texto, se não retorna vazio
-        if (response.includes("Email")) {
-            respEmailLog.innerHTML = `O Email digitado é inválido`;
+
+        //verifica se o campo email está vazio, se não estiver verifica a resposta, caso seja "Email", o email é inválido
+        if (emailInput.value != ""){
+            if (response.includes("Email")) {
+               respEmailLog.innerHTML = `O E-mail digitado é inválido`;
+            } else {
+               respEmailLog.innerHTML = ``;
+            }
+        } else {
+            respEmailLog.innerHTML = `O campo E-mail está vazio!`;
+        }
+
+        //verifica se o campo senha está vazio, se não estiver verifica a resposta, caso seja "Senha", a senha é inválida
+        if (senhaInput.value != ""){
+            if (response.includes("Senha")) {
+               respSenhaLog.innerHTML = `A senha digitada está incorreta`;
+            } else {
+               respSenhaLog.innerHTML = ``;
+            }
          } else {
-            respEmailLog.innerHTML = ``;
+               respSenhaLog.innerHTML = `O campo Senha está vazio!`;
          }
-         //verifica a resposta e se for "Senha" aparece o texto, se não retorna vazio
-         if (response.includes("Senha")) {
-            respSenhaLog.innerHTML = `A senha digitada está incorreta`;
-         } else {
-            respSenhaLog.innerHTML = ``;
-         }
+
       }
       else {
          console.log("XMLHttpRequest Error");
