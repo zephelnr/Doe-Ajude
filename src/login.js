@@ -1,6 +1,6 @@
 const btnLogin = document.getElementById("btnLogin");
-const respEmail = document.querySelector("#respEmail");
-const respSenha = document.querySelector("#respSenha");
+const respEmailLog = document.querySelector("#respEmailLog");
+const respSenhaLog = document.querySelector("#respSenhaLog");
 btnLogin.addEventListener("click", (e) => {
    const frmLogin = document.getElementById("frmLogin");
    let formData = new FormData(frmLogin);
@@ -19,10 +19,14 @@ btnLogin.addEventListener("click", (e) => {
         }
         //verifica a resposta e se for "Email" aparece o texto
         if (response.includes("Email")) {
-            respEmail.innerHTML = `O Email digitado é inválido`;
+            respEmailLog.innerHTML = `O Email digitado é inválido`;
+         } else {
+            respEmailLog.innerHTML = ``;
          }
          if (response.includes("Senha")) {
-            respSenha.innerHTML = `A senha digitada está incorreta`;
+            respSenhaLog.innerHTML = `A senha digitada está incorreta`;
+         } else {
+            respSenhaLog.innerHTML = ``;
          }
       }
       else {
