@@ -1,4 +1,10 @@
 <?php
+session_start();
+if (!empty($_SESSION['email'])) {
+   header("Location: menu.php");
+}
+?>
+<?php
 require_once("conexao.php");
 
 //print("REQUEST_METHOD = ".$_SERVER['REQUEST_METHOD']);

@@ -1,6 +1,8 @@
 <?php
-ini_set("session.cookie_secure", 1);
 session_start();
+if (!empty($_SESSION['email'])) {
+   header("Location: index.html");
+}
 ?>
 <?php
 require_once("conexao.php");

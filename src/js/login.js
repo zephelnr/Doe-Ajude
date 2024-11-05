@@ -3,14 +3,9 @@ const respEmailLog = document.querySelector("#respEmailLog");
 const respSenhaLog = document.querySelector("#respSenhaLog");
 btnLogin.addEventListener("click", (e) => {
    const frmLogin = document.getElementById("frmLogin");
-
-   
+ 
    const emailInput = frmLogin.querySelector("#email");
    const senhaInput = frmLogin.querySelector("#senha");
-   //const cpfTam = cpfInput.value
-   //if(cpfTam == ""){
-   //   console.log("vazio");
-   //}
 
    let formData = new FormData(frmLogin);
 
