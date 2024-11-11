@@ -28,13 +28,13 @@ btnLogin.addEventListener("click", (e) => {
 
         // verifica a resposta e se for "response" redireciona a página
         if (response.includes("response")) {
-            window.location.href = "telaPrincipal.html";
+            window.location.href = "telaPrincipal.php";
         }
 
         //verifica se o campo email está vazio
         if (emailInput.value != ""){
             //verifica a resposta, caso seja "Email", o email é inválido
-            if (response.includes("Email")) {
+            if (response.includes("Email invalido")) {
                respEmailLog.innerHTML = `O E-mail digitado é inválido`;
             } else {
                respEmailLog.innerHTML = ``;
@@ -45,7 +45,7 @@ btnLogin.addEventListener("click", (e) => {
 
         //verifica se o campo senha está vazio, se não estiver verifica a resposta, caso seja "Senha", a senha é inválida
         if (senhaInput.value != ""){
-            if (response.includes("Senha")) {
+            if (response.includes("Senha invalida")) {
                respSenhaLog.innerHTML = `A senha digitada está incorreta`;
             } else {
                respSenhaLog.innerHTML = ``;

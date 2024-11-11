@@ -48,13 +48,13 @@
                     
                      <form class="container-fluid">
                         <div class="input-group">
-                            <a class="navbar-brand" href="telaPrincipal.html">Doe&Ajude</a>
+                            <a class="navbar-brand" href="index.php">Doe&Ajude</a>
                             <form action="">
                                 <input type="search" class="form-control rounded-pill" placeholder="Buscar" aria-label="Busca" aria-describedby=""> 
                                 <div class="d-grid gap-2 d-md-flex justify-content-md-center">
                                     <button class="btn btn-outline-success rounded-pill" type="submit">Buscar</button>
-                                    <a class="btn btn-success rounded-pill" href="perfil.html" role="button">Menu</a>
-                                    <a class="btn btn-success rounded-pill" href="logout.php" role="button">Sair</a>
+                                    <a class="btn btn-success rounded-pill" href="login.php" role="button">Entrar</a>
+                                    <a class="btn btn-success rounded-pill" href="cadastro.php" role="button">Cadastrar</a>
                                 </div>
                             </form>
                         </div>
@@ -64,8 +64,7 @@
             </nav>
         </header>
         <main>
-            <h1>Exemplo de chamada ao PHP ao carregar a página</h1>
-            <div id="resultado"></div>  <!-- Aqui será exibido o retorno do PHP -->
+            
         </main>
         <footer>
             <!-- place footer here -->
@@ -78,6 +77,6 @@
         ></script>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-        <script src="js/telaPrincipal.js"></script>
+        <script src="index.js"></script>
     </body>
 </html>

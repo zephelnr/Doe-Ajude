@@ -37,7 +37,7 @@ btnCadastrar.addEventListener("click", (e) => {
 
          // Supondo que você verifique algo na resposta para decidir o redirecionamento
          if (response.includes("response")) {
-            window.location.href = "login.html";
+            window.location.href = "login.php";
          }
 
          //verifica se o campo email esta vazio

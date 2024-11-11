@@ -1,7 +1,13 @@
+<?php
+session_start();
+if (empty($_SESSION['email'])) {
+   header("Location: index.html");
+}
+?>
 <!doctype html>
 <html lang="pt-br">
     <head>
-        <title>Cadastro</title>
+        <title>Perfil</title>
         <!-- Required meta tags -->
         <meta charset="utf-8" />
         <meta
@@ -11,7 +17,6 @@
 
         <!-- Bootstrap CSS v5.2.1 -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-        <link rel="stylesheet" href="css/style.css">
     </head>
 
     <body>
@@ -19,7 +24,11 @@
             <!-- place navbar here -->
             <nav class="navbar bg-body-tertiary">
                 <div class="container-fluid">
-                    <a class="navbar-brand" href="index.html">Doe&Ajude</a>
+                    <a class="navbar-brand" href="telaPrincipal.php">Doe&Ajude</a>
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+                        <a class="btn btn-success rounded-pill" href="perfil.php" role="button">Menu</a>
+                        <a class="btn btn-success rounded-pill" href="logout.php" role="button">Sair</a>
+                    </div>   
                 </div>
             </nav>
         </header>
@@ -27,36 +36,28 @@
             <div class="container vstack gap-5 p-5"> 
                 <div class="row p-5">
                     <div class="col-4 p-3 mb-2 offset-md-4 bg-success-subtle rounded-3">
-                        <h2 class="mb-3 text-center">Cadastro de usuário</h2>
-                        <form id="frmCadastrar" action="" class="" method="post">
+                        <h2 class="mb-3 text-center">Perfil</h2>
+                        
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email</label>
-                                <input type="email" name="email" class="form-control rounded-pill" id="email" placeholder="Digite o seu e-mail" autofocus required>
-                                <p id="respEmailCad"></p> 
+                                <input type="email" name="email" class="form-control rounded-pill" id="email">
                             </div>
                             <div class="mb-3">
                                 <label for="cpf" class="form-label">CPF</label>
-                                <input type="text" name="cpf" class="form-control rounded-pill" id="cpf" placeholder="Digite o seu CPF(Apenas números)" required>
-                                <p id="respCpfCad"></p> 
+                                <input type="text" name="cpf" class="form-control rounded-pill" id="cpf">
                             </div>
                             <div class="mb-3">
                                 <label for="nomeCompleto" class="form-label">Nome Completo</label>
-                                <input type="text" name="nomeCompleto" class="form-control rounded-pill" id="nomeCompleto" placeholder="Digite o seu nome completo" required>
-                                <p id="respNomeCompletoCad"></p> 
+                                <input type="text" name="nomeCompleto" class="form-control rounded-pill" id="nomeCompleto">
                             </div>
                             <div class="mb-3">
                                 <label for="senha" class="form-label">Senha</label>
-                                <input type="password" name="senha" id="senha" class="form-control rounded-pill" aria-describedby="blocoAjudaSenha" placeholder="Digite uma senha" required>
-                                <p id="respSenhaCad"></p> 
-                                <div id="blocoAjudaSenha" class="form-text">
-                                    Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
-                                </div>
+                                <input type="password" name="senha" id="senha" class="form-control rounded-pill">
                             </div>
                             <div class="mb-3 d-grid gap-5 d-md-flex justify-content-md-center">
-                                <a class="btn btn-success rounded-pill" href="login.html" role="button">Já Tenho Cadastro</a>
-                                <button class="btn btn-success rounded-pill" type="button" id="btnCadastrar">Cadastrar</button>
+                                <button class="btn btn-success rounded-pill" type="button" id="btnEditar">Editar</button>
                             </div>                         
-                        </form>
+                        
                     </div>    
                 </div>    
             </div>
@@ -72,7 +73,6 @@
         ></script>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-        <script src="js/cadastro.js"></script>
-        <script src="js/sha256.min.js"></script>
+        <script src="js/perfil.js"></script>
     </body>
 </html>
