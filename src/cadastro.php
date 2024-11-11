@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
             $jsonData = json_encode($dados);
       
             // Criptografa a senha
-            $senha = password_hash($senha, PASSWORD_BCRYPT);
+            //$senha = password_hash($senha, PASSWORD_BCRYPT);
       
             // Prepara a consulta SQL para inserir os dados
             $sql = "INSERT INTO usuario (email, cpf, nomeCompleto, senha) VALUES (?, ?, ?, ?)";

@@ -2,12 +2,21 @@ const btnLogin = document.getElementById("btnLogin");
 const respEmailLog = document.querySelector("#respEmailLog");
 const respSenhaLog = document.querySelector("#respSenhaLog");
 btnLogin.addEventListener("click", (e) => {
+   e.preventDefault();
+   const email = document.getElementById("email");
+   const senhaDesc = document.getElementById("senha");
+   //criptografa a senha
+   let senha = sha256(senhaDesc.value);
+
    const frmLogin = document.getElementById("frmLogin");
  
    const emailInput = frmLogin.querySelector("#email");
    const senhaInput = frmLogin.querySelector("#senha");
 
    let formData = new FormData(frmLogin);
+
+   formData.append("email", email.value);
+   formData.append("senha", senha);
 
    let xhr = new XMLHttpRequest();
    xhr.onload = function() {

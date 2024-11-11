@@ -9,10 +9,10 @@ require_once("conexao.php");
 //verificando se é uma requisição post para efetuar o login
 if (filter_input(INPUT_SERVER, "REQUEST_METHOD") === "POST") {
     try {
-        $email = filter_input(INPUT_POST, "email");
-        $senha = filter_input(INPUT_POST, "senha");
-        //$email = $_POST['email'] ?? '';
-        //$senha = $_POST['senha'] ?? '';
+        //$email = filter_input(INPUT_POST, "email");
+        //$senha = filter_input(INPUT_POST, "senha");
+        $email = $_POST['email'] ?? '';
+        $senha = $_POST['senha'] ?? '';
 
         $sql = "select * from usuario where email = ?";
 
@@ -28,10 +28,13 @@ if (filter_input(INPUT_SERVER, "REQUEST_METHOD") === "POST") {
         if (!$resultado) {
             throw new Exception("Email invalido!");
         } else {
-            if (password_verify($senha, $resultado["senha"]) === false) {
-                throw new Exception("Senha invalida!");
+            if ($senha === $resultado["senha"]) { //password_verify($senha, $resultado["senha"]) === false
+                //throw new Exception("Senha invalida!");
+                $_SESSION["email"] = $resultado["email"];
+                //echo json_encode($_SESSION["email"]);
             } else {
-                $_SESSION["usuario"] = $resultado["email"];
+                //$_SESSION["email"] = $resultado["email"];
+                throw new Exception("Senha invalida!");
             }
         }
         

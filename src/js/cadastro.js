@@ -5,6 +5,14 @@ const respNomeCompletoLCad = document.querySelector("#respNomeCompletoCad");
 const respSenhaLCad = document.querySelector("#respSenhaCad");
 
 btnCadastrar.addEventListener("click", (e) => {
+   e.preventDefault();
+   const email = document.getElementById("email");
+   const cpf = document.getElementById("cpf");
+   const nomeCompleto = document.getElementById("nomeCompleto");
+   const senhaDesc = document.getElementById("senha");
+   //criptografa a senha
+   let senha = sha256(senhaDesc.value);
+
    const frmCadastrar = document.getElementById("frmCadastrar");
 
    const emailInput = frmCadastrar.querySelector("#email");
@@ -13,6 +21,11 @@ btnCadastrar.addEventListener("click", (e) => {
    const senhaInput = frmCadastrar.querySelector("#senha");
 
    let formData = new FormData(frmCadastrar);
+
+   formData.append("email", email.value);
+   formData.append("cpf", cpf.value);
+   formData.append("nomeCompleto", nomeCompleto.value);
+   formData.append("senha", senha);
 
    let xhr = new XMLHttpRequest();
    xhr.onload = function () {
