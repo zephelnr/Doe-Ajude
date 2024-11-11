@@ -6,6 +6,47 @@
 if ($_SERVER['REQUEST_METHOD']=='GET') {
    print("<h1>_GET</h1>");
    print_r($_GET);
+   
+/*
+    // Conectar ao banco de dados MySQL
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "mydb";
+
+    // Conectar ao banco de dados
+    $conn = new mysqli($servername, $username, $password, $dbname);
+
+    // Verificar se a conexão foi bem-sucedida
+    if ($conn->connect_error) {
+        die("Conexão falhou: " . $conn->connect_error);
+    }
+
+    // Verificar se o parâmetro 'email' foi passado via GET
+    if (isset($_GET['email'])) {
+        $email = $_GET['email'];
+        
+        // Consultar o banco de dados para pegar os dados do usuário
+        $sql = "SELECT * FROM usuarios WHERE id = $email";
+        $result = $conn->query($sql);
+
+        // Verificar se o usuário existe
+        if ($result->num_rows > 0) {
+            // Exibir os dados do usuário
+            $row = $result->fetch_assoc();
+            echo "<h1>Informações do Usuário</h1>";
+            echo "email: " . $row['email'] . "<br>";
+            echo "cpf: " . $row['cpf'] . "<br>";
+            echo "nomeCompleto: " . $row['nomeCompleto'] . "<br>";
+        } else {
+            echo "Nenhum usuário encontrado com esse email.";
+        }
+    } else {
+        echo "Por favor, informe um email de usuário.";
+    }
+
+    // Fechar a conexão com o banco de dados
+    $conn->close();*/
 }
 elseif ($_SERVER['REQUEST_METHOD']=='POST') {
    
