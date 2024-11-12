@@ -6,8 +6,12 @@
 if ($_SERVER['REQUEST_METHOD']=='GET') {
    print("<h1>_GET</h1>");
    print_r($_GET);
+   //print_r(htmlspecialchars($email = $_GET['email']));
+   //print("<h1>_GET</h1>");
+   //$email = htmlspecialchars($_GET['email']);
+   //print_r($email);
    
-/*
+
     // Conectar ao banco de dados MySQL
     $servername = "localhost";
     $username = "root";
@@ -19,15 +23,16 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
 
     // Verificar se a conexão foi bem-sucedida
     if ($conn->connect_error) {
-        die("Conexão falhou: " . $conn->connect_error);
+        die("Conexão falhou: " . $conn->connect_error);   
     }
 
     // Verificar se o parâmetro 'email' foi passado via GET
     if (isset($_GET['email'])) {
         $email = $_GET['email'];
+        print_r($_GET['email']);
         
         // Consultar o banco de dados para pegar os dados do usuário
-        $sql = "SELECT * FROM usuarios WHERE id = $email";
+        $sql = "SELECT * FROM usuario WHERE email = '$email'";
         $result = $conn->query($sql);
 
         // Verificar se o usuário existe
@@ -46,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
     }
 
     // Fechar a conexão com o banco de dados
-    $conn->close();*/
+    $conn->close();
 }
 elseif ($_SERVER['REQUEST_METHOD']=='POST') {
    
