@@ -15,7 +15,7 @@ btnVisualizar.addEventListener("click", (e) => {
    //formData.append("cpf", cpf.value);
    //formData.append("nomeCompleto", nomeCompleto.value);
    ///
-   console.log(formData);
+   //console.log(formData);
    console.log(frmVisualizar.email.value);
    // as 2 linhas abaixo são no caso de uma alterção ou exclusão
    //let jsonData = JSON.stringify(Object.fromEntries(formData));
@@ -25,6 +25,26 @@ btnVisualizar.addEventListener("click", (e) => {
    xhr.onload = function() {
       if (xhr.status==200 && xhr.readyState==4) {
          console.log(xhr.responseText);
+
+         const cpf = document.getElementById("cpfIdVis");
+         const nomeCompleto = document.getElementById("nomeCompletoIdVis");
+
+         var response = xhr.responseText;
+
+         // Criando um elemento temporário para analisar o HTML
+        var parser = new DOMParser();
+        var doc = parser.parseFromString(response, "text/html");
+
+        // Pegando o conteúdo de um elemento específico
+         var cpfGet = doc.querySelector("h2").textContent;
+        var nomeCompletoGet = doc.querySelector("h3").textContent;
+
+
+        // Exibindo os dados
+        cpf.value = cpfGet;
+        nomeCompleto.value = nomeCompletoGet;
+
+
       }
       else {
          console.log("XMLHttpRequest Error");

@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
     // Verificar se o parâmetro 'email' foi passado via GET
     if (isset($_GET['email'])) {
         $email = $_GET['email'];
-        print_r($_GET['email']);
+        //print_r($_GET['email']);
         
         // Consultar o banco de dados para pegar os dados do usuário
         $sql = "SELECT * FROM usuario WHERE email = '$email'";
@@ -40,9 +40,9 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
             // Exibir os dados do usuário
             $row = $result->fetch_assoc();
             echo "<h1>Informações do Usuário</h1>";
-            echo "email: " . $row['email'] . "<br>";
-            echo "cpf: " . $row['cpf'] . "<br>";
-            echo "nomeCompleto: " . $row['nomeCompleto'] . "<br>";
+            echo "<p>email: " . $row['email'] . "<p><br>";
+            echo "<h2>" . $row['cpf'] ."</h2><br>";
+            echo "<h3>" . $row['nomeCompleto'] ."</h3><br>";
         } else {
             echo "Nenhum usuário encontrado com esse email.";
         }
