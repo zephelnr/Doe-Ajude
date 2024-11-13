@@ -5,23 +5,9 @@ if (empty($_SESSION['email'])) {
 }
 ?>
 <?php
-if ($_SERVER['REQUEST_METHOD']==='GET') {
-    try {
-        //code...
-        //print("<h1>_GET</h1>");
-        //print_r($_GET);
-        //print_r(htmlspecialchars($email = $_GET['email']));
-        //print("<h1>_GET</h1>");
-        //$email = htmlspecialchars($_GET['email']);
-        //print_r($email);
-        
-    
-        // Conectar ao banco de dados MySQL
-        $servername = "localhost";
-        $username = "root";
-        $password = "";
-        $dbname = "mydb";
-    
+require_once("conexao.php");
+if ($_SERVER['REQUEST_METHOD']=='GET') {
+    try {   
         // Conectar ao banco de dados
         $conn = new mysqli($servername, $username, $password, $dbname);
     
@@ -47,19 +33,19 @@ if ($_SERVER['REQUEST_METHOD']==='GET') {
                 echo "<p>email: " . $row['email'] . "<p><br>";
                 echo "<h2>" . $row['cpf'] ."</h2><br>";
                 echo "<h3>" . $row['nomeCompleto'] ."</h3><br>";
-                //echo "<h4>" . $row['senha'] . "</h4><br>"
+                echo "<h4>" . $row['senha'] . "</h4><br>";
             } else {
                 throw new Exception("Nenhum usuário encontrado com esse email.");
             }
         } else {
-            throw new Exception("Por favor, informe um email de usuário.");
+            //throw new Exception("Por favor, informe um email de usuário.");
         }
     
         // Fechar a conexão com o banco de dados
         $conn->close();
     } catch (Exception $e) {
-        //throw $th;
-        //echo json_encode(["Erro!" . $e->getMessage()]);
+        //throw $e;
+        echo json_encode(["Erro!" . $e->getMessage()]);
         //print_r(["Erro!" . $e->getMessage()]);
     } finally {
         $conn = null;

@@ -1,35 +1,37 @@
 document.getElementById("email").textContent = email;
-console.log(email.value);
+//console.log(email.value);
 function carregarSessao() {
     let xhr = new XMLHttpRequest();
     xhr.open("GET","perfil.php?email=" + email.value);
     xhr.onreadystatechange = function() {
-    if (xhr.status==200 && xhr.readyState==4) {
-        console.log(xhr.responseText);
+        if (xhr.status==200 && xhr.readyState==4) {
+            console.log(xhr.responseText);
 
-        const cpf = document.getElementById("cpf");
-        const nomeCompleto = document.getElementById("nomeCompleto");
+            const cpf = document.getElementById("cpf");
+            const nomeCompleto = document.getElementById("nomeCompleto");
+            const senha = document.getElementById("senha");
 
-        var response = xhr.responseText;
+            var response = xhr.responseText;
+            
 
-        // Criando um elemento temporário para analisar o HTML
-        var parser = new DOMParser();
-        var doc = parser.parseFromString(response, "text/html");
-
-        // Pegando o conteúdo de um elemento específico
-        var cpfGet = doc.querySelector("h2").textContent;
-        var nomeCompletoGet = doc.querySelector("h3").textContent;
-
-
-        // Exibindo os dados
-        cpf.value = cpfGet;
-        nomeCompleto.value = nomeCompletoGet;
+            // Criando um elemento temporário para analisar o HTML
+            var parser = new DOMParser();
+            var doc = parser.parseFromString(response, "text/html");
+            // Pegando o conteúdo de um elemento específico
+            var cpfGet = doc.querySelector("h2").textContent;
+            var nomeCompletoGet = doc.querySelector("h3").textContent;
+            var senhaGet = doc.querySelector("h4").textContent;
 
 
-    }
-    else {
-        console.log("XMLHttpRequest Error");
-    }
+            // Exibindo os dados
+            cpf.value = cpfGet;
+            nomeCompleto.value = nomeCompletoGet;
+            senha.value = senhaGet;
+
+        }
+        //else {
+        //    console.log("XMLHttpRequest Error");
+        //}
     }
     xhr.send();
 

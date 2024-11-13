@@ -83,9 +83,9 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
         echo json_encode("response");
     } catch (Exception $e) {
         echo json_encode(["Erro! " . $e->getMessage()]);
+    } finally {
+        $conn = null;
     }
-   
-
 }
 ?>
 
