@@ -40,7 +40,7 @@ if (filter_input(INPUT_SERVER, "REQUEST_METHOD") === "POST") {
     } catch (Exception $e) {
         echo json_encode(["Erro!" . $e->getMessage()]);
     } finally {
-        $conexao = null;
+        $conn = null;
     }
 }
 
