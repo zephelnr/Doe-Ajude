@@ -65,7 +65,7 @@ if (filter_input(INPUT_SERVER, "REQUEST_METHOD") === "POST") {
     <body>
         <header>
             <!-- place navbar here -->
-            <nav class="navbar bg-body-tertiary">
+            <nav class="navbar bg-body-tertiary bg-success-subtle">
                 <div class="container-fluid">
                     <a class="navbar-brand" href="index.php">Doe&Ajude</a>
                 </div>

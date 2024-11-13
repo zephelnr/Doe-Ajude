@@ -22,13 +22,30 @@ if (empty($_SESSION['email'])) {
     <body>
         <header>
             <!-- place navbar here -->
-            <nav class="navbar bg-body-tertiary">
+            <nav class="navbar navbar-expand-lg bg-body-tertiary bg-success-subtle">
                 <div class="container-fluid">
+
                     <a class="navbar-brand" href="telaPrincipal.php">Doe&Ajude</a>
-                    <div class="d-grid gap-2 d-md-flex justify-content-md-center">
-                        <a class="btn btn-success rounded-pill" href="perfil.php" role="button">Menu</a>
-                        <a class="btn btn-success rounded-pill" href="logout.php" role="button">Sair</a>
-                    </div>   
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                        <div class="navbar-nav">
+                            <a class="nav-link active" aria-current="page" href="perfil.php">Perfil</a>
+                            <a class="nav-link" href="#">Publicação</a>
+                            <a class="nav-link disabled" aria-disabled="true">Interesses</a>
+                            <a class="nav-link disabled" aria-disabled="true">Interessados</a>
+                        </div>
+                    </div>
+                   
+                    <!--<div class="d-grid gap-5 d-md-flex justify-content-md-center">
+                        <a class="navbar-brand" href="telaPrincipal.php">Doe&Ajude</a>
+                        <a class="btn btn-success rounded-pill" href="perfil.php" role="button">Perfil</a>
+                        <a class="btn btn-success rounded-pill" href="publicacao.php" role="button">Publicação</a>
+                        <a class="btn btn-success rounded-pill" href="interesse.php" role="button">Interesses</a>
+                        <a class="btn btn-success rounded-pill" href="interessado.php" role="button">Interessados</a>
+                    </div>-->
+                    <a class="btn btn-success rounded-pill" href="logout.php" role="button">Sair</a>
                 </div>
             </nav>
         </header>

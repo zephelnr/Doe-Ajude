@@ -16,7 +16,7 @@
     <body>
         <header>
             <!-- place navbar here -->
-            <nav class="navbar bg-body-tertiary">
+            <nav class="navbar bg-body-tertiary bg-success-subtle">
                 <div class="container-fluid">
                     <!-- 
                         <a class="navbar-brand" href="paginaPrincipal.php">Doe&Ajude</a>

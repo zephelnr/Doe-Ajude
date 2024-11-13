@@ -22,7 +22,7 @@ if (empty($_SESSION['email'])) {
     <body>
         <header>
             <!-- place navbar here -->
-            <nav class="navbar bg-body-tertiary">
+            <nav class="navbar bg-body-tertiary bg-success-subtle">
                 <div class="container-fluid">
                 <?= $_SESSION['email']; ?>
                     <!-- 
