@@ -2,7 +2,7 @@ document.getElementById("email").textContent = email;
 //console.log(email.value);
 function carregarSessao() {
     let xhr = new XMLHttpRequest();
-    xhr.open("GET","perfil.php?email=" + email.value);
+    xhr.open("GET","perfil_get.php?email=" + email.value);
     xhr.onreadystatechange = function() {
         if (xhr.status==200 && xhr.readyState==4) {
             console.log(xhr.responseText);
