@@ -56,7 +56,7 @@ if (empty($_SESSION['email'])) {
                         <form id="frmPublicar" action="" class="" method="post">
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email</label>
-                                <input type="email" name="email" class="form-control rounded-pill" id="email" placeholder="Digite o seu e-mail"  disabled>
+                                <input type="email" name="email" class="form-control rounded-pill" id="email" placeholder="Digite o seu e-mail" value="<?= $_SESSION['email']; ?>" disabled>
                                 <p id="respEmailCad"></p> 
                             </div>
                             <div class="mb-3">
