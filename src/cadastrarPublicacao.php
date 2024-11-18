@@ -51,7 +51,7 @@ if (empty($_SESSION['email'])) {
         <main>
             <div class="container vstack gap-5 p-5"> 
                 <div class="row p-5">
-                    <div class="col-5 p-3 mb-2 offset-md-4 bg-success-subtle rounded-3">
+                    <div class="col-6 p-3 mb-2 offset-md-4 bg-success-subtle rounded-3">
                         <h2 class="mb-3 text-center">Cadastro de Publicação</h2>
                         <form id="frmPublicar" action="" class="" method="post">
                             <div class="mb-3">
@@ -71,11 +71,6 @@ if (empty($_SESSION['email'])) {
                                 -->
                                 <textarea class="form-control rounded" name="descricao" id="descricao" rows="3" placeholder="Digite uma descrição para a publicação" required></textarea>
                                 <p id="respDescricaoCad"></p> 
-                            </div>
-                            <div class="mb-3">
-                                <label for="bairro" class="form-label">Bairro</label>
-                                <input type="text" name="bairro" class="form-control rounded-pill" id="bairro" placeholder="Digite o bairro" required>
-                                <p id="respBairroCad"></p> 
                             </div>
                             <div class="mb-3">
                                 <label for="cidade" class="form-label">Cidade</label>
@@ -99,7 +94,7 @@ if (empty($_SESSION['email'])) {
                                 -->
                                 <div class="input-group mb-3">
                                     <input type="file" class="form-control" id="foto">
-                                    <label class="input-group-text" for="foto">Upload</label>
+                                    <label class="input-group-text" for="foto">Upload da foto</label>
                                 </div>
                                 <p id="respFotoCad"></p> 
                             </div>
