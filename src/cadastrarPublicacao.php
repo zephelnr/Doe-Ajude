@@ -4,6 +4,97 @@ if (empty($_SESSION['email'])) {
    header("Location: index.php");
 }
 ?>
+
+<?php
+require_once("conexao.php");
+
+//print("REQUEST_METHOD = ".$_SERVER['REQUEST_METHOD']);
+
+if ($_SERVER['REQUEST_METHOD']=='POST') {
+    try {
+        // Coleta os dados enviados pelo FormData
+        $email = $_POST['email'] ?? '';
+        $titulo = $_POST['titulo'] ?? '';
+        $descricao = $_POST['descricao'] ?? '';
+        $cidade = $_POST['cidade'] ?? '';
+        $estado = $_POST['estado'] ?? '';
+        $telefone= $_POST['telefone'] ?? '';
+        $foto = $_POST['foto'] ?? '';
+        $status = $_POST['status'] ?? '';
+      
+        // Verifica se todos os campos foram enviados corretamente
+        if (!empty($email) && !empty($titulo) && !empty($descricao) && !empty($cidade) && !empty($estado) && !empty($telefone) && !empty($status)) {
+            // Cria um array associativo com os dados recebidos
+            $dados = array(
+                "titulo" => $titulo,
+                "descricao" => $descricao,
+                "cidade" => $cidade,
+                "estado" => $estado,
+                "telefone" => $telefone,
+                "foto" => $foto,
+                "status" => $status,
+                "usuario_email" => $email
+            );
+      
+            // Converte o array em JSON
+            $jsonData = json_encode($dados);
+      
+            // Prepara a consulta SQL para inserir os dados
+            $sql = "INSERT INTO publicacao (titulo, descricao, cidade, estado, telefone, foto, `status`, `data`,  usuario_email) VALUES (?, ?, ?, ?, ?, ?, ?, CURDATE(), ?)";
+      
+            // Prepara a declaração e vincula os parâmetros
+            if ($stmt = $conn->prepare($sql)) {
+                // Usa "ssssssss" porque os campos são strings
+                $stmt->bind_param("ssssssss", $titulo, $descricao, $cidade, $estado, $telefone, $foto, $status, $email);
+      
+                // Executa a inserção
+                if ($stmt->execute()) {
+                    // Retorna uma resposta de sucesso
+                    echo json_encode(["status" => "success", "message" => "Dados inseridos com sucesso!"]);
+                } else {
+                    // Retorna uma resposta de erro se falhar
+                    throw new Exception("Erro ao inserir os dados" . $stmt->error);
+                    //echo json_encode(["status" => "error", "message" => "Erro ao inserir os dados: " . $stmt->error]);
+                }
+                
+                // Fecha a declaração
+                $stmt->close();
+            } else {
+                throw new Exception("Erro ao preparar a consulta" . $conn->error);
+                //echo json_encode(["status" => "error", "message" => "Erro ao preparar a consulta: " . $conn->error]);
+            }
+            
+            // Fecha a conexão
+            $conn->close();
+        } else {
+            //verifica se os campos estão vazios e manda um aviso
+            //if (empty($email)) {
+            //    echo json_encode(["Email vazio"]);
+            //}
+            //if (empty($cpf)) {
+            //    echo json_encode(["Cpf vazio"]);
+           // }
+            //if (empty($nomeCompleto)) {
+            //    echo json_encode(["NomeCompleto vazio"]);
+            //}
+            //if (empty($senha)) {
+            //    echo json_encode(["Senha vazia"]);
+            //}
+
+            // Retorna um erro se algum campo estiver vazio
+            //echo json_encode(["status" => "error", "message" => "Todos os campos sao obrigatorios!"]);
+            throw new Exception("Todos os campos sao obrigatorios!");
+        }
+        //header("Location: login.php");
+        echo json_encode("response");
+    } catch (Exception $e) {
+        echo json_encode(["Erro! " . $e->getMessage()]);
+    } finally {
+        $conn = null;
+    }
+}
+?>
+
 <!doctype html>
 <html lang="pt-br">
     <head>
@@ -17,6 +108,7 @@ if (empty($_SESSION['email'])) {
 
         <!-- Bootstrap CSS v5.2.1 -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        <link rel="stylesheet" href="css/style.css">
     </head>
 
     <body>
@@ -57,12 +149,11 @@ if (empty($_SESSION['email'])) {
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email</label>
                                 <input type="email" name="email" class="form-control rounded-pill" id="email" placeholder="Digite o seu e-mail" value="<?= $_SESSION['email']; ?>" disabled>
-                                <p id="respEmailCad"></p> 
                             </div>
                             <div class="mb-3">
                                 <label for="titulo" class="form-label">Título</label>
                                 <input type="text" name="titulo" class="form-control rounded-pill" id="titulo" placeholder="Digite o título da publicação" autofocus required>
-                                <p id="respTituloCad"></p> 
+                                <p id="respTituloCadPub"></p> 
                             </div>
                             <div class="mb-3">
                                 <label for="descricao" class="form-label">Descrição</label>
@@ -70,22 +161,22 @@ if (empty($_SESSION['email'])) {
                                 <input type="text" name="descricao" class="form-control rounded-pill" id="descricao" placeholder="Digite uma descrição para a publicação" required>
                                 -->
                                 <textarea class="form-control rounded" name="descricao" id="descricao" rows="3" placeholder="Digite uma descrição para a publicação" required></textarea>
-                                <p id="respDescricaoCad"></p> 
+                                <p id="respDescricaoCadPub"></p> 
                             </div>
                             <div class="mb-3">
                                 <label for="cidade" class="form-label">Cidade</label>
                                 <input type="text" name="cidade" class="form-control rounded-pill" id="cidade" placeholder="Digite a cidade" required>
-                                <p id="respCidadeCad"></p> 
+                                <p id="respCidadeCadPub"></p> 
                             </div>
                             <div class="mb-3">
                                 <label for="estado" class="form-label">Estado</label>
                                 <input type="text" name="estado" class="form-control rounded-pill" id="estado" placeholder="Digite o estado" required>
-                                <p id="respEstadoCad"></p> 
+                                <p id="respEstadoCadPub"></p> 
                             </div>
                             <div class="mb-3">
                                 <label for="telefone" class="form-label">Telefone</label>
                                 <input type="text" name="telefone" class="form-control rounded-pill" id="telefone" placeholder="Digite o seu telefone" required>
-                                <p id="respTelefoneCad"></p> 
+                                <p id="respTelefoneCadPub"></p> 
                             </div>
                             <div class="mb-3">
                                 <label for="foto" class="form-label">Foto</label>
@@ -96,19 +187,19 @@ if (empty($_SESSION['email'])) {
                                     <input type="file" class="form-control" id="foto">
                                     <label class="input-group-text" for="foto">Upload da foto</label>
                                 </div>
-                                <p id="respFotoCad"></p> 
+                                <p id="respFotoCadPub"></p> 
                             </div>
                             <div class="mb-3">
                                 <label for="status" class="form-label">Status</label>
                                 <!--
                                 <input type="text" name="status" class="form-control rounded-pill" id="status" placeholder="Coloque o status da publicação" required>
                                 -->
-                                <select class="form-select" aria-label="Default select example">
-                                    <option selected>Selecione o status da publicação</option>
+                                <select class="form-select" aria-label="Default select example" id="status">
+                                    <option selected value="">Selecione o status da publicação</option>
                                     <option value="Disponível">Disponível</option>
                                     <option value="Indisponível">Indisponível</option>
                                 </select>
-                                <p id="respStatusCad"></p> 
+                                <p id="respStatusCadPub"></p> 
                             </div>
                             <div class="mb-3 d-grid gap-5 d-md-flex justify-content-md-center">
                                 <button class="btn btn-success rounded-pill" type="button" id="btnPublicar">Publicar</button>
