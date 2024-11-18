@@ -56,12 +56,12 @@ if (empty($_SESSION['email'])) {
                         <form id="frmPublicar" action="" class="" method="post">
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email</label>
-                                <input type="email" name="email" class="form-control rounded-pill" id="email" placeholder="Digite o seu e-mail" autofocus required>
+                                <input type="email" name="email" class="form-control rounded-pill" id="email" placeholder="Digite o seu e-mail"  disabled>
                                 <p id="respEmailCad"></p> 
                             </div>
                             <div class="mb-3">
                                 <label for="titulo" class="form-label">Título</label>
-                                <input type="text" name="titulo" class="form-control rounded-pill" id="titulo" placeholder="Digite o título da publicação" required>
+                                <input type="text" name="titulo" class="form-control rounded-pill" id="titulo" placeholder="Digite o título da publicação" autofocus required>
                                 <p id="respTituloCad"></p> 
                             </div>
                             <div class="mb-3">
