@@ -1,4 +1,10 @@
 <?php
+session_start();
+if (empty($_SESSION['email'])) {
+    header("Location: index.php");
+}
+?>
+<?php
 require_once("conexao.php");
 if ($_SERVER['REQUEST_METHOD']=='GET') {
     try {   
