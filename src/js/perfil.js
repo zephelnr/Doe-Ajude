@@ -29,9 +29,9 @@ function carregarSessao() {
             senha.value = senhaGet;
 
         }
-        //else {
-        //    console.log("XMLHttpRequest Error");
-        //}
+        else {
+            console.log("XMLHttpRequest Error");
+        }
     }
     xhr.send();
 
