@@ -36,10 +36,13 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
         // Converte os resultados para um array associativo
         $publicacoes = [];
         while ($row = $result->fetch_assoc()) {
-            $publicacoes[] = $row;
+            //$publicacoes[] = $row;
+            echo "<h1>Informações do Usuário</h1>";
+            echo "<p>Titulo: " . $row['titulo'] . "<p><br>";
         }
-
-        print_r($publicacoes);
+        //echo "<p>" . $publicacoes['titulo'] . "</p>";
+        //print_r($publicacoes);
+        //echo json_encode($publicacoes);
         // Fecha a conexão
         $stmt->close();
     

@@ -61,7 +61,8 @@ if (empty($_SESSION['email'])) {
             <p><input type="hidden" name="email" id="email" value="<?= $_SESSION['email']; ?>"></p>
             <div class="mb-3 container d-flex">
                 <!-- Caixa de tamanho fixo com classes Bootstrap -->
-                <div class="fixed-size-box bg-success-subtle text-white d-flex rounded">
+                <div class="fixed-size-box bg-success-subtle text-white d-flex rounded" id="resultado">
+
                     <?php if (!empty($publicacoes)): ?>
                         <?php foreach ($publicacoes as $publicacao): ?>
                             <tr>
