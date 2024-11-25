@@ -39,23 +39,24 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
             //$publicacoes[] = $row;
             //echo "<h1>Informações do Usuário</h1>";
             //echo "<p>Titulo: " . $row['titulo'] . "<p>";
+            
             echo "<div class='col'>";
                 echo "<div class='card shadow-sm'>";
                     echo "<svg class='bd-placeholder-img card-img-top' width='100%' height='225' xmlns='http://www.w3.org/2000/svg'
                 aria-label='Placeholder: Thumbnail' preserveAspectRatio='xMidYMid slice' role='img' focusable='false'>";
-                        echo "<title>Placeholder</title>";
+                        echo "<title>" . $row['titulo'] . "</title>";
                         echo "<rect width='100%' height='100%' fill='#55595c' /><text x='50%' y='50%' fill='#eceeef'
                   dy='.3em'>" . $row['titulo'] . "</text>";
                     echo "</svg>";
                     echo "<div class='card-body'>";
-                        echo "<p class='card-text'>This is a wider card with supporting text below as a natural lead-in to additional
-                  content. This content is a little bit longer.</p>";
+                        echo "<h4 class='card-text'>" . $row['titulo'] ."</h4>";
+                        echo "<p class='card-text'>Descrição: ". $row['descricao'] . " </br>Status: " . $row['status'] . "</p>";
                         echo "<div class='d-flex justify-content-between align-items-center'>";
                             echo "<div class='btn-group'>";
-                                echo "<button type='button' class='btn btn-sm btn-outline-secondary'>View</button>";
-                                echo "<button type='button' class='btn btn-sm btn-outline-secondary'>Edit</button>";
+                                echo "<button type='button' class='btn btn-sm btn-outline-secondary'>Visualizar</button>";
+                                echo "<button type='button' class='btn btn-sm btn-outline-secondary'>Editar</button>";
                             echo "</div>";
-                            echo "<small class='text-muted'>9 mins</small>";
+                            echo "<small class='text-muted'>" . $row['cidade'] . " , " . $row['estado'] . "</br>" .  $row['data'] . "</small>";
                         echo "</div>";
                     echo "</div>";
                 echo "</div>";

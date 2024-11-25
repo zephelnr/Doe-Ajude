@@ -6,7 +6,7 @@ function carregarSessaoPub() {
     xhr.open("GET","publicacoes_get.php?email=" + email.value);
     xhr.onreadystatechange = function() {
         if (xhr.status==200 && xhr.readyState==4) {
-            console.log(xhr.responseText);
+            //console.log(xhr.responseText);
             //var publicacoes = this.response;
             //console.log(publicacoes);
             resultado.innerHTML = xhr.responseText;

@@ -25,6 +25,14 @@ if (empty($_SESSION['email'])) {
             width: 90vw;  /* Largura fixa de 250px */
             height: 70vh; /* Altura fixa de 150px */
             }
+            .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            }
         </style>
     </head>
 
@@ -59,16 +67,14 @@ if (empty($_SESSION['email'])) {
             </div>-->
             <h2 class="mb-3 text-center">Publicações</h2>
             <p><input type="hidden" name="email" id="email" value="<?= $_SESSION['email']; ?>"></p>
-            <div class="mb-3 container d-flex">
-                <!-- Caixa de tamanho fixo com classes Bootstrap -->
-                <div class="fixed-size-box bg-success-subtle d-flex rounded row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" id="resultado">
-
-                    
-                </div>
-            </div>
             <div class="mb-3 d-grid gap-5 d-md-flex justify-content-md-center">
                 <a class="btn btn-success rounded-pill" href="cadastrarPublicacao.php" role="button">Nova Publicação</a>    
             </div>
+            <div class="mb-3 container d-flex">
+                <!-- Caixa de tamanho fixo com classes Bootstrap -->
+                <div class="fixed-size-box bg-success-subtle d-flex rounded row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" id="resultado"></div>
+            </div>
+            
         </main>
         <footer>
             <!-- place footer here -->
