@@ -22,8 +22,8 @@ if (empty($_SESSION['email'])) {
         <style>
             /* CSS personalizado para definir o tamanho fixo da caixa */
             .fixed-size-box {
-            width: 90vw;  /* Largura fixa de 250px */
-            height: 70vh; /* Altura fixa de 150px */
+            width: 90vw;  /**/
+            height: 70vh; /*60em*/
             }
             .bd-placeholder-img {
             font-size: 1.125rem;
@@ -67,7 +67,7 @@ if (empty($_SESSION['email'])) {
             </div>-->
             <h2 class="mb-3 text-center">Publicações</h2>
             <p><input type="hidden" name="email" id="email" value="<?= $_SESSION['email']; ?>"></p>
-            <div class="mb-3 d-grid gap-5 d-md-flex justify-content-md-center">
+            <div class="mb-3 d-grid gap-5 d-md-flex justify-content-md-left p-2">
                 <a class="btn btn-success rounded-pill" href="cadastrarPublicacao.php" role="button">Nova Publicação</a>    
             </div>
             <div class="mb-3 container d-flex">

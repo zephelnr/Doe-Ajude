@@ -39,6 +39,10 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
             //$publicacoes[] = $row;
             //echo "<h1>Informações do Usuário</h1>";
             //echo "<p>Titulo: " . $row['titulo'] . "<p>";
+
+            // Converte e formata a data
+            $data = new DateTime($row['data']);
+            $dataFormatada = $data->format('d/m/Y');
             
             echo "<div class='col'>";
                 echo "<div class='card shadow-sm'>";
@@ -56,7 +60,7 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
                                 echo "<button type='button' class='btn btn-sm btn-outline-secondary'>Visualizar</button>";
                                 echo "<button type='button' class='btn btn-sm btn-outline-secondary'>Editar</button>";
                             echo "</div>";
-                            echo "<small class='text-muted'>" . $row['cidade'] . " , " . $row['estado'] . "</br>" .  $row['data'] . "</small>";
+                            echo "<small class='text-muted'>" . $row['cidade'] . "</br>" . $row['estado'] . "</br>" .  $dataFormatada . "</small>";
                         echo "</div>";
                     echo "</div>";
                 echo "</div>";
