@@ -203,6 +203,7 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
                             </div>
                             <div class="mb-3 d-grid gap-5 d-md-flex justify-content-md-center">
                                 <button class="btn btn-success rounded-pill" type="button" id="btnPublicar">Publicar</button>
+                                <a class="btn btn-success rounded-pill" href="publicacoes.php" role="button">Voltar</a>
                             </div>                         
                         </form>
                     </div>    

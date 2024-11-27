@@ -1,3 +1,9 @@
+<?php
+session_start();
+if (!empty($_SESSION['email'])) {
+   header("Location: telaPrincipal.php");
+}
+?>
 <!doctype html>
 <html lang="pt-br">
     <head>
