@@ -9,7 +9,8 @@ function carregarSessaoPub() {
             //console.log(xhr.responseText);
             //var publicacoes = this.response;
             //console.log(publicacoes);
-            resultado.innerHTML = xhr.responseText;
+            if(xhr.responseText != ""){
+            resultado.innerHTML = xhr.responseText;}
         }
         else {
             //console.log("XMLHttpRequest Error");
