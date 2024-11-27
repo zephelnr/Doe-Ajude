@@ -59,8 +59,8 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
                             echo "<p class='card-text'>Descrição: ". $row['descricao'] . " </br>Status: " . $row['status'] . "</p>";
                             echo "<div class='d-flex justify-content-between align-items-center'>";
                                 echo "<div class='btn-group'>";
-                                    echo "<button type='button' class='btn btn-sm btn-outline-secondary'>Visualizar</button>";
-                                    echo "<button type='button' class='btn btn-sm btn-outline-secondary'>Editar</button>";
+                                    echo "<button type='button' class='btn btn-sm btn-outline-success'>Visualizar</button>";
+                                    echo "<button type='button' class='btn btn-sm btn-outline-success'>Editar</button>";
                                 echo "</div>";
                                 echo "<small class='text-muted'>" . $row['cidade'] . "</br>" . $row['estado'] . "</br>" .  $dataFormatada . "</small>";
                             echo "</div>";
