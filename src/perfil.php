@@ -53,28 +53,26 @@ if (empty($_SESSION['email'])) {
             <div class="container vstack gap-5 p-5"> 
                 <div class="row p-5">
                     <div class="col-4 p-3 mb-2 offset-md-4 bg-success-subtle rounded-3">
-                        <h2 class="mb-3 text-center">Perfil</h2>
-                        
-                            <div class="mb-3">
-                                <label for="email" class="form-label">Email</label>
-                                <input type="email" name="email" class="form-control rounded-pill" id="email" value="<?= $_SESSION['email']; ?>" disabled>
-                            </div>
-                            <div class="mb-3">
-                                <label for="cpf" class="form-label">CPF</label>
-                                <input type="text" name="cpf" class="form-control rounded-pill" id="cpf" disabled>
-                            </div>
-                            <div class="mb-3">
-                                <label for="nomeCompleto" class="form-label">Nome Completo</label>
-                                <input type="text" name="nomeCompleto" class="form-control rounded-pill" id="nomeCompleto" disabled>
-                            </div>
-                            <div class="mb-3">
-                                <label for="senha" class="form-label">Senha</label>
-                                <input type="password" name="senha" id="senha" class="form-control rounded-pill" disabled>
-                            </div>
-                            <div class="mb-3 d-grid gap-5 d-md-flex justify-content-md-center">
-                                <button class="btn btn-success rounded-pill" type="button" id="btnEditar">Editar</button>
-                            </div>                         
-                        
+                        <h2 class="mb-3 text-center">Perfil</h2>                       
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" name="email" class="form-control rounded-pill" id="email" value="<?= $_SESSION['email']; ?>" disabled>
+                        </div>
+                        <div class="mb-3">
+                            <label for="cpf" class="form-label">CPF</label>
+                            <input type="text" name="cpf" class="form-control rounded-pill" id="cpf" disabled>
+                        </div>
+                        <div class="mb-3">
+                            <label for="nomeCompleto" class="form-label">Nome Completo</label>
+                            <input type="text" name="nomeCompleto" class="form-control rounded-pill" id="nomeCompleto" disabled>
+                        </div>
+                        <div class="mb-3">
+                            <label for="senha" class="form-label">Senha</label>
+                            <input type="password" name="senha" id="senha" class="form-control rounded-pill" disabled>
+                        </div>
+                        <div class="mb-3 d-grid gap-5 d-md-flex justify-content-md-center">
+                            <button class="btn btn-success rounded-pill" type="button" id="btnEditar">Editar</button>
+                        </div>                                                
                     </div>    
                 </div>    
             </div>

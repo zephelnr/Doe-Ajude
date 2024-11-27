@@ -1,5 +1,5 @@
 document.getElementById("email").textContent = email;
-var resultado = document.getElementById("resultado");
+var publicacoes = document.getElementById("publicacoes");
 //console.log(email.value);
 function carregarSessaoPub() {
     let xhr = new XMLHttpRequest();
@@ -10,10 +10,8 @@ function carregarSessaoPub() {
             //var publicacoes = this.response;
             //console.log(publicacoes);
             if(xhr.responseText != ""){
-            resultado.innerHTML = xhr.responseText;}
-        }
-        else {
-            //console.log("XMLHttpRequest Error");
+                publicacoes.innerHTML = xhr.responseText;
+            }
         }
     }
     xhr.send();
