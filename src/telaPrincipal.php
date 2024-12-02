@@ -17,6 +17,21 @@ if (empty($_SESSION['email'])) {
 
         <!-- Bootstrap CSS v5.2.1 -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        <style>
+            /* CSS personalizado para definir o tamanho fixo da caixa */
+            .fixed-size-box {
+            width: 90vw;  /**/
+            /*height: 70vh; 60em*/
+            }
+            .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            }
+        </style>
     </head>
 
     <body>
@@ -24,7 +39,6 @@ if (empty($_SESSION['email'])) {
             <!-- place navbar here -->
             <nav class="navbar bg-body-tertiary bg-success-subtle">
                 <div class="container-fluid">
-                <?= $_SESSION['email']; ?>
                     <!-- 
                         <a class="navbar-brand" href="paginaPrincipal.php">Doe&Ajude</a>
                         <form class="d-flex" role="search">
@@ -71,8 +85,17 @@ if (empty($_SESSION['email'])) {
             </nav>
         </header>
         <main>
-            <!--<h1>Exemplo de chamada ao PHP ao carregar a página</h1>
-            <div id="resultado"></div>  <!-- Aqui será exibido o retorno do PHP -->
+        <h2 class="mb-3 text-left">Recentes</h2>
+            <!--<p><input type="hidden" name="email" id="email" value="<?= $_SESSION['email']; ?>"></p>-->
+            <div class="mb-3 container d-flex">
+                <div class="fixed-size-box bg-success-subtle d-flex rounded row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" id="telaPrincipal">           
+                    <div class="container text-center" style="height: 450px;">
+                        <div class="row">                           
+                            <div class="col position-absolute top-50 start-50 translate-middle"><h6>Nenhuma publicação cadastrada!</h6></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </main>
         <footer>
             <!-- place footer here -->
