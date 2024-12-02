@@ -5,7 +5,7 @@ const respCidadeCadPub = document.querySelector("#respCidadeCadPub");
 const respEstadoCadPub = document.querySelector("#respEstadoCadPub");
 const respTelefoneCadPub = document.querySelector("#respTelefoneCadPub");
 const respFotoCadPub = document.querySelector("#respFotoCadPub");
-const respStatusCadPub = document.querySelector("#respStatusCadPub");
+//const respStatusCadPub = document.querySelector("#respStatusCadPub");
 
 btnPublicar.addEventListener("click", (e) => {
    e.preventDefault();
@@ -16,7 +16,7 @@ btnPublicar.addEventListener("click", (e) => {
    const estado = document.getElementById("estado");
    const telefone = document.getElementById("telefone");
    const foto = document.getElementById("foto");
-   const status = document.getElementById("status");
+   //const status = document.getElementById("status");
 
    const frmPublicar = document.getElementById("frmPublicar");
 
@@ -26,7 +26,7 @@ btnPublicar.addEventListener("click", (e) => {
    const estadoInput = frmPublicar.querySelector("#estado");
    const telefoneInput = frmPublicar.querySelector("#telefone");
    const fotoInput = frmPublicar.querySelector("#foto");
-   const statusInput = frmPublicar.querySelector("#status");
+   //const statusInput = frmPublicar.querySelector("#status");
 
    let formData = new FormData(frmPublicar);
 
@@ -37,7 +37,7 @@ btnPublicar.addEventListener("click", (e) => {
    formData.append("estado", estado.value);
    formData.append("telefone", telefone.value);
    formData.append("foto", foto.value);
-   formData.append("status", status.value);
+   formData.append("status", "Disponível");
 
    let xhr = new XMLHttpRequest();
    xhr.onload = function () {
@@ -95,11 +95,11 @@ btnPublicar.addEventListener("click", (e) => {
          //}
 
          //verifica se o campo status esta vazio
-         if (statusInput.value != "") {
-            respStatusCadPub.innerHTML = ``;
-         } else {
-            respStatusCadPub.innerHTML = `O campo Status está vazio!`;
-         }
+         //if (statusInput.value != "") {
+         //   respStatusCadPub.innerHTML = ``;
+         //} else {
+         //   respStatusCadPub.innerHTML = `O campo Status está vazio!`;
+         //}
       }
       else {
          console.log("XMLHttpRequest Error");

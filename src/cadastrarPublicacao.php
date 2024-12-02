@@ -121,6 +121,14 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                     </button>
+                    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                        <div class="navbar-nav">
+                            <a class="nav-link active" aria-current="page" href="perfil.php">Perfil</a>
+                            <a class="nav-link" href="publicacoes.php">Publicações</a>
+                            <a class="nav-link disabled" aria-disabled="true">Interesses</a>
+                            <a class="nav-link disabled" aria-disabled="true">Interessados</a>
+                        </div>
+                    </div>
                     <!--
                     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                         <div class="navbar-nav">
@@ -132,9 +140,13 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
                     </div>
                    
                     <a class="btn btn-success rounded-pill" href="logout.php" role="button">Sair</a>
-                    -->
+
                     <div class="d-grid gap-2 d-md-flex justify-content-md-center">
                         <a class="btn btn-success rounded-pill" href="perfil.php" role="button">Menu</a>
+                        <a class="btn btn-success rounded-pill" href="logout.php" role="button">Sair</a>
+                    </div>
+                    -->
+                    <div class="d-grid d-md-flex justify-content-md-center">
                         <a class="btn btn-success rounded-pill" href="logout.php" role="button">Sair</a>
                     </div>
                 </div>
@@ -188,22 +200,22 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
                                     <label class="input-group-text" for="foto">Upload da foto</label>
                                 </div>
                                 <p id="respFotoCadPub"></p> 
-                            </div>
+                            </div> <!--
                             <div class="mb-3">
                                 <label for="status" class="form-label">Status</label>
-                                <!--
+                               
                                 <input type="text" name="status" class="form-control rounded-pill" id="status" placeholder="Coloque o status da publicação" required>
-                                -->
+                               
                                 <select class="form-select" aria-label="Default select example" id="status">
                                     <option selected value="">Selecione o status da publicação</option>
                                     <option value="Disponível">Disponível</option>
                                     <option value="Indisponível">Indisponível</option>
                                 </select>
                                 <p id="respStatusCadPub"></p> 
-                            </div>
+                            </div> -->
                             <div class="mb-3 d-grid gap-5 d-md-flex justify-content-md-center">
                                 <button class="btn btn-success rounded-pill" type="button" id="btnPublicar">Publicar</button>
-                                <a class="btn btn-success rounded-pill" href="publicacoes.php" role="button">Voltar</a>
+                                <a class="btn btn-success rounded-pill" href="publicacoes.php" role="button">Ir para publicações</a>
                             </div>                         
                         </form>
                     </div>    
