@@ -45,7 +45,7 @@ if (empty($_SESSION['email'])) {
                     </button>
                     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                         <div class="navbar-nav">
-                            <a class="nav-link active" aria-current="page" href="perfil.php">Perfil</a>
+                            <a class="nav-link" aria-current="page" href="perfil.php">Perfil</a>
                             <a class="nav-link" href="publicacoes.php">Publicações</a>
                             <a class="nav-link disabled" aria-disabled="true">Interesses</a>
                             <a class="nav-link disabled" aria-disabled="true">Interessados</a>
