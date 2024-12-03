@@ -70,10 +70,10 @@ if (!empty($_SESSION['email'])) {
                      <form class="container-fluid">
                         <div class="input-group">
                             <a class="navbar-brand" href="index.php">Doe&Ajude</a>
-                            <form action="">
-                                <input type="search" class="form-control rounded-pill" placeholder="Buscar" aria-label="Busca" aria-describedby=""> 
+                            <form action="" id="frmBuscar">
+                                <input type="search" id="search" class="form-control rounded-pill" placeholder="Buscar" aria-label="Busca" aria-describedby=""> 
                                 <div class="d-grid gap-2 d-md-flex justify-content-md-center">
-                                    <button class="btn btn-outline-success rounded-pill" type="submit">Buscar</button>
+                                    <button class="btn btn-outline-success rounded-pill" type="button" id="btnBuscar">Buscar</button>
                                     <a class="btn btn-success rounded-pill" href="login.php" role="button">Entrar</a>
                                     <a class="btn btn-success rounded-pill" href="cadastro.php" role="button">Cadastrar</a>
                                 </div>

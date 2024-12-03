@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
             //print_r($_GET['email']);
             
             // Consultar o banco de dados para pegar os dados da publicação
-            $sql = "SELECT * FROM publicacao WHERE usuario_email = '$email' AND `status` = 'Disponível'";
+            $sql = "SELECT * FROM publicacao WHERE usuario_email = '$email' AND `status` = 'Disponível' ORDER BY `data` DESC";
             //$stmt = $conn->prepare($sql);
             $result = $conn->query($sql);
         } else {
