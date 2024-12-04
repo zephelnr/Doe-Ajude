@@ -85,7 +85,7 @@ if (!empty($_SESSION['email'])) {
             </nav>
         </header>
         <main>
-            <h2 class="mb-3 text-left">Recentes</h2>
+            <h2 class="mb-3 text-left" id="recentes">Recentes</h2>
             <div class="mb-3 container d-flex">
                 <div class="fixed-size-box bg-success-subtle d-flex rounded row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" id="pubRecentes">           
                     <div class="container text-center" style="height: 450px;">
