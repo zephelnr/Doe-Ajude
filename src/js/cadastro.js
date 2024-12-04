@@ -11,7 +11,11 @@ btnCadastrar.addEventListener("click", (e) => {
    const nomeCompleto = document.getElementById("nomeCompleto");
    const senhaDesc = document.getElementById("senha");
    //criptografa a senha
-   let senha = sha256(senhaDesc.value);
+   let senha = ""
+   if (senhaDesc.value != ""){
+      senha = sha256(senhaDesc.value);
+   }
+   
 
    const frmCadastrar = document.getElementById("frmCadastrar");
 
@@ -56,7 +60,7 @@ btnCadastrar.addEventListener("click", (e) => {
          if (cpfInput.value != "") {
             //verifica a resposta e se for "CPF vazio" ou "UNIQUE" aparece o texto
             if (response.includes("UNIQUE")) {
-               respCpfCad.innerHTML = `O CPF já está vazio!`;
+               respCpfCad.innerHTML = `O CPF já está cadastrado!`;
             } else {
                respCpfCad.innerHTML = ``;
             }
@@ -66,7 +70,7 @@ btnCadastrar.addEventListener("click", (e) => {
 
          //verifica se o campo nomeCompleto esta vazio
          if (nomeCompletoInput.value != "") {
-            respCpfCad.innerHTML = ``;
+            respNomeCompletoCad.innerHTML = ``;
          } else {
             respNomeCompletoCad.innerHTML = `O campo Nome Completo está vazio!`;
          }

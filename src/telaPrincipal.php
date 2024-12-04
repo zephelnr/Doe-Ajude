@@ -99,8 +99,8 @@ if (empty($_SESSION['email'])) {
                      <form class="container-fluid">
                         <div class="input-group gap-2">
                             <a class="btn btn-success rounded-pill" href="cadastrarPublicacao.php" role="button">Cadastrar Nova Publicação</a>
-                            <form action=""> 
-                                <input type="search" class="form-control rounded-pill" placeholder="Buscar" aria-label="Busca" aria-describedby=""> 
+                            <form action="" id="frmBuscar"> 
+                                <input type="search" id="search" class="form-control rounded-pill" placeholder="Buscar publicação pelo título" aria-label="Busca" aria-describedby=""> 
                                 <div class="d-grid d-md-flex justify-content-md-center">
                                     <button class="btn btn-outline-success rounded-pill" type="submit">Buscar</button>
                                 </div>
