@@ -40,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
             $jsonData = json_encode($dados);
       
             // Prepara a consulta SQL para inserir os dados
-            $sql = "INSERT INTO publicacao (titulo, descricao, cidade, estado, telefone, foto, `status`, `data`,  usuario_email) VALUES (?, ?, ?, ?, ?, ?, ?, CURDATE(), ?)";
+            $sql = "INSERT INTO publicacao (titulo, descricao, cidade, estado, telefone, foto, `status`, `data`,  usuario_email) VALUES (?, ?, ?, ?, ?, ?, ?, NOW(), ?)";
       
             // Prepara a declaração e vincula os parâmetros
             if ($stmt = $conn->prepare($sql)) {

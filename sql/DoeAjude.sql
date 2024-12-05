@@ -47,7 +47,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`publicacao` (
   `telefone` VARCHAR(12) NULL,
   `foto` VARCHAR(150) NULL,
   `status` VARCHAR(45) NOT NULL,
-  `data` DATE NOT NULL,
+  `data` DATETIME NOT NULL,
   `usuario_email` VARCHAR(100) NOT NULL,
   PRIMARY KEY (`idpublicacao`),
   CONSTRAINT `fk_publicacao_usuario`
