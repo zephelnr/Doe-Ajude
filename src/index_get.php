@@ -16,8 +16,9 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
         // Verificar se o parâmetro de busca contendo o 'titulo' foi passado via GET
         if (!empty($titulo)) {
             // Consulta ao banco de dados
-            $stmt = $conn->prepare("SELECT * FROM publicacao WHERE titulo LIKE ?");
-             // Adiciona os curingas para a pesquisa
+            $stmt = $conn->prepare("SELECT * FROM publicacao WHERE `status` = 'Disponível' AND titulo LIKE ? ORDER BY `data` DESC");
+            
+            // Adiciona os curingas para a pesquisa
             $buscaTitulo = "%$titulo%";
             
             // Associa o parâmetro ao placeholder
@@ -29,7 +30,6 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
             // Obtém o resultado
             $result = $stmt->get_result();
         } else {
-            ///throw new Exception("Nenhuma Publicação encontrada");
             // Consultar o banco de dados para pegar os dados da publicação
             $sql = "SELECT * FROM publicacao WHERE  `status` = 'Disponível' ORDER BY `data` DESC";;
             $result = $conn->query($sql);
@@ -77,9 +77,7 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
         // Fechar a conexão com o banco de dados
         $conn->close();
     } catch (Exception $e) {
-        //throw $e;
         echo json_encode(["Erro!" . $e->getMessage()]);
-        //print_r(["Erro!" . $e->getMessage()]);
     } finally {
         $conn = null;
     }
