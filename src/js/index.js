@@ -11,7 +11,6 @@ function carregarSessaoIndex() {
         }
     }
     xhr.send();
-
 }
 
 window.onload = carregarSessaoIndex;
