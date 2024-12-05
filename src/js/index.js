@@ -1,7 +1,7 @@
 var pubRecentes = document.getElementById("pubRecentes");
-const btnBuscar = document.getElementById("btnBuscar");
+/*const btnBuscar = document.getElementById("btnBuscar");
 const busca = document.getElementById("search");
-const recentes = document.getElementById("recentes");
+const recentes = document.getElementById("recentes");*/
 
 
 
@@ -20,12 +20,12 @@ function carregarSessaoIndex() {
 }
 
 window.onload = carregarSessaoIndex;
-
+/*
 btnBuscar.addEventListener("click", (e) => {
     if (busca.value != ""){
         recentes.innerHTML = "Busca por: " + busca.value;
     }
- })
+ })*/
 
 //codigo buscar
 

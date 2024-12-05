@@ -10,12 +10,24 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
             die("Conexão falhou: " . $conn->connect_error);   
         }
     
+        // Obtém o parâmetro de busca
+        $titulo = isset($_GET['titulo']) ? trim($_GET['titulo']) : '';
+
         // Verificar se o parâmetro de busca contendo o 'titulo' foi passado via GET
-        if (isset($_GET['titulo'])) {
-            $titulo = $_GET['titulo'];
-            print_r($_GET['titulo']);
-            //$sql = "SELECT * FROM publicacao WHERE  `status` = 'Disponível' ORDER BY `data` DESC";;
-            //$result = $conn->query($sql);
+        if (!empty($titulo)) {
+            // Consulta ao banco de dados
+            $stmt = $conn->prepare("SELECT * FROM publicacao WHERE titulo LIKE ?");
+             // Adiciona os curingas para a pesquisa
+            $buscaTitulo = "%$titulo%";
+            
+            // Associa o parâmetro ao placeholder
+            $stmt->bind_param("s", $buscaTitulo);
+            
+            // Executa a consulta
+            $stmt->execute();
+            
+            // Obtém o resultado
+            $result = $stmt->get_result();
         } else {
             ///throw new Exception("Nenhuma Publicação encontrada");
             // Consultar o banco de dados para pegar os dados da publicação
@@ -54,6 +66,12 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
                     echo "</div>";
                 echo "</div>";
             }
+        } else {
+            echo "<div class='container text-center' style='height: 450px;'>";
+                echo "<div class='row'> ";
+                    echo "<div class='col position-absolute top-50 start-50 translate-middle'><h6>Nenhuma publicação encontrada!</h6></div>";
+                echo "</div>";
+            echo "</div>";
         }
     
         // Fechar a conexão com o banco de dados
