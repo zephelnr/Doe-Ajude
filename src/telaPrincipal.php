@@ -102,7 +102,7 @@ if (empty($_SESSION['email'])) {
                             <form action="" id="frmBuscar"> 
                                 <input type="search" id="search" class="form-control rounded-pill" placeholder="Buscar publicação pelo título" aria-label="Busca" aria-describedby=""> 
                                 <div class="d-grid d-md-flex justify-content-md-center">
-                                    <button class="btn btn-outline-success rounded-pill" type="submit">Buscar</button>
+                                    <button class="btn btn-outline-success rounded-pill" type="button" id="btnBuscar">Buscar</button>
                                 </div>
                             </form>
                         </div>
@@ -112,10 +112,10 @@ if (empty($_SESSION['email'])) {
             </nav>
         </header>
         <main>
-            <h2 class="mb-3 text-left">Recentes</h2>
+            <h2 class="mb-3 text-left" id="recentes">Recentes</h2>
             <!--<p><input type="hidden" name="email" id="email" value="<?= $_SESSION['email']; ?>"></p>-->
             <div class="mb-3 container d-flex">
-                <div class="fixed-size-box bg-success-subtle d-flex rounded row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" id="telaPrincipal">           
+                <div class="fixed-size-box bg-success-subtle d-flex rounded row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" id="pubTelaPrincipal">           
                     <div class="container text-center" style="height: 450px;">
                         <div class="row">                           
                             <div class="col position-absolute top-50 start-50 translate-middle"><h6>Nenhuma publicação cadastrada!</h6></div>
@@ -136,5 +136,6 @@ if (empty($_SESSION['email'])) {
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
         <script src="js/telaPrincipal.js"></script>
+        <script src="js/buscaTelaPrincipal.js"></script>
     </body>
 </html>
