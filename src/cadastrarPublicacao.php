@@ -163,12 +163,12 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
                                 <input type="email" name="email" class="form-control rounded-pill" id="email" placeholder="Digite o seu e-mail" value="<?= $_SESSION['email']; ?>" disabled>
                             </div>
                             <div class="mb-3">
-                                <label for="titulo" class="form-label">Título</label>
+                                <label for="titulo" class="form-label">*Título</label>
                                 <input type="text" name="titulo" class="form-control rounded-pill" id="titulo" placeholder="Digite o título da publicação" autofocus required>
                                 <p id="respTituloCadPub"></p> 
                             </div>
                             <div class="mb-3">
-                                <label for="descricao" class="form-label">Descrição</label>
+                                <label for="descricao" class="form-label">*Descrição</label>
                                 <!--  
                                 <input type="text" name="descricao" class="form-control rounded-pill" id="descricao" placeholder="Digite uma descrição para a publicação" required>
                                 -->
@@ -176,17 +176,47 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
                                 <p id="respDescricaoCadPub"></p> 
                             </div>
                             <div class="mb-3">
-                                <label for="cidade" class="form-label">Cidade</label>
+                                <label for="cidade" class="form-label">*Cidade</label>
                                 <input type="text" name="cidade" class="form-control rounded-pill" id="cidade" placeholder="Digite a cidade" required>
                                 <p id="respCidadeCadPub"></p> 
                             </div>
                             <div class="mb-3">
-                                <label for="estado" class="form-label">Estado</label>
-                                <input type="text" name="estado" class="form-control rounded-pill" id="estado" placeholder="Digite o estado" required>
+                                <label for="estado" class="form-label">*Estado</label>
+                                <!--<input type="text" name="estado" class="form-control rounded-pill" id="estado" placeholder="Digite o estado" required>-->
+                                <select class="form-select" aria-label="Default select estado" id="estado">
+                                    <option selected value="">Selecione o estado</option>
+                                    <option value="Acre">Acre</option>
+                                    <option value="Alagoas">Alagoas</option>
+                                    <option value="Amapá">Amapá</option>
+                                    <option value="Amazonas">Amazonas</option>
+                                    <option value="Bahia">Bahia</option>
+                                    <option value="Ceará">Ceará</option>
+                                    <option value="Distrito Federal">Distrito Federal</option>
+                                    <option value="Espírito Santo">Espírito Santo</option>
+                                    <option value="Goiás">Goiás</option>
+                                    <option value="Maranhão">Maranhão</option>
+                                    <option value="Mato Grosso">Mato Grosso</option>
+                                    <option value="Mato Grosso do Sul">Mato Grosso do Sul</option>
+                                    <option value="Minas Gerais">Minas Gerais</option>
+                                    <option value="Pará">Pará</option>
+                                    <option value="Paraíba">Paraíba</option>
+                                    <option value="Paraná">Paraná</option>
+                                    <option value="Pernambuco">Pernambuco</option>
+                                    <option value="Piauí">Piauí</option>
+                                    <option value="Rio de Janeiro">Rio de Janeiro</option>
+                                    <option value="Rio Grande do Norte">Rio Grande do Norte</option>
+                                    <option value="Rio Grande do Sul">Rio Grande do Sul</option>
+                                    <option value="Rondônia">Rondônia</option>
+                                    <option value="Roraima">Roraima</option>
+                                    <option value="Santa Catarina">Santa Catarina</option>
+                                    <option value="São Paulo">São Paulo</option>
+                                    <option value="Sergipe">Sergipe</option>
+                                    <option value="Tocantins">Tocantins</option>
+                                </select>
                                 <p id="respEstadoCadPub"></p> 
                             </div>
                             <div class="mb-3">
-                                <label for="telefone" class="form-label">Telefone</label>
+                                <label for="telefone" class="form-label">*Telefone</label>
                                 <input type="text" name="telefone" class="form-control rounded-pill" id="telefone" placeholder="Digite o seu telefone" required>
                                 <p id="respTelefoneCadPub"></p> 
                             </div>
@@ -196,10 +226,13 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
                                 <input type="text" name="foto" class="form-control rounded-pill" id="foto" placeholder="Faça o upload da foto" required>
                                 -->
                                 <div class="input-group mb-3">
-                                    <input type="file" class="form-control" id="foto">
+                                    <input type="file" class="form-control" id="foto" aria-describedby="blocoAjudaFoto">
                                     <label class="input-group-text" for="foto">Upload da foto</label>
                                 </div>
-                                <p id="respFotoCadPub"></p> 
+                                <p id="respFotoCadPub"></p>
+                                <div id="blocoAjudaFoto" class="form-text">
+                                    (*)Campos obrigatórios.
+                                </div> 
                             </div> <!--
                             <div class="mb-3">
                                 <label for="status" class="form-label">Status</label>

@@ -121,26 +121,26 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
                         <h2 class="mb-3 text-center">Cadastro de usuário</h2>
                         <form id="frmCadastrar" action="" class="" method="post">
                             <div class="mb-3">
-                                <label for="email" class="form-label">Email</label>
+                                <label for="email" class="form-label">*Email</label>
                                 <input type="email" name="email" class="form-control rounded-pill" id="email" placeholder="Digite o seu e-mail" autofocus required>
                                 <p id="respEmailCad"></p> 
                             </div>
                             <div class="mb-3">
-                                <label for="cpf" class="form-label">CPF</label>
+                                <label for="cpf" class="form-label">*CPF</label>
                                 <input type="text" name="cpf" class="form-control rounded-pill" id="cpf" placeholder="Digite o seu CPF(Apenas números)" required>
                                 <p id="respCpfCad"></p> 
                             </div>
                             <div class="mb-3">
-                                <label for="nomeCompleto" class="form-label">Nome Completo</label>
+                                <label for="nomeCompleto" class="form-label">*Nome Completo</label>
                                 <input type="text" name="nomeCompleto" class="form-control rounded-pill" id="nomeCompleto" placeholder="Digite o seu nome completo" required>
                                 <p id="respNomeCompletoCad"></p> 
                             </div>
                             <div class="mb-3">
-                                <label for="senha" class="form-label">Senha</label>
+                                <label for="senha" class="form-label">*Senha</label>
                                 <input type="password" name="senha" id="senha" class="form-control rounded-pill" aria-describedby="blocoAjudaSenha" placeholder="Digite uma senha" required>
                                 <p id="respSenhaCad"></p> 
                                 <div id="blocoAjudaSenha" class="form-text">
-                                    Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
+                                    (*)Campos obrigatórios.
                                 </div>
                             </div>
                             <div class="mb-3 d-grid gap-5 d-md-flex justify-content-md-center">
