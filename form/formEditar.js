@@ -1,7 +1,13 @@
 const btnEditar = document.getElementById("btnEditar");
+const email = document.getElementById("emailIdEdit");
+const nomeCompleto = document.getElementById("nomeCompletoIdEdit");
+
 btnEditar.addEventListener("click", (e) => {
    const frmEditar = document.getElementById("frmEditar");
    let formData = new FormData(frmEditar);
+
+   //formData.append("email", email.value);
+   formData.append("campo", "nomeCompleto");
    
    // as 2 linhas abaixo são no caso de uma alterção ou exclusão
    let jsonData = JSON.stringify(Object.fromEntries(formData));

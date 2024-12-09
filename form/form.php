@@ -126,11 +126,70 @@ elseif ($_SERVER['REQUEST_METHOD']=='PUT') {
    print("<h1>_PUT</h1>");
    $plainData = file_get_contents('php://input');
    // converter json em um objeto
-   $object = json_decode($plainData);
+   $object = json_decode($plainData,true);
    print_r($object);
    // converte json em um array associativo
    parse_str($plainData,$array);
    // em seguida criar a instrução SQL para fazer o UPDATE no banco
+   print_r($array);
+   // Verifica se os dados necessários foram enviados
+   print_r($plainData);
+   if (isset($object['email']) && isset($object['nomeCompleto'])) {
+        $email = $object['email'];
+        $nomeCompleto = $object['nomeCompleto'];
+        $campo = $object['campo'];
+
+
+        // Verifica se o nome do campo é seguro
+        /*$camposPermitidos = ['nomeCompleto']; // Liste os campos permitidos
+        if (!in_array($campo, $camposPermitidos)) {
+            echo json_encode(['status' => 'error', 'message' => 'Campo inválido.']);
+            exit;
+        }*/
+
+        // Configurações do banco de dados
+        $servername = "localhost";
+        $username = "root";
+        $password = "";
+        $dbname = "mydb";
+
+        // Conexão com o banco de dados usando MySQLi
+        $conn = new mysqli($servername, $username, $password, $dbname);
+
+        // Verifica se a conexão foi bem-sucedida
+        if ($conn->connect_error) {
+            echo json_encode(['status' => 'error', 'message' => 'Erro na conexão com o banco de dados: ' . $conn->connect_error]);
+            exit;
+        }
+
+        // Prepara a consulta SQL
+        $sql = "UPDATE usuario SET `$campo` = ? WHERE email = ?";
+        $stmt = $conn->prepare($sql);
+
+        if ($stmt) {
+            // Vincula os parâmetros
+            $stmt->bind_param('ss', $nomeCompleto, $email);
+
+            // Executa a consulta
+            if ($stmt->execute()) {
+                echo json_encode(['status' => 'success', 'message' => 'Dados atualizados com sucesso!']);
+            } else {
+                echo json_encode(['status' => 'error', 'message' => 'Erro ao atualizar os dados: ' . $stmt->error]);
+            }
+
+            // Fecha a declaração
+            $stmt->close();
+        } else {
+            echo json_encode(['status' => 'error', 'message' => 'Erro ao preparar a consulta: ' . $conn->error]);
+        }
+
+        // Fecha a conexão
+        $conn->close();
+    } else {
+        echo json_encode(['status' => 'error', 'message' => 'Dados inválidos ou incompletos.']);
+    }
+
+   
    
 }
 elseif ($_SERVER['REQUEST_METHOD']=='DELETE') {
