@@ -1,24 +1,33 @@
+//função que armazena o id da publicacao e envia para a página editarPublicacao.php
+function clickPublicacao(idPublicacao) {
+    console.log(idPublicacao);
+    window.location.href = "editarPublicacao.php";
+    window.onload = carregarSessaoEdit(idPublicacao);
+  }
+
 document.getElementById("email").textContent = email;
 var publicacoes = document.getElementById("publicacoes");
 
 //pega o id da publicação
-const idPublicacao = dataset.idpublicacao;
-console.log(idPublicacao);
-function carregarSessaoPub() {
-    let xhr = new XMLHttpRequest();
-    xhr.open("GET","publicacoes_get.php?email=");
-    xhr.onreadystatechange = function() {
-        if (xhr.status==200 && xhr.readyState==4) {
+//const idPublicacao = dataset.idpublicacao;
+//console.log(idPub);
+function carregarSessaoEdit(idPublicacao) {
+    var idPub = idPublicacao;
+    console.log(idPub);
+    //let xhr = new XMLHttpRequest();
+    //xhr.open("GET","publicacoes_get.php?email=");
+   // xhr.onreadystatechange = function() {
+    //    if (xhr.status==200 && xhr.readyState==4) {
             //console.log(xhr.responseText);
             //var publicacoes = this.response;
             //console.log(publicacoes);
-            if(xhr.responseText != ""){
-                publicacoes.innerHTML = xhr.responseText;
-            }
-        }
-    }
-    xhr.send();
+            //if(xhr.responseText != ""){
+            //    publicacoes.innerHTML = xhr.responseText;
+            //}
+   //     }
+   // }
+    //xhr.send();
 
 }
 
-window.onload = carregarSessaoPub;
+//window.onload = carregarSessaoPub;

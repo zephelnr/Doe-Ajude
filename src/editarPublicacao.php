@@ -5,8 +5,6 @@ if (empty($_SESSION['email'])) {
 }
 ?>
 
-
-
 <!doctype html>
 <html lang="pt-br">
     <head>
@@ -69,6 +67,11 @@ if (empty($_SESSION['email'])) {
                 <div class="row p-5">
                     <div class="col-6 p-3 mb-2 offset-md-4 bg-success-subtle rounded-3">
                         <h2 class="mb-3 text-center">Edição de Publicação</h2>
+                        <span><input type="hidden" id="idPublicacao" value=""></span>
+                        <div class="mb-3 d-grid gap-5 d-md-flex justify-content-md-center">
+                            <button class="btn btn-success rounded-pill" type="button" id="btnArquivar">Arquivar publicação</button>
+                            <button class="btn btn-success rounded-pill" type="button" id="btnExcluir">Excluir publicação</button>
+                        </div> 
                         <form id="frmEditar" action="" class="" method="post">
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email</label>
@@ -159,7 +162,7 @@ if (empty($_SESSION['email'])) {
                                 <p id="respStatusCadPub"></p> 
                             </div> -->
                             <div class="mb-3 d-grid gap-5 d-md-flex justify-content-md-center">
-                                <button class="btn btn-success rounded-pill" type="button" id="btnPublicar">Publicar</button>
+                                <button class="btn btn-success rounded-pill" type="button" id="btnEditar">Editar</button>
                                 <a class="btn btn-success rounded-pill" href="publicacoes.php" role="button">Ir para publicações</a>
                             </div>                         
                         </form>
