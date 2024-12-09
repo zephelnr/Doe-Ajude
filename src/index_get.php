@@ -58,7 +58,7 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
                     echo "</div>";
                 echo "</div>";
             }
-        } else {
+        } else if (!empty($titulo)){
             echo "<div class='container text-center' style='height: 450px;'>";
                 echo "<div class='row'> ";
                     echo "<div class='col position-absolute top-50 start-50 translate-middle'><h6>Nenhuma publicação encontrada!</h6></div>";
