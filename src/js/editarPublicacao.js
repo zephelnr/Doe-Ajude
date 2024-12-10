@@ -14,20 +14,21 @@ var publicacoes = document.getElementById("publicacoes");
 function carregarSessaoEdit(idPublicacao) {
     var idPub = idPublicacao;
     console.log(idPub);
-    //let xhr = new XMLHttpRequest();
-    //xhr.open("GET","publicacoes_get.php?email=");
-   // xhr.onreadystatechange = function() {
-    //    if (xhr.status==200 && xhr.readyState==4) {
-            //console.log(xhr.responseText);
+    let xhr = new XMLHttpRequest();
+    xhr.open("GET","editarPublicacao_get.php?idpublicacao=" + idPublicacao + "&usuario_email=" + email.value);
+    xhr.onreadystatechange = function() {
+        //console.log(xhr.responseText);
+        if (xhr.status==200 && xhr.readyState==4) {
+            console.log(xhr.responseText);
             //var publicacoes = this.response;
             //console.log(publicacoes);
             //if(xhr.responseText != ""){
             //    publicacoes.innerHTML = xhr.responseText;
             //}
-   //     }
-   // }
-    //xhr.send();
+        }
+    }
+    xhr.send();
 
 }
 
-//window.onload = carregarSessaoPub;
+//window.onload = carregarSessaoEdit;
