@@ -12,7 +12,8 @@ if ($_SERVER['REQUEST_METHOD']=='PUT') {
     print_r($array);
     // Verifica se os dados necessários foram enviados
     print_r($plainData);
-    if (isset($object['email']) && isset($object['titulo'])) {
+    if (isset($object['email']) && isset($object['idPublicacao'])) {
+         $idPublicacao= $object['idPublicacao'];        
          $usuario_email = $object['email'];
          $campo1 = $object['campo1'];
          $titulo = $object['titulo'];
@@ -26,6 +27,7 @@ if ($_SERVER['REQUEST_METHOD']=='PUT') {
          $telefone = $object['telefone'];
          $campo6 = $object['campo6'];
          $foto = $object['foto'];
+         $status = $object['status'];
  
          // Conexão com o banco de dados usando MySQLi
          $conn = new mysqli($servername, $username, $password, $dbname);
@@ -37,12 +39,12 @@ if ($_SERVER['REQUEST_METHOD']=='PUT') {
          }
  
          // Prepara a consulta SQL
-         $sql = "UPDATE publicacao SET `$campo` = ? WHERE email = ?";
+         $sql = "UPDATE publicacao SET `$campo1` = ?, `$campo2` = ?, `$campo3` = ?, `$campo4` = ?, `$campo5` = ?, `$campo6` = ?, `status` = ? WHERE idpublicacao = ? AND usuario_email = ?";
          $stmt = $conn->prepare($sql);
  
          if ($stmt) {
              // Vincula os parâmetros
-             $stmt->bind_param('ss', $nomeCompleto, $email);
+             $stmt->bind_param('sssssssss', $titulo, $descricao, $cidade, $estado, $telefone, $foto, $status, $idPublicacao, $usuario_email);
  
              // Executa a consulta
              if ($stmt->execute()) {
