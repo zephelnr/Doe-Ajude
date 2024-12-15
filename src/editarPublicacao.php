@@ -160,19 +160,7 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
                                 <div id="blocoAjudaFoto" class="form-text">
                                     (*)Campos obrigatórios.
                                 </div> 
-                            </div> <!--
-                            <div class="mb-3">
-                                <label for="status" class="form-label">Status</label>
-                               
-                                <input type="text" name="status" class="form-control rounded-pill" id="status" placeholder="Coloque o status da publicação" required>
-                               
-                                <select class="form-select" aria-label="Default select example" id="status">
-                                    <option selected value="">Selecione o status da publicação</option>
-                                    <option value="Disponível">Disponível</option>
-                                    <option value="Indisponível">Indisponível</option>
-                                </select>
-                                <p id="respStatusCadPub"></p> 
-                            </div> -->
+                            </div>
                             <div class="mb-3 d-grid gap-5 d-md-flex justify-content-md-center">
                                 <button class="btn btn-success rounded-pill" type="button" id="btnEditar">Editar</button>
                                 <a class="btn btn-success rounded-pill" href="publicacoes.php" role="button">Ir para publicações</a>

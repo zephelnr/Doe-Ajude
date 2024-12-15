@@ -48,3 +48,33 @@ function carregarSessaoEdit() {
 }
 
 window.onload = carregarSessaoEdit;
+
+const btnEditar = document.getElementById("btnEditar");
+
+btnEditar.addEventListener("click", (e) => {
+   const frmEditar = document.getElementById("frmEditar");
+   let formData = new FormData(frmEditar);
+
+   //formData.append("email", email.value);
+   formData.append("campo1", "titulo");
+   formData.append("campo2", "descricao");
+   formData.append("campo3", "cidade");
+   formData.append("campo4", "estado");
+   formData.append("campo5", "telefone");
+   formData.append("campo6", "foto");
+   
+   let jsonData = JSON.stringify(Object.fromEntries(formData));
+   console.log(jsonData);
+
+   let xhr = new XMLHttpRequest();
+   xhr.onload = function() {
+      if (xhr.status==200 && xhr.readyState==4) {
+         console.log(xhr.responseText);
+      }
+      else {
+         console.log("XMLHttpRequest Error");
+      }
+   }
+   xhr.open("PUT","editarPublicacao_put.php");
+   xhr.send(jsonData);
+})
