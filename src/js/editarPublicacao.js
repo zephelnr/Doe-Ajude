@@ -28,7 +28,7 @@ function carregarSessaoEdit() {
             var cidadeGet = doc.querySelector("h4").textContent;
             var estadoGet = doc.querySelector("h5").textContent;
             var telefoneGet = doc.querySelector("h6").textContent;
-            var fotoGet = doc.querySelector("h7").textContent;
+            //var fotoGet = doc.querySelector("h7").textContent;
 
 
             // Exibindo os dados
@@ -37,7 +37,7 @@ function carregarSessaoEdit() {
             cidade.value = cidadeGet;
             estado.value = estadoGet;
             telefone.value = telefoneGet;
-            foto.value = fotoGet;
+            //foto.value = fotoGet;
 
         }
         else {

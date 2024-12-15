@@ -26,7 +26,8 @@ if ($_SERVER['REQUEST_METHOD']=='PUT') {
          $campo5 = $object['campo5'];
          $telefone = $object['telefone'];
          $campo6 = $object['campo6'];
-         $foto = $object['foto'];
+         //$foto = $object['foto'];
+         $foto = null;
          $status = $object['status'];
  
          // Conexão com o banco de dados usando MySQLi
