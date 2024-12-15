@@ -39,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD']=='PUT') {
          }
  
          // Prepara a consulta SQL
-         $sql = "UPDATE publicacao SET `$campo1` = ?, `$campo2` = ?, `$campo3` = ?, `$campo4` = ?, `$campo5` = ?, `$campo6` = ?, `status` = ? WHERE idpublicacao = ? AND usuario_email = ?";
+         $sql = "UPDATE publicacao SET `$campo1` = ?, `$campo2` = ?, `$campo3` = ?, `$campo4` = ?, `$campo5` = ?, `$campo6` = ?, `status` = ?, `data` = NOW() WHERE idpublicacao = ? AND usuario_email = ?";
          $stmt = $conn->prepare($sql);
  
          if ($stmt) {
