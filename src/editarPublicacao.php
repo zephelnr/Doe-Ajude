@@ -5,6 +5,35 @@ if (empty($_SESSION['email'])) {
 }
 ?>
 
+<?php
+require_once("conexao.php");
+
+if ($_SERVER['REQUEST_METHOD']=='GET') {
+    //print("<h1>_GET</h1>");
+    //print_r($_GET);
+
+ 
+     // Conectar ao banco de dados
+     $conn = new mysqli($servername, $username, $password, $dbname);
+ 
+     // Verificar se a conexão foi bem-sucedida
+     if ($conn->connect_error) {
+         die("Conexão falhou: " . $conn->connect_error);   
+     }
+ 
+     // Verificar se o parâmetro 'idpublicacao' foi passado via GET
+     if (isset($_GET['idpublicacao'])) {
+         $idPublicacao = $_GET['idpublicacao'];
+         $email = $_SESSION['email'];
+         $email2 = $_GET['usuario_email'];
+         
+         //echo "<p>$idPublicacao</p>";
+         //echo "<p>$email</p>";
+         //echo "<p>$email2</p>";
+         }
+    }
+?>
+
 <!doctype html>
 <html lang="pt-br">
     <head>
@@ -39,23 +68,6 @@ if (empty($_SESSION['email'])) {
                             <a class="nav-link disabled" aria-disabled="true">Interessados</a>
                         </div>
                     </div>
-                    <!--
-                    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                        <div class="navbar-nav">
-                            <a class="nav-link active" aria-current="page" href="perfil.php">Perfil</a>
-                            <a class="nav-link" href="publicacoes.php">Publicações</a>
-                            <a class="nav-link disabled" aria-disabled="true">Interesses</a>
-                            <a class="nav-link disabled" aria-disabled="true">Interessados</a>
-                        </div>
-                    </div>
-                   
-                    <a class="btn btn-success rounded-pill" href="logout.php" role="button">Sair</a>
-
-                    <div class="d-grid gap-2 d-md-flex justify-content-md-center">
-                        <a class="btn btn-success rounded-pill" href="perfil.php" role="button">Menu</a>
-                        <a class="btn btn-success rounded-pill" href="logout.php" role="button">Sair</a>
-                    </div>
-                    -->
                     <div class="d-grid d-md-flex justify-content-md-center">
                         <a class="btn btn-success rounded-pill" href="logout.php" role="button">Sair</a>
                     </div>
@@ -67,7 +79,6 @@ if (empty($_SESSION['email'])) {
                 <div class="row p-5">
                     <div class="col-6 p-3 mb-2 offset-md-4 bg-success-subtle rounded-3">
                         <h2 class="mb-3 text-center">Edição de Publicação</h2>
-                        <span><input type="hidden" id="idPublicacao" value=""></span>
                         <div class="mb-3 d-grid gap-5 d-md-flex justify-content-md-center">
                             <button class="btn btn-success rounded-pill" type="button" id="btnArquivar">Arquivar publicação</button>
                             <button class="btn btn-success rounded-pill" type="button" id="btnExcluir">Excluir publicação</button>
@@ -76,6 +87,7 @@ if (empty($_SESSION['email'])) {
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email</label>
                                 <input type="email" name="email" class="form-control rounded-pill" id="email" placeholder="Digite o seu e-mail" value="<?= $_SESSION['email']; ?>" disabled>
+                                <input type="hidden" name="idPublicacao" id="idPublicacao" value="<?= $idPublicacao; ?>">
                             </div>
                             <div class="mb-3">
                                 <label for="titulo" class="form-label">*Título</label>

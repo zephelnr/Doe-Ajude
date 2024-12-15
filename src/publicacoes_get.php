@@ -59,9 +59,9 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
                             echo "<p class='card-text'>Descrição: ". $row['descricao'] . " </br>Status: " . $row['status'] . "</p>";
                             echo "<div class='d-flex justify-content-between align-items-center'>";
                                 echo "<div class='btn-group'>";
-                                    echo "<button class='btn btn-sm btn-outline-success' id='publicacao' onClick='clickPublicacao(this.value);' value='" . $row['idpublicacao'] ."'>Editar</button>";
+                                    //echo "<button class='btn btn-sm btn-outline-success' id='publicacao' onClick='clickPublicacao(this.value);' value='" . $row['idpublicacao'] ."'>Editar</button>";
                                     //echo "<form><button type='button' class='btn btn-sm btn-outline-success'>Editar</button></form>";
-                                    //echo "<a role='button' class='btn btn-sm btn-outline-success' href='editarPublicacao.php?idpublicacao=" . $row['idpublicacao'] . "'>Editar</a>"; //?idpublicacao=" . $row['idpublicacao'] . "&usuario_email=" . $row['usuario_email'] . "
+                                    echo "<a role='button' class='btn btn-sm btn-outline-success' href='editarPublicacao.php?idpublicacao=" . $row['idpublicacao'] . "&usuario_email=" . $row['usuario_email'] . "'>Editar</a>"; //?idpublicacao=" . $row['idpublicacao'] . "&usuario_email=" . $row['usuario_email'] . "
                                 echo "</div>";
                                 echo "<small class='text-muted'>" . $row['cidade'] . "</br>" . $row['estado'] . "</br>Data de publicação: " .  $dataFormatada . "</small>";
                             echo "</div>";

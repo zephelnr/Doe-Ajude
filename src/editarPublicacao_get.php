@@ -24,39 +24,25 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
             print_r($_GET['idpublicacao']);
             
             // Consultar o banco de dados para pegar os dados da publicação
-            $sql = "SELECT * FROM publicacao WHERE idpublicacao = '$idpublicacao' AND usuario_email = '$usuario_email' AND `status` = 'Disponível' ORDER BY `data` DESC";
-            //$stmt = $conn->prepare($sql);
+            $sql = "SELECT * FROM publicacao WHERE idpublicacao = '$idpublicacao' AND usuario_email = '$usuario_email'";
             $result = $conn->query($sql);
+
+            // Verificar se o usuário existe
+            if ($result->num_rows > 0) {           
+                 // Exibir os dados do usuário
+                $row = $result->fetch_assoc();
+                echo "<h1>Informações do Usuário</h1>";
+                echo "<h2>" . $row['titulo'] . "<h2><br>";
+                echo "<h3>" . $row['descricao'] ."</h3><br>";
+                echo "<h4>" . $row['cidade'] ."</h4><br>";
+                echo "<h5>" . $row['estado'] . "<h5><br>";
+                echo "<h6>" . $row['telefone'] ."</h6><br>";
+                echo "<h7>" . $row['foto'] ."</h7><br>";
+            }
         } else {
             throw new Exception("Nenhuma Publicação encontrada");
         }
 
-        // Executa a consulta
-        //$stmt->execute();
-        //$result = $stmt->get_result();
-
-        // Converte os resultados para um array associativo
-        //$publicacoes = [];
-        if ($result->num_rows > 0) {
-            
-            while ($row = $result->fetch_assoc()) {
-                //$publicacoes[] = $row;
-                //echo "<h1>Informações do Usuário</h1>";
-                //echo "<p>Titulo: " . $row['titulo'] . "<p>";
-
-                // Converte e formata a data
-                $data = new DateTime($row['data']);
-                $dataFormatada = $data->format('d/m/Y');
-                
-                
-            }
-        }
-        //echo "<p>" . $publicacoes['titulo'] . "</p>";
-        //print_r($publicacoes);
-        //echo json_encode($publicacoes);
-        // Fecha a conexão
-        //$stmt->close();
-    
         // Fechar a conexão com o banco de dados
         $conn->close();
     } catch (Exception $e) {
