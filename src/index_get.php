@@ -46,7 +46,19 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
                         echo "</svg>";
                         echo "<div class='card-body'>";
                             echo "<h4 class='card-text'>" . $row['titulo'] ."</h4>";
-                            echo "<p class='card-text'>Descrição: ". $row['descricao'] . " </br>Status: " . $row['status'] . "</p>";
+                            
+                            ///função para verificar o tamanho do texto
+                            //strlen()
+                            if(strlen($row['descricao']) > 33){
+                                ///função para limitar caracteres mostrados
+                                //substr(string, posição_inicial, comprimento)
+                                ///função para truncar o texto sem cortar palavras
+                                //strrpos()
+                                echo "<p class='card-text'>Descrição: ". substr($row['descricao'], 0, strrpos(substr($row['descricao'], 0, 33), " ")) . "..." . " </br>Status: " . $row['status'] . "</p>";
+                            } else {
+                                echo "<p class='card-text'>Descrição: ". $row['descricao'] . " </br>Status: " . $row['status'] . "</p>";
+                            }
+                            
                             echo "<div class='d-flex justify-content-between align-items-center'>";
                                 echo "<div class='btn-group'>";
                                     echo "<button type='button' class='btn btn-sm btn-outline-success'>Visualizar</button>";
