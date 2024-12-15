@@ -1,17 +1,17 @@
 <?php
 require_once("conexao.php");
 if ($_SERVER['REQUEST_METHOD']=='PUT') {
-    print("<h1>_PUT</h1>");
+    //print("<h1>_PUT</h1>");
     $plainData = file_get_contents('php://input');
     // converter json em um objeto
     $object = json_decode($plainData,true);
-    print_r($object);
+    //print_r($object);
     // converte json em um array associativo
     parse_str($plainData,$array);
     // em seguida criar a instrução SQL para fazer o UPDATE no banco
-    print_r($array);
+    //print_r($array);
     // Verifica se os dados necessários foram enviados
-    print_r($plainData);
+    //print_r($plainData);
     if (isset($object['email']) && isset($object['idPublicacao'])) {
          $idPublicacao= $object['idPublicacao'];        
          $usuario_email = $object['email'];

@@ -110,8 +110,8 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
                             <div class="mb-3">
                                 <label for="estado" class="form-label">*Estado</label>
                                 <!--<input type="text" name="estado" class="form-control rounded-pill" id="estado" placeholder="Digite o estado" required>-->
-                                <select class="form-select" aria-label="Default select estado" id="estado">
-                                    <option selected>Selecione o estado</option>
+                                <select class="form-select" aria-label="Default select estado" name="estado" id="estado">
+                                    <option>Selecione o estado</option>
                                     <option value="Acre">Acre</option>
                                     <option value="Alagoas">Alagoas</option>
                                     <option value="Amapá">Amapá</option>
@@ -153,7 +153,7 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
                                 <input type="text" name="foto" class="form-control rounded-pill" id="foto" placeholder="Faça o upload da foto" required>
                                 -->
                                 <div class="input-group mb-3">
-                                    <input type="file" class="form-control" id="foto" aria-describedby="blocoAjudaFoto">
+                                    <input type="file" class="form-control" id="foto" name="foto" aria-describedby="blocoAjudaFoto">
                                     <label class="input-group-text" for="foto">Upload da foto</label>
                                 </div>
                                 <p id="respFotoCadEdit"></p>
