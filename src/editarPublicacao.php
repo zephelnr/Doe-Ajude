@@ -79,11 +79,12 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
                 <div class="row p-5">
                     <div class="col-6 p-3 mb-2 offset-md-4 bg-success-subtle rounded-3">
                         <h2 class="mb-3 text-center">Edição de Publicação</h2>              
-                        <form action="" method="post" id="frmDelArq">
+                        <form action="" method="post" id="frmArquivar">
                             <input type="hidden" name="idPublicacao" id="idPublicacao" value="<?= $idPublicacao; ?>">
                             <div class="mb-3 d-grid gap-5 d-md-flex justify-content-md-center">
                                 <button class="btn btn-success rounded-pill" type="button" id="btnArquivar">Arquivar publicação</button>
-                                <button class="btn btn-success rounded-pill" type="button" id="btnDeletar">Deletar publicação</button>
+                                <!--<button class="btn btn-success rounded-pill" type="button" id="btnDeletar">Deletar publicação</button>-->
+                                <button type="button" class="btn btn-success rounded-pill" data-bs-toggle="modal" data-bs-target="#modalIdDeletar">Deletar publicação</button>
                             </div> 
                         </form>    
                         <form id="frmEditar" action="" class="" method="post">
@@ -171,6 +172,34 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
                         </form>
                     </div>    
                 </div>    
+            </div>
+
+            <!-- Modal Body Deletar-->
+            <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
+            <div class="modal fade" id="modalIdDeletar" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false"
+                role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm" role="document">
+                <div class="modal-content">
+                    <div class="modal-header bg-success-subtle">
+                        <h5 class="modal-title" id="modalTitleId">
+                            Deletar Publicação
+                        </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Você deseja deletar a publicação?</p>
+                        <form id="frmDeletar" action="" method="post">
+                            <input type="hidden" name="idPublicacao" id="idPublicacao" value="<?= $idPublicacao; ?>">
+                        </form>
+                    </div>
+                    <div class="modal-footer bg-success-subtle">
+                        <button type="button" class="btn btn-success rounded-pill" data-bs-dismiss="modal">
+                            Fechar
+                        </button>
+                        <button type="button" class="btn btn-success rounded-pill" id="btnDeletar">Deletar</button>
+                    </div>
+                </div>
+                </div>
             </div>
         </main>
         <footer>

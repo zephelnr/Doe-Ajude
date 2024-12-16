@@ -147,7 +147,7 @@ btnEditar.addEventListener("click", (e) => {
 
 const btnDeletar = document.getElementById("btnDeletar");
 btnDeletar.addEventListener("click", (e) => {
-   const frmDeletar = document.getElementById("frmDelArq");
+   const frmDeletar = document.getElementById("frmDeletar");
    let formData = new FormData(frmDeletar);
    
    // as 2 linhas abaixo são no caso de uma alterção ou exclusão
