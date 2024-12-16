@@ -144,3 +144,33 @@ btnEditar.addEventListener("click", (e) => {
    xhr.open("PUT","editarPublicacao_put.php");
    xhr.send(jsonData);
 })
+
+const btnDeletar = document.getElementById("btnDeletar");
+btnDeletar.addEventListener("click", (e) => {
+   const frmDeletar = document.getElementById("frmDelArq");
+   let formData = new FormData(frmDeletar);
+   
+   // as 2 linhas abaixo são no caso de uma alterção ou exclusão
+   let jsonData = JSON.stringify(Object.fromEntries(formData));
+   console.log(jsonData);
+
+   let xhr = new XMLHttpRequest();
+   xhr.onload = function() {
+      if (xhr.status==200 && xhr.readyState==4) {
+         console.log(xhr.responseText);
+
+         // Verifica o conteúdo da resposta ou outras condições
+         const response = xhr.responseText;
+
+         // Verifica a resposta para decidir o redirecionamento
+         if (response.includes("response")) {
+            window.location.href = "publicacoes.php";
+         }
+      }
+      else {
+         console.log("XMLHttpRequest Error");
+      }
+   }
+   xhr.open("DELETE","editarPublicacao_delete.php");
+   xhr.send(jsonData);
+})

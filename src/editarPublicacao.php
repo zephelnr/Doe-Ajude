@@ -78,11 +78,14 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
             <div class="container vstack gap-5 p-5"> 
                 <div class="row p-5">
                     <div class="col-6 p-3 mb-2 offset-md-4 bg-success-subtle rounded-3">
-                        <h2 class="mb-3 text-center">Edição de Publicação</h2>
-                        <div class="mb-3 d-grid gap-5 d-md-flex justify-content-md-center">
-                            <button class="btn btn-success rounded-pill" type="button" id="btnArquivar">Arquivar publicação</button>
-                            <button class="btn btn-success rounded-pill" type="button" id="btnExcluir">Excluir publicação</button>
-                        </div> 
+                        <h2 class="mb-3 text-center">Edição de Publicação</h2>              
+                        <form action="" method="post" id="frmDelArq">
+                            <input type="hidden" name="idPublicacao" id="idPublicacao" value="<?= $idPublicacao; ?>">
+                            <div class="mb-3 d-grid gap-5 d-md-flex justify-content-md-center">
+                                <button class="btn btn-success rounded-pill" type="button" id="btnArquivar">Arquivar publicação</button>
+                                <button class="btn btn-success rounded-pill" type="button" id="btnDeletar">Deletar publicação</button>
+                            </div> 
+                        </form>    
                         <form id="frmEditar" action="" class="" method="post">
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email</label>
