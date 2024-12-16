@@ -202,5 +202,42 @@ elseif ($_SERVER['REQUEST_METHOD']=='DELETE') {
    // converte json em um array
    $array = json_decode($plainData,true);
    print_r(($array));
+
+   // Valida se os dados necessários estão no JSON
+   if (isset($array['email'])) {
+        $email = $array['email'];
+
+        // Exemplo de conexão com o banco de dados
+        $servername = "localhost";
+        $username = "root";
+        $password = "";
+        $dbname = "mydb";
+
+        // Conexão com o banco
+        $conn = new mysqli($servername, $username, $password, $dbname);
+
+        // Verifica conexão
+        if ($conn->connect_error) {
+            die(json_encode(["success" => false, "message" => "Erro de conexão: " . $conn->connect_error]));
+        }
+
+        // Query de delete
+        $sql = "DELETE FROM usuario WHERE email = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("s", $email);
+
+        // Executa o DELETE
+        if ($stmt->execute()) {
+            echo json_encode(["success" => true, "message" => "Registro deletado com sucesso."]);
+        } else {
+            echo json_encode(["success" => false, "message" => "Erro ao deletar o registro."]);
+        }
+
+        $stmt->close();
+        $conn->close();
+    } else {
+        // Retorna erro se o ID não foi enviado
+        echo json_encode(["success" => false, "message" => "ID não enviado no JSON."]);
+    }
 }
 

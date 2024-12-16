@@ -31,6 +31,9 @@
          <button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#modalIdEditar">
             editar
          </button>
+         <button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#modalIdDeletar">
+            Deletar
+         </button>
 
          <!-- Modal Body -->
          <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
@@ -128,6 +131,34 @@
             </div>
          </div>
 
+          <!-- Modal Body Deletar-->
+         <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
+         <div class="modal fade" id="modalIdDeletar" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false"
+            role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm" role="document">
+               <div class="modal-content">
+                  <div class="modal-header">
+                     <h5 class="modal-title" id="modalTitleId">
+                        Modal Deletar
+                     </h5>
+                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                     <form id="frmDeletar" action="form.php">
+                        <label for="email">Email</label>
+                        <input type='email' name="email" id="emailIdDelet">
+                     </form>
+                  </div>
+                  <div class="modal-footer">
+                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                        Close
+                     </button>
+                     <button type="submit" class="btn btn-primary" id="btnDeletar">Deletar</button>
+                  </div>
+               </div>
+            </div>
+         </div>
+
 
       </section>
       <section>
@@ -154,6 +185,7 @@
    <script src="form.js"></script>
    <script src="formVisualizar.js"></script>
    <script src="formEditar.js"></script>
+   <script src="formDeletar.js"></script>
 </body>
 
 </html>
