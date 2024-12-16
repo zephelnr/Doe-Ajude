@@ -4,8 +4,7 @@ const respDescricaoCadPub = document.querySelector("#respDescricaoCadPub");
 const respCidadeCadPub = document.querySelector("#respCidadeCadPub");
 const respEstadoCadPub = document.querySelector("#respEstadoCadPub");
 const respTelefoneCadPub = document.querySelector("#respTelefoneCadPub");
-const respFotoCadPub = document.querySelector("#respFotoCadPub");
-//const respStatusCadPub = document.querySelector("#respStatusCadPub");
+//const respFotoCadPub = document.querySelector("#respFotoCadPub");
 
 btnPublicar.addEventListener("click", (e) => {
    e.preventDefault();
@@ -16,7 +15,6 @@ btnPublicar.addEventListener("click", (e) => {
    const estado = document.getElementById("estado");
    const telefone = document.getElementById("telefone");
    const foto = document.getElementById("foto");
-   //const status = document.getElementById("status");
 
    const frmPublicar = document.getElementById("frmPublicar");
 
@@ -25,8 +23,7 @@ btnPublicar.addEventListener("click", (e) => {
    const cidadeInput = frmPublicar.querySelector("#cidade");
    const estadoInput = frmPublicar.querySelector("#estado");
    const telefoneInput = frmPublicar.querySelector("#telefone");
-   const fotoInput = frmPublicar.querySelector("#foto");
-   //const statusInput = frmPublicar.querySelector("#status");
+   //const fotoInput = frmPublicar.querySelector("#foto");
 
    let formData = new FormData(frmPublicar);
 
@@ -47,7 +44,7 @@ btnPublicar.addEventListener("click", (e) => {
          // Verifica o conteúdo da resposta ou outras condições
          const response = xhr.responseText;
 
-         // Supondo que você verifique algo na resposta para decidir o redirecionamento
+         // Verifica a resposta para decidir o redirecionamento
          if (response.includes("response")) {
             window.location.href = "publicacoes.php";
          }
@@ -92,13 +89,6 @@ btnPublicar.addEventListener("click", (e) => {
          //   respFotoCadPUb.innerHTML = ``;
          //} else {
          //   respFotoCadPub.innerHTML = `O campo Foto está vazio!`;
-         //}
-
-         //verifica se o campo status esta vazio
-         //if (statusInput.value != "") {
-         //   respStatusCadPub.innerHTML = ``;
-         //} else {
-         //   respStatusCadPub.innerHTML = `O campo Status está vazio!`;
          //}
       }
       else {

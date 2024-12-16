@@ -111,7 +111,7 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
                                 <label for="estado" class="form-label">*Estado</label>
                                 <!--<input type="text" name="estado" class="form-control rounded-pill" id="estado" placeholder="Digite o estado" required>-->
                                 <select class="form-select" aria-label="Default select estado" name="estado" id="estado">
-                                    <option>Selecione o estado</option>
+                                    <option value="">Selecione o estado</option>
                                     <option value="Acre">Acre</option>
                                     <option value="Alagoas">Alagoas</option>
                                     <option value="Amapá">Amapá</option>

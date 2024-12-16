@@ -12,22 +12,22 @@ if ($_SERVER['REQUEST_METHOD']=='PUT') {
     //print_r($array);
     // Verifica se os dados necessários foram enviados
     //print_r($plainData);
-    if (isset($object['email']) && isset($object['idPublicacao'])) {
+    if (isset($object['email']) && isset($object['idPublicacao']) && !empty($object['titulo']) && !empty($object['descricao']) && !empty($object['cidade']) && !empty($object['estado']) && !empty($object['telefone'])) {
          $idPublicacao= $object['idPublicacao'];        
          $usuario_email = $object['email'];
-         $campo1 = $object['campo1'];
+         $campoTitulo = $object['campoTitulo'];
          $titulo = $object['titulo'];
-         $campo2 = $object['campo2'];
+         $campoDescricao = $object['campoDescricao'];
          $descricao = $object['descricao'];
-         $campo3 = $object['campo3'];
+         $campoCidade = $object['campoCidade'];
          $cidade = $object['cidade'];
-         $campo4 = $object['campo4'];
+         $campoEstado = $object['campoEstado'];
          $estado= $object['estado'];
-         $campo5 = $object['campo5'];
+         $campoTelefone = $object['campoTelefone'];
          $telefone = $object['telefone'];
-         $campo6 = $object['campo6'];
-         //$foto = $object['foto'];
-         $foto = null;
+         $campoFoto = $object['campoFoto'];
+         $foto = $object['foto'];
+         //$foto = '';
          $status = $object['status'];
  
          // Conexão com o banco de dados usando MySQLi
@@ -40,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD']=='PUT') {
          }
  
          // Prepara a consulta SQL
-         $sql = "UPDATE publicacao SET `$campo1` = ?, `$campo2` = ?, `$campo3` = ?, `$campo4` = ?, `$campo5` = ?, `$campo6` = ?, `status` = ?, `data` = NOW() WHERE idpublicacao = ? AND usuario_email = ?";
+         $sql = "UPDATE publicacao SET `$campoTitulo` = ?, `$campoDescricao` = ?, `$campoCidade` = ?, `$campoEstado` = ?, `$campoTelefone` = ?, `$campoFoto` = ?, `status` = ?, `data` = NOW() WHERE idpublicacao = ? AND usuario_email = ?";
          $stmt = $conn->prepare($sql);
  
          if ($stmt) {
@@ -62,6 +62,9 @@ if ($_SERVER['REQUEST_METHOD']=='PUT') {
  
          // Fecha a conexão
          $conn->close();
+
+         //envia a resposta para o javascript para a mudança de página
+         echo json_encode("response");
      } else {
          echo json_encode(['status' => 'error', 'message' => 'Dados inválidos ou incompletos.']);
      }
