@@ -64,9 +64,9 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
                                 //substr(string, posição_inicial, comprimento)
                                 ///função para truncar o texto sem cortar palavras
                                 //strrpos()
-                                echo "<p class='card-text'>Descrição: ". substr($row['descricao'], 0, strrpos(substr($row['descricao'], 0, 33), " ")) . "..." . " </br>Status: " . $row['status'] . "</p>";
+                                echo "<p class='card-text'>Descrição: ". substr($row['descricao'], 0, strrpos(substr($row['descricao'], 0, 33), " ")) . "..." . "</p>";
                             } else {
-                                echo "<p class='card-text'>Descrição: ". $row['descricao'] . " </br>Status: " . $row['status'] . "</p>";
+                                echo "<p class='card-text'>Descrição: ". $row['descricao'] . "</p>";
                             }
 
                             echo "<div class='d-flex justify-content-between align-items-center'>";
@@ -75,7 +75,7 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
                                     //echo "<form><button type='button' class='btn btn-sm btn-outline-success'>Editar</button></form>";
                                     echo "<a role='button' class='btn btn-sm btn-outline-success' href='editarPublicacao.php?idpublicacao=" . $row['idpublicacao'] . "&usuario_email=" . $row['usuario_email'] . "'>Editar</a>"; //?idpublicacao=" . $row['idpublicacao'] . "&usuario_email=" . $row['usuario_email'] . "
                                 echo "</div>";
-                                echo "<small class='text-muted'>" . $row['cidade'] . "</br>" . $row['estado'] . "</br>Data de publicação: " .  $dataFormatada . "</small>";
+                                echo "<small class='text-muted'>" . $row['cidade'] . "</br>" . $row['estado'] . "</br>" . $row['status'] ." no dia: " .  $dataFormatada . "</small>";
                             echo "</div>";
                         echo "</div>";
                     echo "</div>";
