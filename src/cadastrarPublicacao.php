@@ -14,11 +14,11 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
     try {
         // Coleta os dados enviados pelo FormData
         $email = $_POST['email'] ?? '';
-        $titulo = $_POST['titulo'] ?? '';
-        $descricao = $_POST['descricao'] ?? '';
+        $titulo = trim($_POST['titulo'] ?? '');
+        $descricao = trim($_POST['descricao'] ?? '');
         $cidade = $_POST['cidade'] ?? '';
         $estado = $_POST['estado'] ?? '';
-        $telefone= $_POST['telefone'] ?? '';
+        $telefone= trim($_POST['telefone'] ?? '');
         $foto = $_POST['foto'] ?? '';
         $status = $_POST['status'] ?? '';
       

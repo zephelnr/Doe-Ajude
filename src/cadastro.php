@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
         $email = trim($_POST['email'] ?? '');
         $cpf = $_POST['cpf'] ?? '';
         $nomeCompleto = trim($_POST['nomeCompleto'] ?? '');
-        $senha = trim($_POST['senha'] ?? '');
+        $senha = $_POST['senha'] ?? '';
 
         //tratamento de erro Email
         // Verifica se o e-mail não corresponde à expressão regular
