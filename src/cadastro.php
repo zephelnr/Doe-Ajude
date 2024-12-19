@@ -13,18 +13,29 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
     try {
         // Coleta os dados enviados pelo FormData
         $email = trim($_POST['email'] ?? '');
-        $cpf = trim($_POST['cpf'] ?? '');
+        $cpf = $_POST['cpf'] ?? '';
         $nomeCompleto = trim($_POST['nomeCompleto'] ?? '');
         $senha = trim($_POST['senha'] ?? '');
 
+        //tratamento de erro Email
         // Verifica se o e-mail não corresponde à expressão regular
-        if(preg_match('/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/', $email) !== 1){
-            throw new Exception("email irregular" . $stmt->error);
+        if (preg_match('/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/', $email) !== 1){
+            throw new Exception("email irregular");
         }
 
+        //tratamento de erro cpf
+        // Remove espaços em branco e caracteres não numéricos
+        $cpf = preg_replace('/\D/', '', trim($cpf));
+        if (strlen($cpf) === 11 && ctype_digit($cpf)){
+            //checa se o cpf tem 11 digitos numericos
+        } else {
+            throw new Exception("cpf irregular");
+        }
+
+        //tratamento de erro NomeCompleto
         // Verifica se há mais de um espaço consecutivo
         if (preg_match('/\s{2,}/', $nomeCompleto)){
-            throw new Exception("nomeCompleto irregular" . $stmt->error);
+            throw new Exception("nomeCompleto irregular");
         }
       
         // Verifica se todos os campos foram enviados corretamente

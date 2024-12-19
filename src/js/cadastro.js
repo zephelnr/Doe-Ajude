@@ -46,7 +46,7 @@ btnCadastrar.addEventListener("click", (e) => {
 
          //verifica se o campo email esta vazio
          if (emailInput.value != "") {
-            //verifica a resposta e se for "Email vazio" ou "PRIMARY" aparece o texto, se não retorna vazio
+            //verifica a resposta e se for "Email vazio" ,"PRIMARY" ou "email irregular" aparece o texto; se não retorna vazio
             if (response.includes("PRIMARY")) {
                respEmailCad.innerHTML = `O Email já está cadastrado!`;
             } else if(response.includes("email irregular")){
@@ -63,6 +63,8 @@ btnCadastrar.addEventListener("click", (e) => {
             //verifica a resposta e se for "CPF vazio" ou "UNIQUE" aparece o texto
             if (response.includes("UNIQUE")) {
                respCpfCad.innerHTML = `O CPF já está cadastrado!`;
+            } else if(response.includes("cpf irregular")) {
+               respCpfCad.innerHTML = `O formato do CPF está irregular!`;
             } else {
                respCpfCad.innerHTML = ``;
             }
