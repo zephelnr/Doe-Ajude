@@ -49,6 +49,8 @@ btnCadastrar.addEventListener("click", (e) => {
             //verifica a resposta e se for "Email vazio" ou "PRIMARY" aparece o texto, se não retorna vazio
             if (response.includes("PRIMARY")) {
                respEmailCad.innerHTML = `O Email já está cadastrado!`;
+            } else if(response.includes("email irregular")){
+               respEmailCad.innerHTML = `O formato do Email está irregular!`;
             } else {
                respEmailCad.innerHTML = ``;
             }

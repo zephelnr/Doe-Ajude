@@ -17,9 +17,13 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
         $nomeCompleto = trim($_POST['nomeCompleto'] ?? '');
         $senha = trim($_POST['senha'] ?? '');
 
+        // Verifica se o e-mail não corresponde à expressão regular
+        if(preg_match('/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/', $email) !== 1){
+            throw new Exception("email irregular" . $stmt->error);
+        }
+
         // Verifica se há mais de um espaço consecutivo
         if (preg_match('/\s{2,}/', $nomeCompleto)){
-            //$nomeCompleto = '';
             throw new Exception("nomeCompleto irregular" . $stmt->error);
         }
       
