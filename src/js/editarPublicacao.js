@@ -77,7 +77,7 @@ btnEditar.addEventListener("click", (e) => {
    formData.append("campoEstado", "estado");
    formData.append("campoTelefone", "telefone");
    formData.append("campoFoto", "foto");
-   formData.append("status", "Disponível");
+   formData.append("status", "Editado");
 
    //inpede o campo foto adicionar lixo na tabela
    if(fotoInput != ""){

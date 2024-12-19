@@ -34,7 +34,7 @@ btnPublicar.addEventListener("click", (e) => {
    formData.append("estado", estado.value);
    formData.append("telefone", telefone.value);
    formData.append("foto", foto.value);
-   formData.append("status", "Disponível");
+   formData.append("status", "Publicado");
 
    let xhr = new XMLHttpRequest();
    xhr.onload = function () {
