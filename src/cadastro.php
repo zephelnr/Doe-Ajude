@@ -12,10 +12,16 @@ require_once("conexao.php");
 if ($_SERVER['REQUEST_METHOD']=='POST') {
     try {
         // Coleta os dados enviados pelo FormData
-        $email = $_POST['email'] ?? '';
-        $cpf = $_POST['cpf'] ?? '';
-        $nomeCompleto = $_POST['nomeCompleto'] ?? '';
-        $senha = $_POST['senha'] ?? '';
+        $email = trim($_POST['email'] ?? '');
+        $cpf = trim($_POST['cpf'] ?? '');
+        $nomeCompleto = trim($_POST['nomeCompleto'] ?? '');
+        $senha = trim($_POST['senha'] ?? '');
+
+        // Verifica se há mais de um espaço consecutivo
+        if (preg_match('/\s{2,}/', $nomeCompleto)){
+            //$nomeCompleto = '';
+            throw new Exception("nomeCompleto irregular" . $stmt->error);
+        }
       
         // Verifica se todos os campos foram enviados corretamente
         if (!empty($email) && !empty($cpf) && !empty($nomeCompleto) && !empty($senha)) {

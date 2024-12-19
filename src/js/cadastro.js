@@ -70,7 +70,13 @@ btnCadastrar.addEventListener("click", (e) => {
 
          //verifica se o campo nomeCompleto esta vazio
          if (nomeCompletoInput.value != "") {
-            respNomeCompletoCad.innerHTML = ``;
+            //respNomeCompletoCad.innerHTML = ``;
+            //verifica a resposta e se for "nomeCompleto irregular"aparece o texto
+            if (response.includes("nomeCompleto irregular")) {
+               respNomeCompletoCad.innerHTML = `O formato do Nome Completo está irregular!`;
+            } else {
+               respNomeCompletoCad.innerHTML = ``;
+            }
          } else {
             respNomeCompletoCad.innerHTML = `O campo Nome Completo está vazio!`;
          }
