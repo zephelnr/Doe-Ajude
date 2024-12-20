@@ -148,7 +148,7 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
                             </div>
                             <div class="mb-3">
                                 <label for="cpf" class="form-label">*CPF</label>
-                                <input type="text" name="cpf" class="form-control rounded-pill" id="cpf" placeholder="Digite o seu CPF(Apenas números)" required>
+                                <input type="number" name="cpf" class="form-control rounded-pill" id="cpf" placeholder="Digite o seu CPF(Apenas números)" required onkeypress="return event.charCode>=48 && event.charCode <=57">
                                 <p id="respCpfCad"></p> 
                             </div>
                             <div class="mb-3">

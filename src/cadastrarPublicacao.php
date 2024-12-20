@@ -217,7 +217,7 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
                             </div>
                             <div class="mb-3">
                                 <label for="telefone" class="form-label">*Telefone</label>
-                                <input type="text" name="telefone" class="form-control rounded-pill" id="telefone" placeholder="Digite o seu telefone" required>
+                                <input type="number" name="telefone" class="form-control rounded-pill" id="telefone" placeholder="Digite o seu telefone" onkeypress="return event.charCode>=48 && event.charCode <=57" required>
                                 <p id="respTelefoneCadPub"></p> 
                             </div>
                             <div class="mb-3">
