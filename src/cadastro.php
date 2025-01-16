@@ -20,22 +20,24 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
         //tratamento de erro Email
         // Verifica se o e-mail não corresponde à expressão regular
         if (preg_match('/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/', $email) !== 1){
-            throw new Exception("email irregular");
+            //throw new Exception("email irregular");
+            echo json_encode(["email irregular"]);
         }
 
         //tratamento de erro cpf
         // Remove espaços em branco e caracteres não numéricos
-        $cpf = preg_replace('/\D/', '', trim($cpf));
-        if (strlen($cpf) === 11 && ctype_digit($cpf)){
-            //checa se o cpf tem 11 digitos numericos
-        } else {
-            throw new Exception("cpf irregular");
+        //$cpf = preg_replace('/\D/', '', trim($cpf));
+        //checa se o cpf tem 11 digitos
+        if (strlen($cpf) !== 11){ //&& ctype_digit($cpf
+            
+            echo json_encode(["cpf irregular"]);
         }
 
         //tratamento de erro NomeCompleto
         // Verifica se há mais de um espaço consecutivo
         if (preg_match('/\s{2,}/', $nomeCompleto)){
-            throw new Exception("nomeCompleto irregular");
+            //throw new Exception("nomeCompleto irregular");
+            echo json_encode(["nomeCompleto irregular"]);
         }
       
         // Verifica se todos os campos foram enviados corretamente
@@ -68,15 +70,15 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
                     echo json_encode(["status" => "success", "message" => "Dados inseridos com sucesso!"]);
                 } else {
                     // Retorna uma resposta de erro se falhar
-                    throw new Exception("Erro ao inserir os dados" . $stmt->error);
-                    //echo json_encode(["status" => "error", "message" => "Erro ao inserir os dados: " . $stmt->error]);
+                    //throw new Exception("Erro ao inserir os dados" . $stmt->error);
+                    echo json_encode(["status" => "error", "message" => "Erro ao inserir os dados: " . $stmt->error]);
                 }
                 
                 // Fecha a declaração
                 $stmt->close();
             } else {
-                throw new Exception("Erro ao preparar a consulta" . $conn->error);
-                //echo json_encode(["status" => "error", "message" => "Erro ao preparar a consulta: " . $conn->error]);
+                //throw new Exception("Erro ao preparar a consulta" . $conn->error);
+                echo json_encode(["status" => "error", "message" => "Erro ao preparar a consulta: " . $conn->error]);
             }
             
             // Fecha a conexão
@@ -161,6 +163,7 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
                                 <input type="password" name="senha" id="senha" class="form-control rounded-pill" aria-describedby="blocoAjudaSenha" placeholder="Digite uma senha" required>
                                 <p id="respSenhaCad"></p> 
                                 <div id="blocoAjudaSenha" class="form-text">
+                                    Senha deve possuir no mínimo 8 caracteres. 
                                     (*)Campos obrigatórios.
                                 </div>
                             </div>

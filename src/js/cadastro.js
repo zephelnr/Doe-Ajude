@@ -15,8 +15,11 @@ btnCadastrar.addEventListener("click", (e) => {
    if (senhaDesc.value != ""){
       senha = sha256(senhaDesc.value);
    }
-   
 
+   //verifica o tamanho da senha
+   let tamSenha = senhaDesc.value.length
+
+   
    const frmCadastrar = document.getElementById("frmCadastrar");
 
    const emailInput = frmCadastrar.querySelector("#email");
@@ -75,7 +78,7 @@ btnCadastrar.addEventListener("click", (e) => {
          //verifica se o campo nomeCompleto esta vazio
          if (nomeCompletoInput.value != "") {
             //respNomeCompletoCad.innerHTML = ``;
-            //verifica a resposta e se for "nomeCompleto irregular"aparece o texto
+            //verifica a resposta e se for "nomeCompleto irregular" aparece o texto
             if (response.includes("nomeCompleto irregular")) {
                respNomeCompletoCad.innerHTML = `O formato do Nome Completo está irregular!`;
             } else {
@@ -87,7 +90,12 @@ btnCadastrar.addEventListener("click", (e) => {
 
          //verifica se o campo senha esta vazio
          if (senhaInput.value != "") {
-            respSenhaCad.innerHTML = ``;
+            //verifica o tamanho da senha
+            if (tamSenha < 8) {
+               respSenhaCad.innerHTML = `A Senha possui menos que 8 caracteres!`;
+            } else {
+               respSenhaCad.innerHTML = ``;
+            }
          } else {
             respSenhaCad.innerHTML = `O campo Senha está vazio!`;
          }
