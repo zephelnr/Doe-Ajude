@@ -22,15 +22,16 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
         if (preg_match('/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/', $email) !== 1){
             //throw new Exception("email irregular");
             echo json_encode(["email irregular"]);
+            $email = '';
         }
 
         //tratamento de erro cpf
         // Remove espaços em branco e caracteres não numéricos
         //$cpf = preg_replace('/\D/', '', trim($cpf));
         //checa se o cpf tem 11 digitos
-        if (strlen($cpf) !== 11){ //&& ctype_digit($cpf
-            
+        if (strlen($cpf) !== 11){ //&& ctype_digit($cpf   
             echo json_encode(["cpf irregular"]);
+            $cpf = '';
         }
 
         //tratamento de erro NomeCompleto
@@ -38,6 +39,7 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
         if (preg_match('/\s{2,}/', $nomeCompleto)){
             //throw new Exception("nomeCompleto irregular");
             echo json_encode(["nomeCompleto irregular"]);
+            $nomeCompleto = '';
         }
       
         // Verifica se todos os campos foram enviados corretamente

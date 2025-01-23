@@ -21,6 +21,13 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
         $telefone= trim($_POST['telefone'] ?? '');
         $foto = $_POST['foto'] ?? '';
         $status = $_POST['status'] ?? '';
+
+        //tratamento de erro telefone
+        //checa se o telefone tem 10 ou 11 digitos
+        if (strlen($telefone) !== 10 && strlen($telefone) !== 11){ //&& ctype_digit($cpf   
+            echo json_encode(["telefone irregular"]);
+            $telefone = '';
+        }
       
         // Verifica se todos os campos foram enviados corretamente
         if (!empty($email) && !empty($titulo) && !empty($descricao) && !empty($cidade) && !empty($estado) && !empty($telefone) && !empty($status)) {
@@ -217,7 +224,7 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
                             </div>
                             <div class="mb-3">
                                 <label for="telefone" class="form-label">*Telefone</label>
-                                <input type="number" name="telefone" class="form-control rounded-pill" id="telefone" placeholder="Digite o seu telefone" onkeypress="return event.charCode>=48 && event.charCode <=57" required>
+                                <input type="number" name="telefone" class="form-control rounded-pill" id="telefone" placeholder="Digite o seu telefone (DD + número)" onkeypress="return event.charCode>=48 && event.charCode <=57" required>
                                 <p id="respTelefoneCadPub"></p> 
                             </div>
                             <div class="mb-3">
@@ -253,6 +260,14 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
                         </form>
                     </div>    
                 </div>    
+            </div>
+            <!-- Modal -->
+            <div class="modal" id="sucessoCadastroPublicacaoModal">
+                <div class="modal-content bg-success-subtle rounded-3">
+                <h2>Doe & Ajude</h2>
+                <p>Publicação cadastrada com sucesso!</p>
+                <button class="btn btn-success rounded-pill" id="fecharModal">Ir para publicações</button>
+                </div>
             </div>
         </main>
         <footer>

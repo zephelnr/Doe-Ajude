@@ -6,6 +6,10 @@ const respEstadoCadPub = document.querySelector("#respEstadoCadPub");
 const respTelefoneCadPub = document.querySelector("#respTelefoneCadPub");
 //const respFotoCadPub = document.querySelector("#respFotoCadPub");
 
+// Selecionar os elementos do Modal
+const modal = document.getElementById('sucessoCadastroPublicacaoModal');
+const fecharModalBtn = document.getElementById('fecharModal');
+
 btnPublicar.addEventListener("click", (e) => {
    e.preventDefault();
    const email = document.getElementById("email");
@@ -46,7 +50,22 @@ btnPublicar.addEventListener("click", (e) => {
 
          // Verifica a resposta para decidir o redirecionamento
          if (response.includes("response")) {
-            window.location.href = "publicacoes.php";
+            // Abrir o modal
+            modal.style.display = 'flex';
+
+            // Fechar o modal
+            fecharModalBtn.addEventListener('click', () => {
+               modal.style.display = 'none';
+               window.location.href = "publicacoes.php";
+            });
+            
+            // Fechar o modal ao clicar fora dele
+            window.addEventListener('click', (e) => {
+               if (e.target === modal) {
+               modal.style.display = 'none';
+               window.location.href = "publicacoes.php";
+               }
+            });
          }
 
          //verifica se o campo título esta vazio
@@ -79,7 +98,12 @@ btnPublicar.addEventListener("click", (e) => {
 
          //verifica se o campo telefone esta vazio
          if (telefoneInput.value != "") {
-            respTelefoneCadPub.innerHTML = ``;
+            //verifica a resposta e se for "telefone irregular" aparece o texto
+            if (response.includes("telefone irregular")) {
+               respTelefoneCadPub.innerHTML = `O campo telefone está com formato incorreto`;
+            } else {
+               respTelefoneCadPub.innerHTML = ``;
+            }
          } else {
             respTelefoneCadPub.innerHTML = `O campo Telefone está vazio!`;
          }
