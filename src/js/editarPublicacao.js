@@ -2,6 +2,11 @@ document.getElementById("email").textContent = email;
 document.getElementById("idPublicacao").textContent = idPublicacao;
 console.log(idPublicacao.value);
 console.log(email.value);
+
+// Selecionar os elementos do Modal
+const modal = document.getElementById('sucessoEdicaoPublicacaoModal');
+const fecharModalBtn = document.getElementById('fecharModal');
+
 function carregarSessaoEdit() {
     let xhr = new XMLHttpRequest();
     xhr.open("GET","editarPublicacao_get.php?idpublicacao=" + idPublicacao.value + "&usuario_email=" + email.value);
@@ -79,6 +84,12 @@ btnEditar.addEventListener("click", (e) => {
    formData.append("campoFoto", "foto");
    formData.append("status", "Editado");
 
+   //verifica o tamanho do telefone
+   let tamTelefone = telefone.value.length
+   if (tamTelefone < 10 || tamTelefone > 11){
+      formData.append("telefone", "");
+   }
+
    //inpede o campo foto adicionar lixo na tabela
    if(fotoInput != ""){
     formData.append("foto", fotoInput.value);
@@ -99,7 +110,22 @@ btnEditar.addEventListener("click", (e) => {
 
          // Verifica a resposta para decidir o redirecionamento
          if (response.includes("response")) {
-            window.location.href = "publicacoes.php";
+            // Abrir o modal
+            modal.style.display = 'flex';
+
+            // Fechar o modal
+            fecharModalBtn.addEventListener('click', () => {
+               modal.style.display = 'none';
+               window.location.href = "publicacoes.php";
+            });
+            
+            // Fechar o modal ao clicar fora dele
+            window.addEventListener('click', (e) => {
+               if (e.target === modal) {
+               modal.style.display = 'none';
+               window.location.href = "publicacoes.php";
+               }
+            });
          }
 
          //verifica se o campo título esta vazio
@@ -132,7 +158,12 @@ btnEditar.addEventListener("click", (e) => {
 
          //verifica se o campo telefone esta vazio
          if (telefoneInput.value != "") {
-            respTelefoneCadEdit.innerHTML = ``;
+            //verifica o número de dígitos do telefone
+            if (tamTelefone < 10 || tamTelefone > 11) {
+               respTelefoneCadEdit.innerHTML = `O campo telefone está com formato incorreto`;
+            } else {
+               respTelefoneCadEdit.innerHTML = ``;
+            }
          } else {
             respTelefoneCadEdit.innerHTML = `O campo Telefone está vazio!`;
          }

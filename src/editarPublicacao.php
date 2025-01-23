@@ -174,6 +174,15 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
                 </div>    
             </div>
 
+            <!-- Modal -->
+            <div class="modal" id="sucessoEdicaoPublicacaoModal">
+                <div class="modal-content bg-success-subtle rounded-3">
+                <h2>Doe & Ajude</h2>
+                <p>Publicação editada com sucesso!</p>
+                <button class="btn btn-success rounded-pill" id="fecharModal">Ir para publicações</button>
+                </div>
+            </div>
+
             <!-- Modal Body Deletar-->
             <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
             <div class="modal fade" id="modalIdDeletar" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false"
