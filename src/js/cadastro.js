@@ -18,7 +18,9 @@ btnCadastrar.addEventListener("click", (e) => {
 
    //verifica o tamanho da senha
    let tamSenha = senhaDesc.value.length
-
+   if (tamSenha < 8){
+      senha = "";
+   }
    
    const frmCadastrar = document.getElementById("frmCadastrar");
 
