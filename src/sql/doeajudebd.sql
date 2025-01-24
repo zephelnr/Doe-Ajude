@@ -8,21 +8,21 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 
 -- -----------------------------------------------------
--- Schema mydb
+-- Schema doeajudebd
 -- -----------------------------------------------------
 
 -- -----------------------------------------------------
--- Schema mydb
+-- Schema doeajudebd
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8mb4 ;
-USE `mydb` ;
+CREATE SCHEMA IF NOT EXISTS `doeajudebd` DEFAULT CHARACTER SET utf8mb4 ;
+USE `doeajudebd` ;
 
 -- -----------------------------------------------------
--- Table `mydb`.`usuario`
+-- Table `doeajudebd`.`usuario`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `mydb`.`usuario` ;
+DROP TABLE IF EXISTS `doeajudebd`.`usuario` ;
 
-CREATE TABLE IF NOT EXISTS `mydb`.`usuario` (
+CREATE TABLE IF NOT EXISTS `doeajudebd`.`usuario` (
   `email` VARCHAR(100) NOT NULL,
   `cpf` VARCHAR(11) NOT NULL,
   `nomeCompleto` VARCHAR(100) NOT NULL,
@@ -30,15 +30,15 @@ CREATE TABLE IF NOT EXISTS `mydb`.`usuario` (
   PRIMARY KEY (`email`))
 ENGINE = InnoDB;
 
-CREATE UNIQUE INDEX `cpf_UNIQUE` ON `mydb`.`usuario` (`cpf` ASC);
+CREATE UNIQUE INDEX `cpf_UNIQUE` ON `doeajudebd`.`usuario` (`cpf` ASC);
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`publicacao`
+-- Table `doeajudebd`.`publicacao`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `mydb`.`publicacao` ;
+DROP TABLE IF EXISTS `doeajudebd`.`publicacao` ;
 
-CREATE TABLE IF NOT EXISTS `mydb`.`publicacao` (
+CREATE TABLE IF NOT EXISTS `doeajudebd`.`publicacao` (
   `idpublicacao` INT NOT NULL AUTO_INCREMENT,
   `titulo` VARCHAR(100) NOT NULL,
   `descricao` VARCHAR(150) NOT NULL,
@@ -52,39 +52,39 @@ CREATE TABLE IF NOT EXISTS `mydb`.`publicacao` (
   PRIMARY KEY (`idpublicacao`),
   CONSTRAINT `fk_publicacao_usuario`
     FOREIGN KEY (`usuario_email`)
-    REFERENCES `mydb`.`usuario` (`email`)
+    REFERENCES `doeajudebd`.`usuario` (`email`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-CREATE INDEX `fk_publicacao_usuario_idx` ON `mydb`.`publicacao` (`usuario_email` ASC);
+CREATE INDEX `fk_publicacao_usuario_idx` ON `doeajudebd`.`publicacao` (`usuario_email` ASC);
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`interesse`
+-- Table `doeajudebd`.`interesse`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `mydb`.`interesse` ;
+DROP TABLE IF EXISTS `doeajudebd`.`interesse` ;
 
-CREATE TABLE IF NOT EXISTS `mydb`.`interesse` (
+CREATE TABLE IF NOT EXISTS `doeajudebd`.`interesse` (
   `idinteresse` INT NOT NULL AUTO_INCREMENT,
   `usuario_email` VARCHAR(100) NOT NULL,
   `publicacao_idpublicacao` INT NOT NULL,
   PRIMARY KEY (`idinteresse`),
   CONSTRAINT `fk_interesse_usuario1`
     FOREIGN KEY (`usuario_email`)
-    REFERENCES `mydb`.`usuario` (`email`)
+    REFERENCES `doeajudebd`.`usuario` (`email`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_interesse_publicacao1`
     FOREIGN KEY (`publicacao_idpublicacao`)
-    REFERENCES `mydb`.`publicacao` (`idpublicacao`)
+    REFERENCES `doeajudebd`.`publicacao` (`idpublicacao`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-CREATE INDEX `fk_interesse_usuario1_idx` ON `mydb`.`interesse` (`usuario_email` ASC);
+CREATE INDEX `fk_interesse_usuario1_idx` ON `doeajudebd`.`interesse` (`usuario_email` ASC);
 
-CREATE INDEX `fk_interesse_publicacao1_idx` ON `mydb`.`interesse` (`publicacao_idpublicacao` ASC);
+CREATE INDEX `fk_interesse_publicacao1_idx` ON `doeajudebd`.`interesse` (`publicacao_idpublicacao` ASC);
 
 
 SET SQL_MODE=@OLD_SQL_MODE;
