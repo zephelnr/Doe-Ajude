@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
 
  
      // Conectar ao banco de dados
-     $conn = new mysqli($servername, $username, $password, $dbname);
+     //$conn = new mysqli($servername, $username, $password, $dbname);
  
      // Verificar se a conexão foi bem-sucedida
      if ($conn->connect_error) {

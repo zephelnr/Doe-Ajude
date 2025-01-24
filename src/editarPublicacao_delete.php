@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD']=='DELETE') {
         //$idPublicacao = intval($array['idPublicacao']); // Converte o ID para inteiro
 
         // Conexão com o banco
-        $conn = new mysqli($servername, $username, $password, $dbname);
+        //$conn = new mysqli($servername, $username, $password, $dbname);
 
         // Verifica conexão
         if ($conn->connect_error) {

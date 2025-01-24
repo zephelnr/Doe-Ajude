@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD']=='PUT') {
          $status = $object['status'];
  
          // Conexão com o banco de dados usando MySQLi
-         $conn = new mysqli($servername, $username, $password, $dbname);
+         //$conn = new mysqli($servername, $username, $password, $dbname);
  
          // Verifica se a conexão foi bem-sucedida
          if ($conn->connect_error) {

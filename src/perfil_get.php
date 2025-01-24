@@ -9,7 +9,7 @@ require_once("conexao.php");
 if ($_SERVER['REQUEST_METHOD']=='GET') {
     try {   
         // Conectar ao banco de dados
-        $conn = new mysqli($servername, $username, $password, $dbname);
+        //$conn = new mysqli($servername, $username, $password, $dbname);
     
         // Verificar se a conexão foi bem-sucedida
         if ($conn->connect_error) {
