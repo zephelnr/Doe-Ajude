@@ -15,13 +15,19 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
         if ($conn->connect_error) {
             die("Conexão falhou: " . $conn->connect_error);   
         }
-
+    
+        // Verificar se o parâmetro 'id_estado' foi passado via GET
+        if (isset($_GET['id_estado'])) {
+            $id_estado = $_GET['id_estado'];
+            //print_r($_GET['id_estado']);
             
-        // Consultar o banco de dados para pegar os dados da publicação
-        $sql = "SELECT * FROM estado ORDER BY nome";
-        //$stmt = $conn->prepare($sql);
-        $result = $conn->query($sql);
-
+            // Consultar o banco de dados para pegar os dados da publicação
+            $sql = "SELECT * FROM municipio WHERE id_estado = '$id_estado' ORDER BY nome";
+            //$stmt = $conn->prepare($sql);
+            $result = $conn->query($sql);
+        } else {
+            throw new Exception("Nenhuma Publicação encontrada");
+        }
 
         // Executa a consulta
         //$stmt->execute();
@@ -30,19 +36,14 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
         // Converte os resultados para um array associativo
         //$publicacoes = [];
         if ($result->num_rows > 0) {
-            //echo "<label for=`estado` class=`form-label`>*Estado</label></br>";
-            //echo "<select class=`form-select` aria-label=`Default select estado` id=`estado` onchange=`carregarCidadeSelect()`>";
-            echo "<option selected value=''>Selecione o estado</option>";
+            echo "<option selected value=''>Selecione a cidade</option>";
             while ($row = $result->fetch_assoc()) {
                 //$publicacoes[] = $row;
                 //echo "<h1>Informações do Usuário</h1>";
                 //echo "<p>Titulo: " . $row['titulo'] . "<p>";
-                
-                echo "<option value='" . $row['id_estado'] ."'>" . $row['sigla'] . "</option>";
 
+                echo "<option value='" . $row['id_municipio'] ."'>" . $row['nome'] . "</option>";
             }
-            //echo "</select>";
-            //echo "<p id=`respEstadoCadPub`></p>";
         }
         //echo "<p>" . $publicacoes['titulo'] . "</p>";
         //print_r($publicacoes);

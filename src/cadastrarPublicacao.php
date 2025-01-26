@@ -181,17 +181,47 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
                                 -->
                                 <textarea class="form-control rounded" name="descricao" id="descricao" rows="3" placeholder="Digite uma descrição para a publicação" required></textarea>
                                 <p id="respDescricaoCadPub"></p> 
-                            </div>
-                            <div class="mb-3">
-                                <label for="cidade" class="form-label">*Cidade</label>
-                                <input type="text" name="cidade" class="form-control rounded-pill" id="cidade" placeholder="Digite a cidade" required>
-                                <p id="respCidadeCadPub"></p> 
-                            </div>
-                            <div class="mb-3">
+                            </div>                            
+                            <div class="mb-3" id="selectEstado">
                                 <label for="estado" class="form-label">*Estado</label>
                                 <!--<input type="text" name="estado" class="form-control rounded-pill" id="estado" placeholder="Digite o estado" required>-->
-                                <select class="form-select" aria-label="Default select estado" id="estado"></select>
+                                <select class="form-select" aria-label="Default select estado" id="estado">
+                                    <!--<option selected value="">Selecione o estado</option>
+                                    <option value="Acre">Acre</option>
+                                    <option value="Alagoas">Alagoas</option>
+                                    <option value="Amapá">Amapá</option>
+                                    <option value="Amazonas">Amazonas</option>
+                                    <option value="Bahia">Bahia</option>
+                                    <option value="Ceará">Ceará</option>
+                                    <option value="Distrito Federal">Distrito Federal</option>
+                                    <option value="Espírito Santo">Espírito Santo</option>
+                                    <option value="Goiás">Goiás</option>
+                                    <option value="Maranhão">Maranhão</option>
+                                    <option value="Mato Grosso">Mato Grosso</option>
+                                    <option value="Mato Grosso do Sul">Mato Grosso do Sul</option>
+                                    <option value="Minas Gerais">Minas Gerais</option>
+                                    <option value="Pará">Pará</option>
+                                    <option value="Paraíba">Paraíba</option>
+                                    <option value="Paraná">Paraná</option>
+                                    <option value="Pernambuco">Pernambuco</option>
+                                    <option value="Piauí">Piauí</option>
+                                    <option value="Rio de Janeiro">Rio de Janeiro</option>
+                                    <option value="Rio Grande do Norte">Rio Grande do Norte</option>
+                                    <option value="Rio Grande do Sul">Rio Grande do Sul</option>
+                                    <option value="Rondônia">Rondônia</option>
+                                    <option value="Roraima">Roraima</option>
+                                    <option value="Santa Catarina">Santa Catarina</option>
+                                    <option value="São Paulo">São Paulo</option>
+                                    <option value="Sergipe">Sergipe</option>
+                                    <option value="Tocantins">Tocantins</option>-->
+                                </select>
                                 <p id="respEstadoCadPub"></p> 
+                            </div>
+                            <div class="mb-3" id="selectCidade">
+                                <label for="cidade" class="form-label">*Cidade</label>
+                                <!--<input type="text" name="cidade" class="form-control rounded-pill" id="cidade" placeholder="Digite a cidade" required>-->
+                                <select class="form-select" aria-label="Default select cidade" id="cidade"></select>
+                                <p id="respCidadeCadPub"></p> 
                             </div>
                             <div class="mb-3">
                                 <label for="telefone" class="form-label">*Telefone</label>
@@ -254,5 +284,6 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
         <script src="js/cadastrarPublicacao.js"></script>
         <script src="js/estado.js"></script>
+        <script src="js/cidade.js"></script>
     </body>
 </html>
