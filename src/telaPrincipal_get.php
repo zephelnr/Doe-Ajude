@@ -8,7 +8,7 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
          // Verificar se o parâmetro de busca contendo o 'titulo' foi passado via GET
          if (!empty($titulo)) {
              // Consulta ao banco de dados
-             $stmt = $conn->prepare("SELECT * FROM publicacao WHERE (`status` = 'Publicado' OR `status` = 'Editado') AND titulo LIKE ? ORDER BY `data` DESC");
+             $stmt = $conn->prepare("SELECT publicacao.id_publicacao, publicacao.titulo, publicacao.descricao, publicacao.telefone, publicacao.foto, publicacao.status, publicacao.data, publicacao.usuario_email, municipio.nome AS cidade, estado.nome AS estado FROM publicacao INNER JOIN municipio ON publicacao.cidade = municipio.id_municipio INNER JOIN estado ON publicacao.estado = estado.id_estado WHERE (`status` = 'Publicado' OR `status` = 'Editado') AND titulo LIKE ? ORDER BY `data` DESC");
              
              // Adiciona os curingas para a pesquisa
              $buscaTitulo = "%$titulo%";
@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
              $result = $stmt->get_result();
          } else {
             // Consultar o banco de dados para pegar os dados da publicação
-            $sql = "SELECT * FROM publicacao WHERE  `status` = 'Publicado' OR `status` = 'Editado' ORDER BY `data` DESC";
+            $sql = "SELECT publicacao.id_publicacao, publicacao.titulo, publicacao.descricao, publicacao.telefone, publicacao.foto, publicacao.status, publicacao.data, publicacao.usuario_email, municipio.nome AS cidade, estado.nome AS estado FROM publicacao INNER JOIN municipio ON publicacao.cidade = municipio.id_municipio INNER JOIN estado ON publicacao.estado = estado.id_estado WHERE  `status` = 'Publicado' OR `status` = 'Editado' ORDER BY `data` DESC";
             $result = $conn->query($sql);
          }
        
