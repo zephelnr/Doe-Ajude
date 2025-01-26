@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
             print_r($_GET['id_publicacao']);
             
             // Consultar o banco de dados para pegar os dados da publicação
-            $sql = "SELECT publicacao.id_publicacao, publicacao.titulo, publicacao.descricao, publicacao.telefone, publicacao.foto, publicacao.status, publicacao.data, publicacao.usuario_email, municipio.nome AS cidade, estado.nome AS estado FROM publicacao INNER JOIN municipio ON publicacao.cidade = municipio.id_municipio INNER JOIN estado ON publicacao.estado = estado.id_estado WHERE id_publicacao = '$idpublicacao' AND usuario_email = '$usuario_email'";
+            $sql = "SELECT publicacao.id_publicacao, publicacao.titulo, publicacao.descricao, publicacao.telefone, publicacao.foto, publicacao.status, publicacao.data, publicacao.usuario_email, municipio.nome AS cidade, estado.sigla AS estado FROM publicacao INNER JOIN municipio ON publicacao.cidade = municipio.id_municipio INNER JOIN estado ON publicacao.estado = estado.id_estado WHERE id_publicacao = '$idpublicacao' AND usuario_email = '$usuario_email'";
             $result = $conn->query($sql);
 
             // Verificar se o usuário existe

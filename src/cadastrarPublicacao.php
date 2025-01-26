@@ -182,7 +182,7 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
                                 <textarea class="form-control rounded" name="descricao" id="descricao" rows="3" placeholder="Digite uma descrição para a publicação" required></textarea>
                                 <p id="respDescricaoCadPub"></p> 
                             </div>                            
-                            <div class="mb-3" id="selectEstado">
+                            <div class="mb-3">
                                 <label for="estado" class="form-label">*Estado</label>
                                 <!--<input type="text" name="estado" class="form-control rounded-pill" id="estado" placeholder="Digite o estado" required>-->
                                 <select class="form-select" aria-label="Default select estado" id="estado">

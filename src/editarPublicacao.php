@@ -105,17 +105,12 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
                                 -->
                                 <textarea class="form-control rounded" name="descricao" id="descricao" rows="3" placeholder="Digite uma descrição para a publicação" required></textarea>
                                 <p id="respDescricaoCadEdit"></p> 
-                            </div>
-                            <div class="mb-3">
-                                <label for="cidade" class="form-label">*Cidade</label>
-                                <input type="text" name="cidade" class="form-control rounded-pill" id="cidade" placeholder="Digite a cidade" required>
-                                <p id="respCidadeCadEdit"></p> 
-                            </div>
+                            </div>                            
                             <div class="mb-3">
                                 <label for="estado" class="form-label">*Estado</label>
                                 <!--<input type="text" name="estado" class="form-control rounded-pill" id="estado" placeholder="Digite o estado" required>-->
                                 <select class="form-select" aria-label="Default select estado" name="estado" id="estado">
-                                    <option value="">Selecione o estado</option>
+                                    <!--<option value="">Selecione o estado</option>
                                     <option value="Acre">Acre</option>
                                     <option value="Alagoas">Alagoas</option>
                                     <option value="Amapá">Amapá</option>
@@ -142,9 +137,14 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
                                     <option value="Santa Catarina">Santa Catarina</option>
                                     <option value="São Paulo">São Paulo</option>
                                     <option value="Sergipe">Sergipe</option>
-                                    <option value="Tocantins">Tocantins</option>
+                                    <option value="Tocantins">Tocantins</option>-->
                                 </select>
                                 <p id="respEstadoCadEdit"></p> 
+                            </div>
+                            <div class="mb-3">
+                                <label for="cidade" class="form-label">*Cidade</label>
+                                <input type="text" name="cidade" class="form-control rounded-pill" id="cidade" placeholder="Digite a cidade" required>
+                                <p id="respCidadeCadEdit"></p> 
                             </div>
                             <div class="mb-3">
                                 <label for="telefone" class="form-label">*Telefone</label>
