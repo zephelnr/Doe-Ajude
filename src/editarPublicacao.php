@@ -21,9 +21,9 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
          die("Conexão falhou: " . $conn->connect_error);   
      }
  
-     // Verificar se o parâmetro 'idpublicacao' foi passado via GET
-     if (isset($_GET['idpublicacao'])) {
-         $idPublicacao = $_GET['idpublicacao'];
+     // Verificar se o parâmetro 'id_publicacao' foi passado via GET
+     if (isset($_GET['id_publicacao'])) {
+         $idPublicacao = $_GET['id_publicacao'];
          $email = $_SESSION['email'];
          $email2 = $_GET['usuario_email'];
          

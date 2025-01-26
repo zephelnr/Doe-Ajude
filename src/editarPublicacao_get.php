@@ -17,14 +17,14 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
         }
     
         // Verificar se o parâmetro 'email' foi passado via GET
-        if (isset($_GET['idpublicacao']) && isset($_GET['usuario_email'])) {
-            $idpublicacao = $_GET['idpublicacao'];
+        if (isset($_GET['id_publicacao']) && isset($_GET['usuario_email'])) {
+            $idpublicacao = $_GET['id_publicacao'];
             $usuario_email = $_GET['usuario_email'];
             print_r($_GET['usuario_email']);
-            print_r($_GET['idpublicacao']);
+            print_r($_GET['id_publicacao']);
             
             // Consultar o banco de dados para pegar os dados da publicação
-            $sql = "SELECT * FROM publicacao WHERE idpublicacao = '$idpublicacao' AND usuario_email = '$usuario_email'";
+            $sql = "SELECT publicacao.id_publicacao, publicacao.titulo, publicacao.descricao, publicacao.telefone, publicacao.foto, publicacao.status, publicacao.data, publicacao.usuario_email, municipio.nome AS cidade, estado.nome AS estado FROM publicacao INNER JOIN municipio ON publicacao.cidade = municipio.id_municipio INNER JOIN estado ON publicacao.estado = estado.id_estado WHERE id_publicacao = '$idpublicacao' AND usuario_email = '$usuario_email'";
             $result = $conn->query($sql);
 
             // Verificar se o usuário existe

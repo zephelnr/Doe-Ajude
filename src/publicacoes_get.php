@@ -73,7 +73,7 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
                                 echo "<div class='btn-group'>";
                                     //echo "<button class='btn btn-sm btn-outline-success' id='publicacao' onClick='clickPublicacao(this.value);' value='" . $row['id_publicacao'] ."'>Editar</button>";
                                     //echo "<form><button type='button' class='btn btn-sm btn-outline-success'>Editar</button></form>";
-                                    echo "<a role='button' class='btn btn-sm btn-outline-success' href='editarPublicacao.php?idpublicacao=" . $row['id_publicacao'] . "&usuario_email=" . $row['usuario_email'] . "'>Editar</a>"; //?idpublicacao=" . $row['idpublicacao'] . "&usuario_email=" . $row['usuario_email'] . "
+                                    echo "<a role='button' class='btn btn-sm btn-outline-success' href='editarPublicacao.php?id_publicacao=" . $row['id_publicacao'] . "&usuario_email=" . $row['usuario_email'] . "'>Editar</a>"; //?idpublicacao=" . $row['idpublicacao'] . "&usuario_email=" . $row['usuario_email'] . "
                                 echo "</div>";
                                 echo "<small class='text-muted'>" . $row['cidade'] . "</br>" . $row['estado'] . "</br>" . $row['status'] ." no dia: " .  $dataFormatada . "</small>";
                             echo "</div>";

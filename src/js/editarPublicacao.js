@@ -9,7 +9,7 @@ const fecharModalBtn = document.getElementById('fecharModal');
 
 function carregarSessaoEdit() {
     let xhr = new XMLHttpRequest();
-    xhr.open("GET","editarPublicacao_get.php?idpublicacao=" + idPublicacao.value + "&usuario_email=" + email.value);
+    xhr.open("GET","editarPublicacao_get.php?id_publicacao=" + idPublicacao.value + "&usuario_email=" + email.value);
     xhr.onreadystatechange = function() {
         if (xhr.status==200 && xhr.readyState==4) {
             console.log(xhr.responseText);
