@@ -52,14 +52,14 @@ function carregarSessaoEdit() {
             estadoSigla.value = estadoGet;
             estadoId.value = idEstadoGet;
             console.log("aqui",idEstadoGet);
-            console.log("XMLHttpRequest Error2",siglaEstado.value);
+            //console.log("XMLHttpRequest Error2",siglaEstado.value);
         
             if(siglaEstado.value != ""){
                //const siglaEstado = document.getElementById("estadoSigla");
-               console.log("XMLHttpRequest Error",siglaEstado.value);
+               console.log("XMLHttpRequest Error",idEstadoGet);
                var estado = document.getElementById("estado");
                   let xhr = new XMLHttpRequest();
-                  xhr.open("GET","estado.php?nome=");
+                  xhr.open("GET","estadoEdit.php?id_estado=" + idEstadoGet + "&sigla=" + estadoGet);
                   xhr.onreadystatechange = function() {
                      if (xhr.status==200 && xhr.readyState==4) {
                            //console.log(xhr.responseText);
