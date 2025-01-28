@@ -59,7 +59,7 @@ function carregarSessaoEdit() {
                console.log("XMLHttpRequest Error",idEstadoGet);
                var estado = document.getElementById("estado");
                   let xhr = new XMLHttpRequest();
-                  xhr.open("GET","estadoEdit.php?id_estado=" + idEstadoGet + "&sigla=" + estadoGet);
+                  xhr.open("GET","estadoEditar.php?id_estado=" + idEstadoGet + "&sigla=" + estadoGet);
                   xhr.onreadystatechange = function() {
                      if (xhr.status==200 && xhr.readyState==4) {
                            //console.log(xhr.responseText);
