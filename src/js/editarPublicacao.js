@@ -11,15 +11,19 @@ function carregarSessaoEdit() {
     let xhr = new XMLHttpRequest();
     xhr.open("GET","editarPublicacao_get.php?id_publicacao=" + idPublicacao.value + "&usuario_email=" + email.value);
     xhr.onreadystatechange = function() {
+         const siglaEstado = document.getElementById("estadoSigla");
+
         if (xhr.status==200 && xhr.readyState==4) {
             console.log(xhr.responseText);
 
             const titulo = document.getElementById("titulo");
             const descricao = document.getElementById("descricao");
-            const cidade = document.getElementById("cidade");
-            const estado = document.getElementById("estado");
+            //const cidade = document.getElementById("cidade");
+            //const estado = document.getElementById("estado");
             const telefone = document.getElementById("telefone");
             const foto = document.getElementById("foto");
+            const estadoSigla = document.getElementById("estadoSigla");
+            const estadoId = document.getElementById("estadoId");
 
             var response = xhr.responseText;
             
@@ -34,20 +38,41 @@ function carregarSessaoEdit() {
             var estadoGet = doc.querySelector("h5").textContent;
             var telefoneGet = doc.querySelector("h6").textContent;
             var fotoGet = doc.querySelector("h7").textContent;
+            var idEstadoGet = doc.querySelector("h8").textContent;
+            var idCidadeGet = doc.querySelector("h9").textContent;
 
 
             // Exibindo os dados
             titulo.value = tituloGet;
             descricao.value = descricaoGet;
-            cidade.value = cidadeGet;
-            estado.value = estadoGet;
+            //cidade.value = cidadeGet;
+            //estado.value = estadoGet;
             telefone.value = telefoneGet;
             foto.value = fotoGet;
-
-        }
-        else {
-            console.log("XMLHttpRequest Error");
-        }
+            estadoSigla.value = estadoGet;
+            estadoId.value = idEstadoGet;
+            console.log("aqui",idEstadoGet);
+            console.log("XMLHttpRequest Error2",siglaEstado.value);
+        
+            if(siglaEstado.value != ""){
+               //const siglaEstado = document.getElementById("estadoSigla");
+               console.log("XMLHttpRequest Error",siglaEstado.value);
+               var estado = document.getElementById("estado");
+                  let xhr = new XMLHttpRequest();
+                  xhr.open("GET","estado.php?nome=");
+                  xhr.onreadystatechange = function() {
+                     if (xhr.status==200 && xhr.readyState==4) {
+                           //console.log(xhr.responseText);
+                           //var publicacoes = this.response;
+                           //console.log(publicacoes);
+                           if(xhr.responseText != ""){
+                              estado.innerHTML = xhr.responseText;
+                           }
+                     }
+                  }
+                  xhr.send();
+            }
+         }
     }
     xhr.send();
 }

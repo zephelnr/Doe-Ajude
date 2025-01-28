@@ -108,6 +108,8 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
                             </div>                            
                             <div class="mb-3">
                                 <label for="estado" class="form-label">*Estado</label>
+                                <input type="hidden" name="estadoSigla" id="estadoSigla" value="">
+                                <input type="hidden" name="estadoId" id="estadoId" value="">
                                 <!--<input type="text" name="estado" class="form-control rounded-pill" id="estado" placeholder="Digite o estado" required>-->
                                 <select class="form-select" aria-label="Default select estado" name="estado" id="estado">
                                     <!--<option value="">Selecione o estado</option>
@@ -143,7 +145,8 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
                             </div>
                             <div class="mb-3">
                                 <label for="cidade" class="form-label">*Cidade</label>
-                                <input type="text" name="cidade" class="form-control rounded-pill" id="cidade" placeholder="Digite a cidade" required>
+                                <!--<input type="text" name="cidade" class="form-control rounded-pill" id="cidade" placeholder="Digite a cidade" required>-->
+                                <select class="form-select" aria-label="Default select cidade" id="cidade"></select>
                                 <p id="respCidadeCadEdit"></p> 
                             </div>
                             <div class="mb-3">
@@ -220,8 +223,9 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
             integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
             crossorigin="anonymous"
         ></script>
-
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+        
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>       
         <script src="js/editarPublicacao.js"></script>
+        <script src="js/cidade.js"></script>
     </body>
 </html>
