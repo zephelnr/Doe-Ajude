@@ -12,6 +12,7 @@ function carregarSessaoEdit() {
     xhr.open("GET","editarPublicacao_get.php?id_publicacao=" + idPublicacao.value + "&usuario_email=" + email.value);
     xhr.onreadystatechange = function() {
          const siglaEstado = document.getElementById("estadoSigla");
+         const cidadeNome = document.getElementById("cidadeNome");
 
         if (xhr.status==200 && xhr.readyState==4) {
             console.log(xhr.responseText);
@@ -24,6 +25,8 @@ function carregarSessaoEdit() {
             const foto = document.getElementById("foto");
             const estadoSigla = document.getElementById("estadoSigla");
             const estadoId = document.getElementById("estadoId");
+            const cidadeNome = document.getElementById("cidadeNome");
+            const cidadeId = document.getElementById("cidadeId");
 
             var response = xhr.responseText;
             
@@ -51,6 +54,8 @@ function carregarSessaoEdit() {
             foto.value = fotoGet;
             estadoSigla.value = estadoGet;
             estadoId.value = idEstadoGet;
+            cidadeNome.value = cidadeGet;
+            cidadeId.value = idCidadeGet;
             console.log("aqui",idEstadoGet);
             //console.log("XMLHttpRequest Error2",siglaEstado.value);
         
@@ -71,6 +76,21 @@ function carregarSessaoEdit() {
                      }
                   }
                   xhr.send();
+               if(cidadeNome.value != ""){
+                  console.log("cidadeNome",cidadeNome.value);
+                  console.log("idEstado2",idEstadoGet.value);
+                  let xhr = new XMLHttpRequest();
+                  xhr.open("GET","cidadeEditar.php?id_municipio=" + cidadeId.value + "&nome=" + cidadeNome.value + "&id_estado=" + estadoId.value);
+                  xhr.onreadystatechange = function() {
+                     if (xhr.status==200 && xhr.readyState==4) {
+                           //console.log(xhr.responseText);
+                           if(xhr.responseText != ""){
+                              cidade.innerHTML = xhr.responseText;
+                           }
+                     }
+                  }
+                  xhr.send();
+               }               
             }
          }
     }
