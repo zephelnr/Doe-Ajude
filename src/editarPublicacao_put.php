@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD']=='PUT') {
     // em seguida criar a instrução SQL para fazer o UPDATE no banco
     //print_r($array);
     // Verifica se os dados necessários foram enviados
-    //print_r($plainData);
+    print_r($plainData);
     if (isset($object['email']) && isset($object['idPublicacao']) && !empty($object['titulo']) && !empty($object['descricao']) && !empty($object['cidade']) && !empty($object['estado']) && !empty($object['telefone'])) {
          $idPublicacao= $object['idPublicacao'];        
          $usuario_email = $object['email'];
@@ -40,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD']=='PUT') {
          }
  
          // Prepara a consulta SQL
-         $sql = "UPDATE publicacao SET `$campoTitulo` = ?, `$campoDescricao` = ?, `$campoCidade` = ?, `$campoEstado` = ?, `$campoTelefone` = ?, `$campoFoto` = ?, `status` = ?, `data` = NOW() WHERE idpublicacao = ? AND usuario_email = ?";
+         $sql = "UPDATE publicacao SET `$campoTitulo` = ?, `$campoDescricao` = ?, `$campoCidade` = ?, `$campoEstado` = ?, `$campoTelefone` = ?, `$campoFoto` = ?, `status` = ?, `data` = NOW() WHERE id_publicacao = ? AND usuario_email = ?";
          $stmt = $conn->prepare($sql);
  
          if ($stmt) {

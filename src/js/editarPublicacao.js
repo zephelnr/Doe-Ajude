@@ -56,12 +56,10 @@ function carregarSessaoEdit() {
             estadoId.value = idEstadoGet;
             cidadeNome.value = cidadeGet;
             cidadeId.value = idCidadeGet;
-            console.log("aqui",idEstadoGet);
             //console.log("XMLHttpRequest Error2",siglaEstado.value);
         
             if(siglaEstado.value != ""){
                //const siglaEstado = document.getElementById("estadoSigla");
-               console.log("XMLHttpRequest Error",idEstadoGet);
                var estado = document.getElementById("estado");
                   let xhr = new XMLHttpRequest();
                   xhr.open("GET","estadoEditar.php?id_estado=" + idEstadoGet + "&sigla=" + estadoGet);
@@ -77,8 +75,6 @@ function carregarSessaoEdit() {
                   }
                   xhr.send();
                if(cidadeNome.value != ""){
-                  console.log("cidadeNome",cidadeNome.value);
-                  console.log("idEstado2",idEstadoGet.value);
                   let xhr = new XMLHttpRequest();
                   xhr.open("GET","cidadeEditar.php?id_municipio=" + cidadeId.value + "&nome=" + cidadeNome.value + "&id_estado=" + estadoId.value);
                   xhr.onreadystatechange = function() {
@@ -117,10 +113,15 @@ btnEditar.addEventListener("click", (e) => {
    const telefoneInput = frmEditar.querySelector("#telefone");
    const fotoInput = frmEditar.querySelector("#foto");
 
+   console.log("cidade", cidadeInput.value);
+   console.log("estado",estadoInput.value);
+
    let formData = new FormData(frmEditar);
 
    //inclui no formdata o campo e o nome do campo
    formData.append("email", email.value);
+   formData.append("cidade",cidadeInput.value);
+   formData.append("estado", estadoInput.value);
    formData.append("campoTitulo", "titulo");
    formData.append("campoDescricao", "descricao");
    formData.append("campoCidade", "cidade");
