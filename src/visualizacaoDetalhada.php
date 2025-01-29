@@ -5,6 +5,22 @@ if (empty($_SESSION['email'])) {
 }
 ?>
 
+<?php
+require_once("conexao.php");
+
+if ($_SERVER['REQUEST_METHOD']=='GET') { 
+     // Verificar se a conexão foi bem-sucedida
+     if ($conn->connect_error) {
+         die("Conexão falhou: " . $conn->connect_error);   
+     }
+ 
+     // Verificar se o parâmetro 'id_publicacao' foi passado via GET
+     if (isset($_GET['id_publicacao'])) {
+         $idPublicacao = $_GET['id_publicacao'];
+         }
+    }
+?>
+
 <!doctype html>
 <html lang="pt-br">
     <head>
@@ -61,6 +77,7 @@ if (empty($_SESSION['email'])) {
         <main>
             <h2 class="mb-3 text-center">Visualização Detalhada</h2>
             <p><input type="hidden" name="email" id="email" value="<?= $_SESSION['email']; ?>"></p>
+            <p><input type="hidden" name="idPublicacao" id="idPublicacao" value="<?= $idPublicacao; ?>"></p>
             <div class="mb-3 container d-flex">
                 <!-- Caixa de tamanho fixo com classes Bootstrap -->
                 <div class="fixed-size-box bg-success-subtle d-flex rounded" id="publicacoes">           
@@ -115,6 +132,6 @@ if (empty($_SESSION['email'])) {
         ></script>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-        <script src="js/"></script>
+        <script src="js/visualizacaoDetalhada.js"></script>
     </body>
 </html>
