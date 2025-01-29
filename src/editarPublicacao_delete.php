@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD']=='DELETE') {
         }
 
         // Query de delete
-        $sql = "DELETE FROM publicacao WHERE idpublicacao = ?";
+        $sql = "DELETE FROM publicacao WHERE id_publicacao = ?";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("s", $idPublicacao);
 
