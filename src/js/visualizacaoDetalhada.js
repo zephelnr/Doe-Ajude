@@ -13,6 +13,7 @@ function carregarDetalhes() {
             const descricao = document.getElementById("descricao");
             const cidade_estado = document.getElementById("cidadeEstado");
             const status_data = document.getElementById("statusData");
+            const botaoInteresse = document.getElementById("botaoInteresse");
 
             var response = xhr.responseText;
             
@@ -27,18 +28,19 @@ function carregarDetalhes() {
             var estadoGet = doc.querySelector("h5").textContent;
             var statusGet = doc.querySelector("h6").textContent;
             var dataGet = doc.querySelector("h7").textContent;
+            var botao = doc.querySelector("a");
 
             //formatar data
             const data = new Date(dataGet);
             const dataFormatada = data.toLocaleDateString('pt-BR'); // Formato: dd/mm/aaaa
-            console.log(dataFormatada);
+            console.log(botao);
 
             // Exibindo os dados
             titulo.value = tituloGet;
             descricao.value = descricaoGet;
             cidade_estado.value = cidadeGet + " / " + estadoGet;
             status_data.value = statusGet + " em: " + dataFormatada;
-
+            botaoInteresse.innerHTML = botao;
         }
         else {
             //console.log("XMLHttpRequest Error");

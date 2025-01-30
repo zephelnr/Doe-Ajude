@@ -42,6 +42,10 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
                 echo "<h7>" . $row['data'] . "</h7><br>";
                 echo "<h8>" . $row['usuario_email'] . "</h8><br>";
                 echo "<h9>" . $row['foto'] . "</h9><br>";
+
+                if ($email == $row['usuario_email']){
+                    echo "<a class='btn btn-success rounded-pill' href='' role='button'>Demonstrar interesse</a>";
+                }
             } else {
                 throw new Exception("Nenhuma publicação encontrada com esse id.");
             }
