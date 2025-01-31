@@ -97,12 +97,12 @@ CREATE INDEX `fk_publicacao_usuario_idx` ON `doeajudebd`.`publicacao` (`usuario_
 -- -----------------------------------------------------
 -- Table `doeajudebd`.`interesse`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `doeajudebd`.`interesse` ;
+DROP TABLE IF EXISTS `doeajudebd`.`interesse`;
 
 CREATE TABLE IF NOT EXISTS `doeajudebd`.`interesse` (
   `id_interesse` INT NOT NULL AUTO_INCREMENT,
   `usuario_email` VARCHAR(100) NOT NULL,
-  `publicacao_id_publicacao` INT NOT NULL,
+  `publicacao_id_publicacao` INT NULL,
   PRIMARY KEY (`id_interesse`),
   CONSTRAINT `fk_interesse_usuario1`
     FOREIGN KEY (`usuario_email`)
@@ -112,9 +112,9 @@ CREATE TABLE IF NOT EXISTS `doeajudebd`.`interesse` (
   CONSTRAINT `fk_interesse_publicacao1`
     FOREIGN KEY (`publicacao_id_publicacao`)
     REFERENCES `doeajudebd`.`publicacao` (`id_publicacao`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+    ON DELETE SET NULL
+    ON UPDATE CASCADE
+) ENGINE = InnoDB;
 
 CREATE INDEX `fk_interesse_usuario1_idx` ON `doeajudebd`.`interesse` (`usuario_email` ASC);
 
