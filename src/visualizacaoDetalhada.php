@@ -76,8 +76,10 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
         </header>
         <main>
             <h2 class="mb-3 text-center">Visualização Detalhada</h2>
-            <p><input type="hidden" name="email" id="email" value="<?= $_SESSION['email']; ?>"></p>
-            <p><input type="hidden" name="idPublicacao" id="idPublicacao" value="<?= $idPublicacao; ?>"></p>
+            <form action="" method="post" id="frmInteresse">
+                <p><input type="hidden" name="email" id="email" value="<?= $_SESSION['email']; ?>"></p>
+                <p><input type="hidden" name="idPublicacao" id="idPublicacao" value="<?= $idPublicacao; ?>"></p>
+            </form>
             <div class="mb-3 container d-flex">
                 <!-- Caixa de tamanho fixo com classes Bootstrap -->
                 <div class="fixed-size-box bg-success-subtle d-flex rounded" id="publicacoes">           
@@ -136,5 +138,6 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
         <script src="js/visualizacaoDetalhada.js"></script>
+        <script src="js/demonstrarInteresse.js"></script>
     </body>
 </html>

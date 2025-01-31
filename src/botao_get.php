@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
         if (isset($_GET['botao'])) {
             $botao = $_GET['botao'];
             //print_r("botao$botao");
-            echo "<button class='btn btn-success rounded-pill' type='button' id='btn" . $botao . "Interesse'>" . $botao . " Interesse</button>";
+            echo "<button class='btn btn-success rounded-pill' type='button' onclick='DemonstrarInteresse()'>" . $botao . " Interesse</button>";
         } else {
             throw new Exception("Nenhuma Publicação encontrada");
         } 

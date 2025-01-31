@@ -44,7 +44,7 @@ function carregarDetalhes() {
                         console.log(xhr.responseText);
                         if(xhr.responseText != ""){
                             botaoInteresse.innerHTML = xhr.responseText;
-                        }
+                        } 
                     }
                 }
                 xhr.send();
