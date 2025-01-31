@@ -90,9 +90,9 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
                                 <div>
                                     <svg class="bd-placeholder-img card-img-top" width="100%" height="325" xmlns="http://www.w3.org/2000/svg"
                                     aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" role="img" focusable="false">
-                                        <title>Placeholder</title>
+                                        <title>Foto</title>
                                         <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%" fill="#eceeef"
-                                        dy=".3em">Thumbnail</text>
+                                        dy=".3em">Foto</text>
                                     </svg>
                                 </div>                                
                             </div>
@@ -124,7 +124,14 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
                     </div>
                 </div>
             </div>
-            
+            <!-- Modal -->
+            <div class="modal" id="sucessoCadastroPublicacaoModal">
+                <div class="modal-content bg-success-subtle rounded-3">
+                <h2>Doe & Ajude</h2>
+                <p id="modalInteresse"></p>
+                <button class="btn btn-success rounded-pill" id="fecharModal">Fechar</button>
+                </div>
+            </div>
         </main>
         <footer>
             <!-- place footer here -->
