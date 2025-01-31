@@ -28,19 +28,34 @@ function carregarDetalhes() {
             var estadoGet = doc.querySelector("h5").textContent;
             var statusGet = doc.querySelector("h6").textContent;
             var dataGet = doc.querySelector("h7").textContent;
-            var botao = doc.querySelector("a");
+            var botao = doc.querySelector("a").textContent;
 
             //formatar data
             const data = new Date(dataGet);
             const dataFormatada = data.toLocaleDateString('pt-BR'); // Formato: dd/mm/aaaa
+            
+            //botão
             console.log(botao);
+            if (botao == "Demonstrar") {
+                let xhr = new XMLHttpRequest();
+                xhr.open("GET","botao_get.php?botao=" + botao);
+                xhr.onreadystatechange = function() {
+                    if (xhr.status==200 && xhr.readyState==4) {
+                        console.log(xhr.responseText);
+                        if(xhr.responseText != ""){
+                            botaoInteresse.innerHTML = xhr.responseText;
+                        }
+                    }
+                }
+                xhr.send();
+            }
 
             // Exibindo os dados
             titulo.value = tituloGet;
             descricao.value = descricaoGet;
             cidade_estado.value = cidadeGet + " / " + estadoGet;
             status_data.value = statusGet + " em: " + dataFormatada;
-            botaoInteresse.innerHTML = botao;
+            //botaoInteresse.innerHTML = botao;
         }
         else {
             //console.log("XMLHttpRequest Error");

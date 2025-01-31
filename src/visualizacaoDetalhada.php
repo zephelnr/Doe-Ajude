@@ -81,7 +81,7 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
             <div class="mb-3 container d-flex">
                 <!-- Caixa de tamanho fixo com classes Bootstrap -->
                 <div class="fixed-size-box bg-success-subtle d-flex rounded" id="publicacoes">           
-                    <div class="container text-center" style="height: 450px;">
+                    <div class="container text-center" style="height: 500px;">
                         <div class="row">                           
                             
                             <div class="col">
@@ -113,7 +113,12 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
                                 </div>
                             </div>
                         </div>
-                        <div  id="botaoInteresse"></div>  
+                        <div class="mb-3">
+                            <div id="botaoInteresse"></div>                            
+                        </div>
+                        <div>
+                            <a class="btn btn-success rounded-pill" href="telaPrincipal.php" role="button">Voltar para página principal</a>
+                        </div>  
                     </div>
                 </div>
             </div>
