@@ -36,7 +36,7 @@ function carregarDetalhes() {
             
             //botão
             console.log(botao);
-            if (botao == "Demonstrar") {
+            if (botao == "Demonstrar" || botao == "Desfazer") {
                 let xhr = new XMLHttpRequest();
                 xhr.open("GET","botao_get.php?botao=" + botao);
                 xhr.onreadystatechange = function() {
