@@ -67,7 +67,7 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
                             <a class="nav-link" href="perfil.php">Perfil</a>
                             <a class="nav-link active" aria-current="page" href="publicacoes.php">Publicações</a>
                             <a class="nav-link" href="interesses.php">Meus Interesses</a>
-                            <a class="nav-link disabled" aria-disabled="true">Interessados</a>
+                            <a class="nav-link" href="interessados.php">Interessados</a>
                         </div>
                     </div>
                     <a class="btn btn-success rounded-pill" href="logout.php" role="button">Sair</a>

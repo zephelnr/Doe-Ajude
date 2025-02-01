@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
             //print_r($_GET['email']);
             
             // Consultar o banco de dados para pegar os dados da publicação
-            $sql = "SELECT interesse.id_interesse, publicacao.titulo AS titulo, publicacao.telefone AS telefone, publicacao.data AS `data`, municipio.nome AS cidade, estado.sigla AS estado, usuario.nomeCompleto AS nome, usuario.cpf AS cpf FROM interesse INNER JOIN publicacao ON interesse.publicacao_id_publicacao = publicacao.id_publicacao INNER JOIN municipio ON publicacao.cidade = municipio.id_municipio INNER JOIN estado ON publicacao.estado = estado.id_estado INNER JOIN usuario ON usuario.email = publicacao.usuario_email WHERE interesse.usuario_email = '$usuario_email' ORDER BY `data` DESC";
+            $sql = "SELECT interesse.id_interesse, publicacao.id_publicacao AS idpub, publicacao.titulo AS titulo, publicacao.telefone AS telefone, publicacao.data AS `data`, municipio.nome AS cidade, estado.sigla AS estado, usuario.nomeCompleto AS nome, usuario.cpf AS cpf FROM interesse INNER JOIN publicacao ON interesse.publicacao_id_publicacao = publicacao.id_publicacao INNER JOIN municipio ON publicacao.cidade = municipio.id_municipio INNER JOIN estado ON publicacao.estado = estado.id_estado INNER JOIN usuario ON usuario.email = publicacao.usuario_email WHERE interesse.usuario_email = '$usuario_email' ORDER BY `data` DESC";
             //$stmt = $conn->prepare($sql);
             $result = $conn->query($sql);
         } else {
@@ -35,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
                             echo "<div class='hstack gap-3'>";
                             
                                 echo "<div>";
-                                    echo "<div class='p-2 bg-success-subtle rounded'>Titulo:</div>";
+                                    echo "<div class='p-2 bg-success-subtle rounded'><a href='visualizacaoDetalhada.php?id_publicacao=" . $row['idpub'] . "' class='link-success link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover'>Titulo:</a></div>";
                                     echo "<input type='text' name='titulo' class='form-control rounded' id='titulo' value='" . $row['titulo'] . "' disabled>";
                                 echo "</div>";
 
@@ -51,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
 
                                 echo "<div>";
                                     echo "<div class='p-2 bg-success-subtle rounded'>Localização:</div>";
-                                    echo "<input type='text' name='localizacao' class='form-control rounded' id='localizacao' value='" . $row['cidade'] . "' disabled>";
+                                    echo "<input type='text' name='localizacao' class='form-control rounded' id='localizacao' value='" . $row['cidade'] . " , " . $row['estado'] . "' disabled>";
                                 echo "</div>";
 
                                 echo "<div>";
