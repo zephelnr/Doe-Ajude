@@ -59,12 +59,6 @@ if (empty($_SESSION['email'])) {
             </nav>
         </header>
         <main>
-            <!--<div class="container vstack gap-5 p-5">
-                <h2 class="mb-3 text-center">Publicações</h2>
-                <div class="mb-3 d-grid gap-5 d-md-flex justify-content-md-left">
-                    <a class="btn btn-success rounded-pill" href="cadastrarPublicacao.php" role="button">Nova Publicação</a>    
-                </div>      
-            </div>-->
             <h2 class="mb-3 text-center">Interesses</h2>
             <p><input type="hidden" name="email" id="email" value="<?= $_SESSION['email']; ?>"></p>
             <div class="mb-3 container d-flex">
@@ -115,7 +109,14 @@ if (empty($_SESSION['email'])) {
                     </div>
                 </div>
             </div>
-            
+            <!-- Modal -->
+            <div class="modal" id="botaoDesfazerInteresseModal">
+                <div class="modal-content bg-success-subtle rounded-3">
+                <h2>Doe & Ajude</h2>
+                <p>Interesse retirado com sucesso!</p>
+                <button class="btn btn-success rounded-pill" id="fecharModal">Fechar</button>
+                </div>
+            </div>
         </main>
         <footer>
             <!-- place footer here -->
@@ -129,5 +130,6 @@ if (empty($_SESSION['email'])) {
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
         <script src="js/interesses.js"></script>
+        <script src="js/botaoDesfazerInteresse.js"></script>
     </body>
 </html>
