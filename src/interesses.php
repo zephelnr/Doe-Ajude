@@ -50,7 +50,7 @@ if (empty($_SESSION['email'])) {
                         <div class="navbar-nav">
                             <a class="nav-link" href="perfil.php">Perfil</a>
                             <a class="nav-link" aria-current="page" href="publicacoes.php">Publicações</a>
-                            <a class="nav-link active" href="interesses.php">Interesses</a>
+                            <a class="nav-link active" href="interesses.php">Meus Interesses</a>
                             <a class="nav-link disabled" aria-disabled="true">Interessados</a>
                         </div>
                     </div>
@@ -69,10 +69,48 @@ if (empty($_SESSION['email'])) {
             <p><input type="hidden" name="email" id="email" value="<?= $_SESSION['email']; ?>"></p>
             <div class="mb-3 container d-flex">
                 <!-- Caixa de tamanho fixo com classes Bootstrap -->
-                <div class="fixed-size-box bg-success-subtle d-flex rounded row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" id="publicacoes">           
+                <div class="fixed-size-box bg-success-subtle d-flex rounded row row-cols-1"><!-- row-cols-sm-2 row-cols-md-3 g-3-->           
                     <div class="container text-center" style="height: 450px;">
-                        <div class="row">                           
-                            <div class="col position-absolute top-50 start-50 translate-middle"><h6>Nenhuma publicação cadastrada!</h6></div>
+                        <div class="row" id="interesses">                           
+                            <div class="col position-absolute top-50 start-50 translate-middle"><h6>Nenhum Interesse demonstrado!</h6></div>
+                            <!--
+                            <div>
+                                <div class="card border border-dark-subtle">
+                                    <div class="card-body ">
+                                        <div class="hstack gap-3 ">
+                                            <div>
+                                                <div class="p-2 bg-success-subtle rounded">Titulo:</div>
+                                                <input type="text" name="titulo" class="form-control rounded" id="titulo" disabled>
+                                            </div>                                            
+                                            
+                                            <div>
+                                                <div class="p-2 bg-success-subtle rounded">Nome Completo</div>
+                                                <input type="text" name="nomeCompleto" class="form-control rounded" id="nomeCompleto" disabled>
+                                            </div>                                            
+                                            
+                                            <div>
+                                                <div class="p-2 bg-success-subtle rounded">CPF:</div>
+                                                <input type="text" name="cpf" class="form-control rounded" id="cpf" disabled>
+                                            </div>                                            
+                                            
+                                            <div>
+                                                <div class="p-2 bg-success-subtle rounded">Localização:</div>
+                                                <input type="text" name="localizacao" class="form-control rounded" id="localizacao" disabled>
+                                            </div>                                            
+                                            
+                                            <div>
+                                                <div class="p-2 bg-success-subtle rounded">Contato:</div>
+                                                <input type="text" name="telefone" class="form-control rounded" id="telefone" disabled>
+                                            </div>                                            
+                                            <div class="vr"></div>
+                                            <div class="mb-3 d-grid gap-5 d-md-flex justify-content-md-left p-2">
+                                                <a class="btn btn-success rounded-pill" href="" role="button">Desfazer Interesse</a>    
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            -->
                         </div>
                     </div>
                 </div>
@@ -90,6 +128,6 @@ if (empty($_SESSION['email'])) {
         ></script>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-        <script src="js/"></script>
+        <script src="js/interesses.js"></script>
     </body>
 </html>

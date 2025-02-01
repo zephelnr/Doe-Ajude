@@ -132,7 +132,7 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
                         <div class="navbar-nav">
                             <a class="nav-link active" aria-current="page" href="perfil.php">Perfil</a>
                             <a class="nav-link" href="publicacoes.php">Publicações</a>
-                            <a class="nav-link" href="interesses.php">Interesses</a>
+                            <a class="nav-link" href="interesses.php">Meus Interesses</a>
                             <a class="nav-link disabled" aria-disabled="true">Interessados</a>
                         </div>
                     </div>
