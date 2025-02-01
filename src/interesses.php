@@ -8,7 +8,7 @@ if (empty($_SESSION['email'])) {
 <!doctype html>
 <html lang="pt-br">
     <head>
-        <title>Publicações</title>
+        <title>Interesses</title>
         <!-- Required meta tags -->
         <meta charset="utf-8" />
         <meta
@@ -49,8 +49,8 @@ if (empty($_SESSION['email'])) {
                     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                         <div class="navbar-nav">
                             <a class="nav-link" href="perfil.php">Perfil</a>
-                            <a class="nav-link active" aria-current="page" href="publicacoes.php">Publicações</a>
-                            <a class="nav-link" href="interesses.php">Interesses</a>
+                            <a class="nav-link" aria-current="page" href="publicacoes.php">Publicações</a>
+                            <a class="nav-link active" href="interesses.php">Interesses</a>
                             <a class="nav-link disabled" aria-disabled="true">Interessados</a>
                         </div>
                     </div>
@@ -65,11 +65,8 @@ if (empty($_SESSION['email'])) {
                     <a class="btn btn-success rounded-pill" href="cadastrarPublicacao.php" role="button">Nova Publicação</a>    
                 </div>      
             </div>-->
-            <h2 class="mb-3 text-center">Publicações</h2>
+            <h2 class="mb-3 text-center">Interesses</h2>
             <p><input type="hidden" name="email" id="email" value="<?= $_SESSION['email']; ?>"></p>
-            <div class="mb-3 d-grid gap-5 d-md-flex justify-content-md-left p-2">
-                <a class="btn btn-success rounded-pill" href="cadastrarPublicacao.php" role="button">Nova Publicação</a>    
-            </div>
             <div class="mb-3 container d-flex">
                 <!-- Caixa de tamanho fixo com classes Bootstrap -->
                 <div class="fixed-size-box bg-success-subtle d-flex rounded row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" id="publicacoes">           
@@ -93,6 +90,6 @@ if (empty($_SESSION['email'])) {
         ></script>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-        <script src="js/publicacoes.js"></script>
+        <script src="js/"></script>
     </body>
 </html>
