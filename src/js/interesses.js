@@ -7,8 +7,6 @@ function carregarSessaoInteresses() {
     xhr.onreadystatechange = function() {
         if (xhr.status==200 && xhr.readyState==4) {
             //console.log(xhr.responseText);
-            //var publicacoes = this.response;
-            //console.log(publicacoes);
             if(xhr.responseText != ""){
                 interesses.innerHTML = xhr.responseText;
             }
