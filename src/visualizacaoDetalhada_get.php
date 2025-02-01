@@ -44,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
                 echo "<h9>" . $row['foto'] . "</h9><br>";
 
                 if ($email != $row['usuario_email']){
-                    $consultaSql = "SELECT * FROM `interesse` WHERE usuario_email = '$email'; ";
+                    $consultaSql = "SELECT * FROM `interesse` WHERE usuario_email = '$email' AND publicacao_id_publicacao ='$id_publicacao'; ";
                     $resultado = $conn->query($consultaSql);
                     if ($resultado->num_rows == 0){                        
                         echo "<a>Demonstrar</a>";
