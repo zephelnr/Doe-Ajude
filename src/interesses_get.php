@@ -78,7 +78,7 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
                                 echo "<div class='card-body'>";
                                     echo "<div class='hstack gap-3'>";
 
-                                    echo "<form action='' method='post' id='frmDesfazerInteresse'><p><input type='hidden' name='idInteresse' id='idInteresse' value='" . $row['idint'] . "'></p></form>";
+                                    
                                     
                                         echo "<div>";
                                             echo "<div class='p-2 bg-success-subtle rounded'>Publicação Arquivada!</div>";                                        
@@ -86,7 +86,9 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
 
                                         echo "<div class='vr'></div>";
                                         echo "<div class='mb-3 d-grid gap-5 d-md-flex justify-content-md-left p-2'>";
-                                            echo "<button class='btn btn-success rounded-pill' type='button' onclick='BotaoDesfazerInteresse()'>Desfazer Interesse</button>";
+                                            echo "<form action='' method='post' id='frmDesfazerInteresse'><input type='hidden' name='idInteresse' id='idInteresse' value='" . $row['idint'] . "'>";
+                                                echo "<button class='btn btn-success rounded-pill' type='button' onclick='BotaoDesfazerInteresse()'>Desfazer Interesse</button>";
+                                            echo "</form>";
                                         echo "</div>";
 
                                     echo "</div>";
