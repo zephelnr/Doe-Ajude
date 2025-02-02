@@ -272,7 +272,7 @@ btnArquivar.addEventListener("click", (e) => {
 
          // Verifica a resposta para decidir o redirecionamento
          if (response.includes("response")) {
-            window.location.href = "publicacoes.php";
+            window.location.href = "arquivados.php";
          }
       }
       else {
