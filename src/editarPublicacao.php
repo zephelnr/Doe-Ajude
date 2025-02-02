@@ -78,15 +78,13 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
             <div class="container vstack gap-5 p-5"> 
                 <div class="row p-5">
                     <div class="col-6 p-3 mb-2 offset-md-4 bg-success-subtle rounded-3">
-                        <h2 class="mb-3 text-center">Edição de Publicação</h2>              
-                        <form action="" method="post" id="frmArquivar">
-                            <input type="hidden" name="idPublicacao" id="idPublicacao" value="<?= $idPublicacao; ?>">
-                            <div class="mb-3 d-grid gap-5 d-md-flex justify-content-md-center">
-                                <button class="btn btn-success rounded-pill" type="button" id="btnArquivar">Arquivar publicação</button>
-                                <!--<button class="btn btn-success rounded-pill" type="button" id="btnDeletar">Deletar publicação</button>-->
-                                <button type="button" class="btn btn-success rounded-pill" data-bs-toggle="modal" data-bs-target="#modalIdDeletar">Deletar publicação</button>
-                            </div> 
-                        </form>    
+                        <h2 class="mb-3 text-center">Edição de Publicação</h2>
+                        <div class="mb-3 d-grid gap-5 d-md-flex justify-content-md-center">
+                            <!--<button class="btn btn-success rounded-pill" type="button" id="btnArquivar">Arquivar publicação</button>
+                            <button class="btn btn-success rounded-pill" type="button" id="btnDeletar">Deletar publicação</button>-->
+                            <button type="button" class="btn btn-success rounded-pill" data-bs-toggle="modal" data-bs-target="#modalIdArquivar">Arquivar publicação</button>
+                            <button type="button" class="btn btn-success rounded-pill" data-bs-toggle="modal" data-bs-target="#modalIdDeletar">Deletar publicação</button>
+                        </div>                           
                         <form id="frmEditar" action="" class="" method="post">
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email</label>
@@ -204,6 +202,7 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
                         <p>Você deseja deletar a publicação?</p>
                         <form id="frmDeletar" action="" method="post">
                             <input type="hidden" name="idPublicacao" id="idPublicacao" value="<?= $idPublicacao; ?>">
+                            <input type="hidden" name="email" id="email" value="<?= $_SESSION['email'] ?>">
                         </form>
                     </div>
                     <div class="modal-footer bg-success-subtle">
@@ -211,6 +210,35 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
                             Fechar
                         </button>
                         <button type="button" class="btn btn-success rounded-pill" id="btnDeletar">Deletar</button>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+            <!-- Modal Body Arquivar-->
+            <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
+            <div class="modal fade" id="modalIdArquivar" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false"
+                role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm" role="document">
+                <div class="modal-content">
+                    <div class="modal-header bg-success-subtle">
+                        <h5 class="modal-title" id="modalTitleId">
+                            Arquivar Publicação
+                        </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Você deseja arquivar a publicação?</p>
+                        <form id="frmArquivar" action="" method="post">
+                            <input type="hidden" name="idPublicacao" id="idPublicacao" value="<?= $idPublicacao; ?>">
+                            <input type="hidden" name="email" id="email" value="<?= $_SESSION['email'] ?>">
+                        </form>
+                    </div>
+                    <div class="modal-footer bg-success-subtle">
+                        <button type="button" class="btn btn-success rounded-pill" data-bs-dismiss="modal">
+                            Fechar
+                        </button>
+                        <button type="button" class="btn btn-success rounded-pill" id="btnArquivar">Arquivar</button>
                     </div>
                 </div>
                 </div>

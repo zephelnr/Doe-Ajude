@@ -18,12 +18,9 @@ if ($_SERVER['REQUEST_METHOD']=='DELETE') {
    print_r(($array));
 
    // Valida se os dados necessários estão no JSON
-   if (isset($array['idPublicacao'])) {
+   if (isset($array['idPublicacao']) && isset($array['email'])) {
         $idPublicacao = $array['idPublicacao'];
-        //$idPublicacao = intval($array['idPublicacao']); // Converte o ID para inteiro
-
-        // Conexão com o banco
-        //$conn = new mysqli($servername, $username, $password, $dbname);
+        $email = $array['email'];
 
         // Verifica conexão
         if ($conn->connect_error) {
@@ -31,9 +28,9 @@ if ($_SERVER['REQUEST_METHOD']=='DELETE') {
         }
 
         // Query de delete
-        $sql = "DELETE FROM publicacao WHERE id_publicacao = ?";
+        $sql = "DELETE FROM publicacao WHERE id_publicacao = ? AND usuario_email = ?";
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param("s", $idPublicacao);
+        $stmt->bind_param("ss", $idPublicacao, $email);
 
         // Executa o DELETE
         if ($stmt->execute()) {
