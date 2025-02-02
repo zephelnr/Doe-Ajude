@@ -7,10 +7,7 @@ if (empty($_SESSION['email'])) {
 <?php
 require_once("conexao.php");
 if ($_SERVER['REQUEST_METHOD']=='GET') {
-    try {   
-        // Conectar ao banco de dados
-        //$conn = new mysqli($servername, $username, $password, $dbname);
-    
+    try {       
         // Verificar se a conexão foi bem-sucedida
         if ($conn->connect_error) {
             die("Conexão falhou: " . $conn->connect_error);   
@@ -22,40 +19,18 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
         //$stmt = $conn->prepare($sql);
         $result = $conn->query($sql);
 
-
-        // Executa a consulta
-        //$stmt->execute();
-        //$result = $stmt->get_result();
-
         // Converte os resultados para um array associativo
-        //$publicacoes = [];
         if ($result->num_rows > 0) {
-            //echo "<label for=`estado` class=`form-label`>*Estado</label></br>";
-            //echo "<select class=`form-select` aria-label=`Default select estado` id=`estado` onchange=`carregarCidadeSelect()`>";
             echo "<option selected value=''>Selecione o estado</option>";
-            while ($row = $result->fetch_assoc()) {
-                //$publicacoes[] = $row;
-                //echo "<h1>Informações do Usuário</h1>";
-                //echo "<p>Titulo: " . $row['titulo'] . "<p>";
-                
+            while ($row = $result->fetch_assoc()) {                
                 echo "<option value='" . $row['id_estado'] ."'>" . $row['sigla'] . "</option>";
-
             }
-            //echo "</select>";
-            //echo "<p id=`respEstadoCadPub`></p>";
         }
-        //echo "<p>" . $publicacoes['titulo'] . "</p>";
-        //print_r($publicacoes);
-        //echo json_encode($publicacoes);
-        // Fecha a conexão
-        //$stmt->close();
     
         // Fechar a conexão com o banco de dados
         $conn->close();
     } catch (Exception $e) {
-        //throw $e;
         echo json_encode(["Erro!" . $e->getMessage()]);
-        //print_r(["Erro!" . $e->getMessage()]);
     } finally {
         $conn = null;
     }

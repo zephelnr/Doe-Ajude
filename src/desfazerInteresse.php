@@ -15,7 +15,6 @@ if ($_SERVER['REQUEST_METHOD']=='DELETE') {
    if (isset($array['idPublicacao']) && isset($array['email'])) {
         $idPublicacao = $array['idPublicacao'];
         $email = $array['email'];
-        //$idPublicacao = intval($array['idPublicacao']); // Converte o ID para inteiro
 
         // Verifica conexão
         if ($conn->connect_error) {

@@ -8,8 +8,6 @@ if (empty($_SESSION['email'])) {
 <?php
 require_once("conexao.php");
 
-//print("REQUEST_METHOD = ".$_SERVER['REQUEST_METHOD']);
-
 if ($_SERVER['REQUEST_METHOD']=='POST') {
     try {
         // Coleta os dados enviados pelo FormData
@@ -74,25 +72,8 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
             // Fecha a conexão
             $conn->close();
         } else {
-            //verifica se os campos estão vazios e manda um aviso
-            //if (empty($email)) {
-            //    echo json_encode(["Email vazio"]);
-            //}
-            //if (empty($cpf)) {
-            //    echo json_encode(["Cpf vazio"]);
-           // }
-            //if (empty($nomeCompleto)) {
-            //    echo json_encode(["NomeCompleto vazio"]);
-            //}
-            //if (empty($senha)) {
-            //    echo json_encode(["Senha vazia"]);
-            //}
-
-            // Retorna um erro se algum campo estiver vazio
-            //echo json_encode(["status" => "error", "message" => "Todos os campos sao obrigatorios!"]);
             throw new Exception("Todos os campos sao obrigatorios!");
         }
-        //header("Location: login.php");
         echo json_encode("response");
     } catch (Exception $e) {
         echo json_encode(["Erro! " . $e->getMessage()]);
@@ -137,23 +118,6 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
                             <a class="nav-link" href="interessados.php">Interessados</a>
                         </div>
                     </div>
-                    <!--
-                    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                        <div class="navbar-nav">
-                            <a class="nav-link active" aria-current="page" href="perfil.php">Perfil</a>
-                            <a class="nav-link" href="publicacoes.php">Publicações</a>
-                            <a class="nav-link disabled" aria-disabled="true">Interesses</a>
-                            <a class="nav-link disabled" aria-disabled="true">Interessados</a>
-                        </div>
-                    </div>
-                   
-                    <a class="btn btn-success rounded-pill" href="logout.php" role="button">Sair</a>
-
-                    <div class="d-grid gap-2 d-md-flex justify-content-md-center">
-                        <a class="btn btn-success rounded-pill" href="perfil.php" role="button">Menu</a>
-                        <a class="btn btn-success rounded-pill" href="logout.php" role="button">Sair</a>
-                    </div>
-                    -->
                     <div class="d-grid d-md-flex justify-content-md-center">
                         <a class="btn btn-success rounded-pill" href="logout.php" role="button">Sair</a>
                     </div>
@@ -177,15 +141,11 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
                             </div>
                             <div class="mb-3">
                                 <label for="descricao" class="form-label">*Descrição</label>
-                                <!--  
-                                <input type="text" name="descricao" class="form-control rounded-pill" id="descricao" placeholder="Digite uma descrição para a publicação" required>
-                                -->
                                 <textarea class="form-control rounded" name="descricao" id="descricao" rows="3" placeholder="Digite uma descrição para a publicação" required></textarea>
                                 <p id="respDescricaoCadPub"></p> 
                             </div>                            
                             <div class="mb-3">
                                 <label for="estado" class="form-label">*Estado</label>
-                                <!--<input type="text" name="estado" class="form-control rounded-pill" id="estado" placeholder="Digite o estado" required>-->
                                 <select class="form-select" aria-label="Default select estado" id="estado">
                                     <!--<option selected value="">Selecione o estado</option>
                                     <option value="Acre">Acre</option>
@@ -220,7 +180,6 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
                             </div>
                             <div class="mb-3" id="selectCidade">
                                 <label for="cidade" class="form-label">*Cidade</label>
-                                <!--<input type="text" name="cidade" class="form-control rounded-pill" id="cidade" placeholder="Digite a cidade" required>-->
                                 <select class="form-select" aria-label="Default select cidade" id="cidade"></select>
                                 <p id="respCidadeCadPub"></p> 
                             </div>
@@ -231,9 +190,6 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
                             </div>
                             <div class="mb-3">
                                 <label for="foto" class="form-label">Foto</label>
-                                <!--
-                                <input type="text" name="foto" class="form-control rounded-pill" id="foto" placeholder="Faça o upload da foto" required>
-                                -->
                                 <div class="input-group mb-3">
                                     <input type="file" class="form-control" id="foto" aria-describedby="blocoAjudaFoto">
                                     <label class="input-group-text" for="foto">Upload da foto</label>
@@ -242,19 +198,7 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
                                 <div id="blocoAjudaFoto" class="form-text">
                                     (*)Campos obrigatórios.
                                 </div> 
-                            </div> <!--
-                            <div class="mb-3">
-                                <label for="status" class="form-label">Status</label>
-                               
-                                <input type="text" name="status" class="form-control rounded-pill" id="status" placeholder="Coloque o status da publicação" required>
-                               
-                                <select class="form-select" aria-label="Default select example" id="status">
-                                    <option selected value="">Selecione o status da publicação</option>
-                                    <option value="Disponível">Disponível</option>
-                                    <option value="Indisponível">Indisponível</option>
-                                </select>
-                                <p id="respStatusCadPub"></p> 
-                            </div> -->
+                            </div>
                             <div class="mb-3 d-grid gap-5 d-md-flex justify-content-md-center">
                                 <button class="btn btn-success rounded-pill" type="button" id="btnPublicar">Publicar</button>
                                 <a class="btn btn-success rounded-pill" href="publicacoes.php" role="button">Ir para publicações</a>

@@ -35,14 +35,12 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
                     echo json_encode(["status" => "success", "message" => "Dados inseridos com sucesso!"]);
                 } else {
                     // Retorna uma resposta de erro se falhar
-                    //throw new Exception("Erro ao inserir os dados" . $stmt->error);
                     echo json_encode(["status" => "error", "message" => "Erro ao inserir os dados: " . $stmt->error]);
                 }
                 
                 // Fecha a declaração
                 $stmt->close();
             } else {
-                //throw new Exception("Erro ao preparar a consulta" . $conn->error);
                 echo json_encode(["status" => "error", "message" => "Erro ao preparar a consulta: " . $conn->error]);
             }
             
@@ -58,10 +56,8 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
             }
 
             // Retorna um erro se algum campo estiver vazio
-            //echo json_encode(["status" => "error", "message" => "Todos os campos sao obrigatorios!"]);
             throw new Exception("Todos os campos sao obrigatorios!");
         }
-        //header("Location: login.php");
         echo json_encode("response");
     } catch (Exception $e) {
         echo json_encode(["Erro! " . $e->getMessage()]);

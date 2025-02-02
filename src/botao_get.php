@@ -16,9 +16,7 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
             throw new Exception("Nenhuma Publicação encontrada");
         } 
     } catch (Exception $e) {
-        //throw $e;
         echo json_encode(["Erro!" . $e->getMessage()]);
-        //print_r(["Erro!" . $e->getMessage()]);
     } finally {
         $conn = null;
     }

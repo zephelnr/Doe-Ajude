@@ -7,10 +7,7 @@ if (empty($_SESSION['email'])) {
 <?php
 require_once("conexao.php");
 if ($_SERVER['REQUEST_METHOD']=='GET') {
-    try {   
-        // Conectar ao banco de dados
-        //$conn = new mysqli($servername, $username, $password, $dbname);
-    
+    try {     
         // Verificar se a conexão foi bem-sucedida
         if ($conn->connect_error) {
             die("Conexão falhou: " . $conn->connect_error);   
@@ -26,8 +23,6 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
 
             // Converte os resultados para um array associativo
             if ($result->num_rows > 0) {
-                //echo "<label for=`estado` class=`form-label`>*Estado</label></br>";
-                //echo "<select class=`form-select` aria-label=`Default select estado` id=`estado` onchange=`carregarCidadeSelect()`>";
                 echo "<option selected value='" . $idestado . "'>" . $sigla ."</option>";
                 echo "<option></option>";
                 while ($row = $result->fetch_assoc()) {                    
@@ -39,9 +34,7 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
         // Fechar a conexão com o banco de dados
         $conn->close();
     } catch (Exception $e) {
-        //throw $e;
         echo json_encode(["Erro!" . $e->getMessage()]);
-        //print_r(["Erro!" . $e->getMessage()]);
     } finally {
         $conn = null;
     }

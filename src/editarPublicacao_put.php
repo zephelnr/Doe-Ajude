@@ -30,9 +30,6 @@ if ($_SERVER['REQUEST_METHOD']=='PUT') {
          //$foto = '';
          $status = $object['status'];
  
-         // Conexão com o banco de dados usando MySQLi
-         //$conn = new mysqli($servername, $username, $password, $dbname);
- 
          // Verifica se a conexão foi bem-sucedida
          if ($conn->connect_error) {
              echo json_encode(['status' => 'error', 'message' => 'Erro na conexão com o banco de dados: ' . $conn->connect_error]);
@@ -68,8 +65,6 @@ if ($_SERVER['REQUEST_METHOD']=='PUT') {
      } else {
          echo json_encode(['status' => 'error', 'message' => 'Dados inválidos ou incompletos.']);
      }
- 
-    
     
  }
 ?>

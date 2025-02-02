@@ -26,9 +26,6 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
     
             // Verificar se o usuário existe
             if ($result->num_rows > 0) {
-                // Converte e formata a data
-                //$data = new DateTime($row['data']);
-                //$dataFormatada = $data->format('d/m/Y');
 
                 // Exibir os dados do usuário
                 $row = $result->fetch_assoc();
@@ -58,16 +55,12 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
             } else {
                 throw new Exception("Nenhuma publicação encontrada com esse id.");
             }
-        } else {
-            //throw new Exception("Por favor, informe um email de usuário.");
         }
     
         // Fechar a conexão com o banco de dados
         $conn->close();
     } catch (Exception $e) {
-        //throw $e;
         echo json_encode(["Erro!" . $e->getMessage()]);
-        //print_r(["Erro!" . $e->getMessage()]);
     } finally {
         $conn = null;
     }

@@ -39,14 +39,6 @@ if (empty($_SESSION['email'])) {
                             <a class="nav-link" href="interessados.php">Interessados</a>
                         </div>
                     </div>
-                   
-                    <!--<div class="d-grid gap-5 d-md-flex justify-content-md-center">
-                        <a class="navbar-brand" href="telaPrincipal.php">Doe&Ajude</a>
-                        <a class="btn btn-success rounded-pill" href="perfil.php" role="button">Perfil</a>
-                        <a class="btn btn-success rounded-pill" href="publicacoes.php" role="button">Publicações</a>
-                        <a class="btn btn-success rounded-pill" href="interesse.php" role="button">Interesses</a>
-                        <a class="btn btn-success rounded-pill" href="interessado.php" role="button">Interessados</a>
-                    </div>-->
                     <a class="btn btn-success rounded-pill" href="logout.php" role="button">Sair</a>
                 </div>
             </nav>

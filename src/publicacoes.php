@@ -60,12 +60,6 @@ if (empty($_SESSION['email'])) {
             </nav>
         </header>
         <main>
-            <!--<div class="container vstack gap-5 p-5">
-                <h2 class="mb-3 text-center">Publicações</h2>
-                <div class="mb-3 d-grid gap-5 d-md-flex justify-content-md-left">
-                    <a class="btn btn-success rounded-pill" href="cadastrarPublicacao.php" role="button">Nova Publicação</a>    
-                </div>      
-            </div>-->
             <h2 class="mb-3 text-center">Publicações</h2>
             <p><input type="hidden" name="email" id="email" value="<?= $_SESSION['email']; ?>"></p>
             <div class="mb-3 d-grid gap-5 d-md-flex justify-content-md-left p-2">

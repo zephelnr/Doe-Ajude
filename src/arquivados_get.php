@@ -17,11 +17,9 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
         // Verificar se o parâmetro 'email' foi passado via GET
         if (isset($_GET['email'])) {
             $email = $_GET['email'];
-            //print_r($_GET['email']);
             
             // Consultar o banco de dados para pegar os dados da publicação
             $sql = "SELECT publicacao.id_publicacao, publicacao.titulo, publicacao.descricao, publicacao.telefone, publicacao.foto, publicacao.status, publicacao.data, publicacao.usuario_email, municipio.nome AS cidade, estado.nome AS estado FROM publicacao INNER JOIN municipio ON publicacao.cidade = municipio.id_municipio INNER JOIN estado ON publicacao.estado = estado.id_estado WHERE usuario_email = '$email' AND `status` = 'Arquivado' ORDER BY `data` DESC";
-            //$stmt = $conn->prepare($sql);
             $result = $conn->query($sql);
         } else {
             throw new Exception("Nenhuma Publicação encontrada");
@@ -30,10 +28,6 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
         if ($result->num_rows > 0) {
             
             while ($row = $result->fetch_assoc()) {
-                //$publicacoes[] = $row;
-                //echo "<h1>Informações do Usuário</h1>";
-                //echo "<p>Titulo: " . $row['titulo'] . "<p>";
-
                 // Converte e formata a data
                 $data = new DateTime($row['data']);
                 $dataFormatada = $data->format('d/m/Y');
@@ -63,8 +57,6 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
 
                             echo "<div class='d-flex justify-content-between align-items-center'>";
                                 echo "<div class='btn-group'>";
-                                    //echo "<button class='btn btn-sm btn-outline-success' id='publicacao' onClick='clickPublicacao(this.value);' value='" . $row['id_publicacao'] ."'>Editar</button>";
-                                    //echo "<form><button type='button' class='btn btn-sm btn-outline-success'>Editar</button></form>";
                                     echo "<a role='button' class='btn btn-sm btn-outline-success' href='editarPublicacao.php?id_publicacao=" . $row['id_publicacao'] . "&usuario_email=" . $row['usuario_email'] . "'>Editar</a>";
                                 echo "</div>";
                                 echo "<small class='text-muted'>" . $row['cidade'] . "</br>" . $row['estado'] . "</br>" . $row['status'] ." no dia: " .  $dataFormatada . "</small>";
@@ -78,9 +70,7 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
         // Fechar a conexão com o banco de dados
         $conn->close();
     } catch (Exception $e) {
-        //throw $e;
         echo json_encode(["Erro!" . $e->getMessage()]);
-        //print_r(["Erro!" . $e->getMessage()]);
     } finally {
         $conn = null;
     }

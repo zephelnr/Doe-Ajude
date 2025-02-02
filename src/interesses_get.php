@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
             
             // Consultar o banco de dados para pegar os dados da publicação
             $sql = "SELECT interesse.id_interesse AS idint, interesse.publicacao_id_publicacao AS pubidpub, publicacao.id_publicacao AS idpub, publicacao.titulo AS titulo, publicacao.telefone AS telefone, publicacao.status AS `status`, publicacao.data AS `data`, municipio.nome AS cidade, estado.sigla AS estado, usuario.nomeCompleto AS nome, usuario.cpf AS cpf FROM interesse LEFT JOIN publicacao ON interesse.publicacao_id_publicacao = publicacao.id_publicacao LEFT JOIN municipio ON publicacao.cidade = municipio.id_municipio LEFT JOIN estado ON publicacao.estado = estado.id_estado LEFT JOIN usuario ON usuario.email = publicacao.usuario_email WHERE interesse.usuario_email = '$usuario_email' ORDER BY `data` DESC";
-            //$stmt = $conn->prepare($sql);
+
             $result = $conn->query($sql);
         } else {
             throw new Exception("Nenhuma Publicação encontrada");
@@ -122,9 +122,7 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
         // Fechar a conexão com o banco de dados
         $conn->close();
     } catch (Exception $e) {
-        //throw $e;
         echo json_encode(["Erro!" . $e->getMessage()]);
-        //print_r(["Erro!" . $e->getMessage()]);
     } finally {
         $conn = null;
     }

@@ -64,7 +64,7 @@ if (empty($_SESSION['email'])) {
             <p><input type="hidden" name="email" id="email" value="<?= $_SESSION['email']; ?>"></p>
             <div class="mb-3 container d-flex">
                 <!-- Caixa de tamanho fixo com classes Bootstrap -->
-                <div class="fixed-size-box bg-success-subtle d-flex rounded row row-cols-1"><!-- row-cols-sm-2 row-cols-md-3 g-3-->           
+                <div class="fixed-size-box bg-success-subtle d-flex rounded row row-cols-1">           
                     <div class="container text-center" style="height: 450px;">
                         <div class="row" id="interessados">                           
                             <div class="col position-absolute top-50 start-50 translate-middle"><h6>Nenhum usuário interessado encontrado!</h6></div>

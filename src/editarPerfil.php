@@ -1,7 +1,6 @@
 <?php
 require_once("conexao.php");
 if ($_SERVER['REQUEST_METHOD']=='PUT') {
-    //print("<h1>_PUT</h1>");
     $plainData = file_get_contents('php://input');
     // converter json em um objeto
     $object = json_decode($plainData,true);

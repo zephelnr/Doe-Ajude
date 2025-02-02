@@ -6,8 +6,6 @@ require_once("conexao.php");
 //verificando se é uma requisição post para efetuar o login
 if (filter_input(INPUT_SERVER, "REQUEST_METHOD") === "POST") {
     try {
-        //$email = filter_input(INPUT_POST, "email");
-        //$senha = filter_input(INPUT_POST, "senha");
         $email = $_POST['email'] ?? '';
         $senha = $_POST['senha'] ?? '';
 
@@ -26,16 +24,12 @@ if (filter_input(INPUT_SERVER, "REQUEST_METHOD") === "POST") {
             throw new Exception("Email invalido!");
         } else {
             if ($senha === $resultado["senha"]) { //password_verify($senha, $resultado["senha"]) === false
-                //throw new Exception("Senha invalida!");
                 $_SESSION["email"] = $resultado["email"];
-                //echo json_encode($_SESSION["email"]);
             } else {
-                //$_SESSION["email"] = $resultado["email"];
                 throw new Exception("Senha invalida!");
             }
         }
-        
-        //header("Location: telaPrincipal.php");
+
         echo json_encode("response");
     } catch (Exception $e) {
         echo json_encode(["Erro!" . $e->getMessage()]);

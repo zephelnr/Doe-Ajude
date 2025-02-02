@@ -61,8 +61,6 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
                             
                             echo "<div class='d-flex justify-content-between align-items-center'>";
                                 echo "<div class='btn-group'>";
-                                    //echo "<button type='button' class='btn btn-sm btn-outline-success'>Visualizar</button>";
-                                    //echo "<button type='button' class='btn btn-sm btn-outline-success'>Editar</button>";
                                 echo "</div>";
                                 echo "<small class='text-muted'>" . $row['cidade'] . "</br>" . $row['estado'] . "</br>" . $row['status'] ." no dia: " .  $dataFormatada . "</small>";
                             echo "</div>";

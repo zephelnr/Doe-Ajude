@@ -7,8 +7,6 @@ if (!empty($_SESSION['email'])) {
 <?php
 require_once("conexao.php");
 
-//print("REQUEST_METHOD = ".$_SERVER['REQUEST_METHOD']);
-
 if ($_SERVER['REQUEST_METHOD']=='POST') {
     try {
         // Coleta os dados enviados pelo FormData
@@ -20,7 +18,6 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
         //tratamento de erro Email
         // Verifica se o e-mail não corresponde à expressão regular
         if (preg_match('/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/', $email) !== 1){
-            //throw new Exception("email irregular");
             echo json_encode(["email irregular"]);
             $email = '';
         }
@@ -38,7 +35,6 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
         // Verifica espaços consecutivos, espaços no início/fim ou caracteres inválidos
         //Garante que existam pelo menos duas palavras separadas por um único espaço
         if (preg_match('/\s{2,}|(^\s|\s$)|[^a-zA-ZÀ-ÿ\s]/u', $nomeCompleto) || !preg_match('/^[A-Za-zÀ-ÿ]+( [A-Za-zÀ-ÿ]+)+$/u', $nomeCompleto)){
-            //throw new Exception("nomeCompleto irregular");
             echo json_encode(["nomeCompleto irregular"]);
             $nomeCompleto = '';
         }
@@ -56,9 +52,6 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
             // Converte o array em JSON
             $jsonData = json_encode($dados);
       
-            // Criptografa a senha
-            //$senha = password_hash($senha, PASSWORD_BCRYPT);
-      
             // Prepara a consulta SQL para inserir os dados
             $sql = "INSERT INTO usuario (email, cpf, nomeCompleto, senha) VALUES (?, ?, ?, ?)";
       
@@ -73,14 +66,12 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
                     echo json_encode(["status" => "success", "message" => "Dados inseridos com sucesso!"]);
                 } else {
                     // Retorna uma resposta de erro se falhar
-                    //throw new Exception("Erro ao inserir os dados" . $stmt->error);
                     echo json_encode(["status" => "error", "message" => "Erro ao inserir os dados: " . $stmt->error]);
                 }
                 
                 // Fecha a declaração
                 $stmt->close();
             } else {
-                //throw new Exception("Erro ao preparar a consulta" . $conn->error);
                 echo json_encode(["status" => "error", "message" => "Erro ao preparar a consulta: " . $conn->error]);
             }
             
@@ -102,10 +93,8 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
             }
 
             // Retorna um erro se algum campo estiver vazio
-            //echo json_encode(["status" => "error", "message" => "Todos os campos sao obrigatorios!"]);
             throw new Exception("Todos os campos sao obrigatorios!");
         }
-        //header("Location: login.php");
         echo json_encode("response");
     } catch (Exception $e) {
         echo json_encode(["Erro! " . $e->getMessage()]);

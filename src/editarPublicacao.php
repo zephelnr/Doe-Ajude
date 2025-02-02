@@ -11,10 +11,6 @@ require_once("conexao.php");
 if ($_SERVER['REQUEST_METHOD']=='GET') {
     //print("<h1>_GET</h1>");
     //print_r($_GET);
-
- 
-     // Conectar ao banco de dados
-     //$conn = new mysqli($servername, $username, $password, $dbname);
  
      // Verificar se a conexão foi bem-sucedida
      if ($conn->connect_error) {
@@ -26,10 +22,7 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
          $idPublicacao = $_GET['id_publicacao'];
          $email = $_SESSION['email'];
          $email2 = $_GET['usuario_email'];
-         
-         //echo "<p>$idPublicacao</p>";
-         //echo "<p>$email</p>";
-         //echo "<p>$email2</p>";
+
          }
     }
 ?>
@@ -81,8 +74,6 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
                     <div class="col-6 p-3 mb-2 offset-md-4 bg-success-subtle rounded-3">
                         <h2 class="mb-3 text-center">Edição de Publicação</h2>
                         <div class="mb-3 d-grid gap-5 d-md-flex justify-content-md-center">
-                            <!--<button class="btn btn-success rounded-pill" type="button" id="btnArquivar">Arquivar publicação</button>
-                            <button class="btn btn-success rounded-pill" type="button" id="btnDeletar">Deletar publicação</button>-->
                             <button type="button" class="btn btn-success rounded-pill" data-bs-toggle="modal" data-bs-target="#modalIdArquivar">Arquivar publicação</button>
                             <button type="button" class="btn btn-success rounded-pill" data-bs-toggle="modal" data-bs-target="#modalIdDeletar">Deletar publicação</button>
                         </div>                           
@@ -99,9 +90,6 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
                             </div>
                             <div class="mb-3">
                                 <label for="descricao" class="form-label">*Descrição</label>
-                                <!--  
-                                <input type="text" name="descricao" class="form-control rounded-pill" id="descricao" placeholder="Digite uma descrição para a publicação" required>
-                                -->
                                 <textarea class="form-control rounded" name="descricao" id="descricao" rows="3" placeholder="Digite uma descrição para a publicação" required></textarea>
                                 <p id="respDescricaoCadEdit"></p> 
                             </div>                            
@@ -109,7 +97,6 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
                                 <label for="estado" class="form-label">*Estado</label>
                                 <input type="hidden" name="estadoSigla" id="estadoSigla" value="">
                                 <input type="hidden" name="estadoId" id="estadoId" value="">
-                                <!--<input type="text" name="estado" class="form-control rounded-pill" id="estado" placeholder="Digite o estado" required>-->
                                 <select class="form-select" aria-label="Default select estado" name="estado" id="estado">
                                     <!--<option value="">Selecione o estado</option>
                                     <option value="Acre">Acre</option>
@@ -146,7 +133,6 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
                                 <label for="cidade" class="form-label">*Cidade</label>
                                 <input type="hidden" name="cidadeNome" id="cidadeNome" value="">
                                 <input type="hidden" name="cidadeId" id="cidadeId" value="">
-                                <!--<input type="text" name="cidade" class="form-control rounded-pill" id="cidade" placeholder="Digite a cidade" required>-->
                                 <select class="form-select" aria-label="Default select cidade" id="cidade"></select>
                                 <p id="respCidadeCadEdit"></p> 
                             </div>
@@ -157,9 +143,6 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
                             </div>
                             <div class="mb-3">
                                 <label for="foto" class="form-label">Foto</label>
-                                <!--
-                                <input type="text" name="foto" class="form-control rounded-pill" id="foto" placeholder="Faça o upload da foto" required>
-                                -->
                                 <div class="input-group mb-3">
                                     <input type="file" class="form-control" id="foto" name="foto" aria-describedby="blocoAjudaFoto">
                                     <label class="input-group-text" for="foto">Upload da foto</label>

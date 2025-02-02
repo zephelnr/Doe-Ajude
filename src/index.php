@@ -38,35 +38,7 @@ if (!empty($_SESSION['email'])) {
         <header>
             <!-- place navbar here -->
             <nav class="navbar bg-body-tertiary bg-success-subtle">
-                <div class="container-fluid">
-                    <!-- 
-                        <a class="navbar-brand" href="paginaPrincipal.php">Doe&Ajude</a>
-                        <form class="d-flex" role="search">
-                            <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
-                            <button class="btn btn-outline-success" type="submit">Buscar</button>
-                        </form>
-                        <div class="d-grid gap-5 d-md-flex justify-content-md-center">
-                            <a class="btn btn-success rounded-pill" href="login.html" role="button">Entrar</a>
-                            <a class="btn btn-success rounded-pill" href="cadastro.html" role="button">Cadastrar</a>
-                        </div> 
-                     -->
-
-                    <!-- 
-                     <form class="container-fluid">
-                        <div class="input-group">
-                            <a class="navbar-brand" href="paginaPrincipal.php">Doe&Ajude</a>
-                            <form action="">
-                                <input type="search" class="form-control rounded-pill" placeholder="Buscar" aria-label="Busca" aria-describedby="">
-                                <button class="btn btn-outline-success rounded-pill" type="submit">Buscar</button>
-                            </form>
-                            <div class="d-grid gap-2 d-md-flex justify-content-md-center">
-                                <a class="btn btn-success rounded-pill" href="login.html" role="button">Entrar</a>
-                                <a class="btn btn-success rounded-pill" href="cadastro.html" role="button">Cadastrar</a>
-                            </div>
-                        </div>
-                      </form>
-                     -->
-                    
+                <div class="container-fluid">                   
                      <form class="container-fluid">
                         <div class="input-group">
                             <a class="navbar-brand" href="index.php">Doe&Ajude</a>

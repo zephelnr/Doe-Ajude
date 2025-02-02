@@ -1,7 +1,6 @@
 <?php
 require_once("conexao.php");
 if ($_SERVER['REQUEST_METHOD']=='DELETE') {
-   print("<h1>_DELETE</h1>");
    // busca a string JSON
    $plainData = file_get_contents('php://input');
    // converter json em um objeto
