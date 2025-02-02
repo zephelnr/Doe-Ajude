@@ -66,6 +66,7 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
                         <div class="navbar-nav">
                             <a class="nav-link" href="perfil.php">Perfil</a>
                             <a class="nav-link active" aria-current="page" href="publicacoes.php">Publicações</a>
+                            <a class="nav-link" href="arquivados.php">Arquivados</a>
                             <a class="nav-link" href="interesses.php">Meus Interesses</a>
                             <a class="nav-link" href="interessados.php">Interessados</a>
                         </div>
