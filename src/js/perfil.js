@@ -10,6 +10,8 @@ function carregarSessao() {
             const cpf = document.getElementById("cpf");
             const nomeCompleto = document.getElementById("nomeCompleto");
             const senha = document.getElementById("senha");
+            const nomeCompletoModal = document.getElementById("nomeCompletoModal");
+            const senhaModal = document.getElementById("senhaModal");
 
             var response = xhr.responseText;
             
@@ -27,7 +29,8 @@ function carregarSessao() {
             cpf.value = cpfGet;
             nomeCompleto.value = nomeCompletoGet;
             senha.value = senhaGet;
-
+            nomeCompletoModal.value = nomeCompletoGet;
+            senhaModal.value = senhaGet;
         }
         else {
             console.log("XMLHttpRequest Error");

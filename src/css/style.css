@@ -1,4 +1,4 @@
-#respEmailLog, #respSenhaLog, #respEmailCad, #respCpfCad, #respNomeCompletoCad, #respSenhaCad, #respTituloCadPub, #respDescricaoCadPub, #respCidadeCadPub, #respEstadoCadPub, #respTelefoneCadPub, #respTituloCadEdit, #respDescricaoCadEdit, #respCidadeCadEdit, #respEstadoCadEdit, #respTelefoneCadEdit {
+#respEmailLog, #respSenhaLog, #respEmailCad, #respCpfCad, #respNomeCompletoCad, #respSenhaCad, #respTituloCadPub, #respDescricaoCadPub, #respCidadeCadPub, #respEstadoCadPub, #respTelefoneCadPub, #respTituloCadEdit, #respDescricaoCadEdit, #respCidadeCadEdit, #respEstadoCadEdit, #respTelefoneCadEdit, #respSenhaPerfilEdit, #respNomeCompletoPerfilEdit {
     color: #e74c3c; /* Cor vermelha */
     font-size: 11px;
     font-weight: bold;

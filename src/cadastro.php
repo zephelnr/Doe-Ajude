@@ -35,8 +35,9 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
         }
 
         //tratamento de erro NomeCompleto
-        // Verifica se há mais de um espaço consecutivo
-        if (preg_match('/\s{2,}/', $nomeCompleto)){
+        // Verifica espaços consecutivos, espaços no início/fim ou caracteres inválidos
+        //Garante que existam pelo menos duas palavras separadas por um único espaço
+        if (preg_match('/\s{2,}|(^\s|\s$)|[^a-zA-ZÀ-ÿ\s]/u', $nomeCompleto) || !preg_match('/^[A-Za-zÀ-ÿ]+( [A-Za-zÀ-ÿ]+)+$/u', $nomeCompleto)){
             //throw new Exception("nomeCompleto irregular");
             echo json_encode(["nomeCompleto irregular"]);
             $nomeCompleto = '';
