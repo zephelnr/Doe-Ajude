@@ -1,4 +1,4 @@
-function BotaoDesfazerInteresse() {
+function BotaoDesfazerInteresse(id_interesse) {
     //const id_interesse = document.getElementById("idInteresse").value;
     const frmDesfazerInteresse = document.getElementById("frmDesfazerInteresse");
 
@@ -7,6 +7,8 @@ function BotaoDesfazerInteresse() {
     const fecharModalBtn = document.getElementById('fecharModal');
     
     let formData = new FormData(frmDesfazerInteresse);
+
+    formData.append("idInteresse", id_interesse);
 
     // as 2 linhas abaixo são no caso de uma alterção ou exclusão
    let jsonData = JSON.stringify(Object.fromEntries(formData));
