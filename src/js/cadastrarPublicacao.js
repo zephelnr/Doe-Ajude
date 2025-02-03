@@ -40,7 +40,7 @@ btnPublicar.addEventListener("click", (e) => {
    formData.append("foto", foto.value);
    formData.append("status", "Publicado");
 
-   //console.log("estado",estado.value);
+   console.log("foto",foto.value);
    //console.log("cidade",cidade.value)
 
    let xhr = new XMLHttpRequest();

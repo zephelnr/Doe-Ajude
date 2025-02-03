@@ -26,51 +26,101 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
             echo json_encode(["telefone irregular"]);
             $telefone = '';
         }
-      
+        
+        //print_r($_POST[$_FILES['foto']]);
         // Verifica se todos os campos foram enviados corretamente
         if (!empty($email) && !empty($titulo) && !empty($descricao) && !empty($cidade) && !empty($estado) && !empty($telefone) && !empty($status)) {
-            // Cria um array associativo com os dados recebidos
-            $dados = array(
-                "titulo" => $titulo,
-                "descricao" => $descricao,
-                "cidade" => $cidade,
-                "estado" => $estado,
-                "telefone" => $telefone,
-                "foto" => $foto,
-                "status" => $status,
-                "usuario_email" => $email
-            );
-      
-            // Converte o array em JSON
-            $jsonData = json_encode($dados);
-      
-            // Prepara a consulta SQL para inserir os dados
-            $sql = "INSERT INTO publicacao (titulo, descricao, cidade, estado, telefone, foto, `status`, `data`,  usuario_email) VALUES (?, ?, ?, ?, ?, ?, ?, NOW(), ?)";
-      
-            // Prepara a declaração e vincula os parâmetros
-            if ($stmt = $conn->prepare($sql)) {
-                // Usa "ssssssss" porque os campos são strings
-                $stmt->bind_param("ssssssss", $titulo, $descricao, $cidade, $estado, $telefone, $foto, $status, $email);
-      
-                // Executa a inserção
-                if ($stmt->execute()) {
-                    // Retorna uma resposta de sucesso
-                    echo json_encode(["status" => "success", "message" => "Dados inseridos com sucesso!"]);
+            if (!empty($_POST['foto'])) {
+                // Cria um array associativo com os dados recebidos
+                $fotoNome = basename($foto);
+                $fotoDestino = './foto' . '/' . $fotoNome;
+                $dados = array(
+                    "titulo" => $titulo,
+                    "descricao" => $descricao,
+                    "cidade" => $cidade,
+                    "estado" => $estado,
+                    "telefone" => $telefone,
+                    "foto" => $fotoDestino,
+                    "status" => $status,
+                    "usuario_email" => $email
+                );
+        
+                // Converte o array em JSON
+                $jsonData = json_encode($dados);
+        
+                // Prepara a consulta SQL para inserir os dados
+                $sql = "INSERT INTO publicacao (titulo, descricao, cidade, estado, telefone, foto, `status`, `data`,  usuario_email) VALUES (?, ?, ?, ?, ?, ?, ?, NOW(), ?)";
+        
+                // Prepara a declaração e vincula os parâmetros
+                if ($stmt = $conn->prepare($sql)) {
+                    // Usa "ssssssss" porque os campos são strings
+                    $stmt->bind_param("ssssssss", $titulo, $descricao, $cidade, $estado, $telefone, $fotoDestino, $status, $email);
+        
+                    // Executa a inserção
+                    if ($stmt->execute()) {
+                        // Retorna uma resposta de sucesso
+                        echo json_encode(["status" => "success", "message" => "Dados inseridos com sucesso!"]);
+                    } else {
+                        // Retorna uma resposta de erro se falhar
+                        throw new Exception("Erro ao inserir os dados" . $stmt->error);
+                        //echo json_encode(["status" => "error", "message" => "Erro ao inserir os dados: " . $stmt->error]);
+                    }
+                    
+                    // Fecha a declaração
+                    $stmt->close();
                 } else {
-                    // Retorna uma resposta de erro se falhar
-                    throw new Exception("Erro ao inserir os dados" . $stmt->error);
-                    //echo json_encode(["status" => "error", "message" => "Erro ao inserir os dados: " . $stmt->error]);
+                    throw new Exception("Erro ao preparar a consulta" . $conn->error);
+                    //echo json_encode(["status" => "error", "message" => "Erro ao preparar a consulta: " . $conn->error]);
                 }
                 
-                // Fecha a declaração
-                $stmt->close();
+                // Fecha a conexão
+                $conn->close();
             } else {
-                throw new Exception("Erro ao preparar a consulta" . $conn->error);
-                //echo json_encode(["status" => "error", "message" => "Erro ao preparar a consulta: " . $conn->error]);
-            }
+                // Cria um array associativo com os dados recebidos
+                $foto = NULL;
+                $dados = array(
+                    "titulo" => $titulo,
+                    "descricao" => $descricao,
+                    "cidade" => $cidade,
+                    "estado" => $estado,
+                    "telefone" => $telefone,
+                    "foto" => $foto,
+                    "status" => $status,
+                    "usuario_email" => $email
+                );
+        
+                // Converte o array em JSON
+                $jsonData = json_encode($dados);
+        
+                // Prepara a consulta SQL para inserir os dados
+                $sql = "INSERT INTO publicacao (titulo, descricao, cidade, estado, telefone, foto, `status`, `data`,  usuario_email) VALUES (?, ?, ?, ?, ?, ?, ?, NOW(), ?)";
+        
+                // Prepara a declaração e vincula os parâmetros
+                if ($stmt = $conn->prepare($sql)) {
+                    // Usa "ssssssss" porque os campos são strings
+                    $stmt->bind_param("ssssssss", $titulo, $descricao, $cidade, $estado, $telefone, $foto, $status, $email);
+        
+                    // Executa a inserção
+                    if ($stmt->execute()) {
+                        // Retorna uma resposta de sucesso
+                        echo json_encode(["status" => "success", "message" => "Dados inseridos com sucesso!"]);
+                    } else {
+                        // Retorna uma resposta de erro se falhar
+                        throw new Exception("Erro ao inserir os dados" . $stmt->error);
+                        //echo json_encode(["status" => "error", "message" => "Erro ao inserir os dados: " . $stmt->error]);
+                    }
+                    
+                    // Fecha a declaração
+                    $stmt->close();
+                } else {
+                    throw new Exception("Erro ao preparar a consulta" . $conn->error);
+                    //echo json_encode(["status" => "error", "message" => "Erro ao preparar a consulta: " . $conn->error]);
+                }
+                
+                // Fecha a conexão
+                $conn->close();
+                }
             
-            // Fecha a conexão
-            $conn->close();
         } else {
             throw new Exception("Todos os campos sao obrigatorios!");
         }
