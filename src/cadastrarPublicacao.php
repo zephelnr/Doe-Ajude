@@ -38,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
                 echo json_encode($foto);
                 echo json_encode($foto['name']);
                 // Cria um array associativo com os dados recebidos
-                $fotoNome = basename($foto['name']);
+                $fotoNome = basename($foto['name']) . '_' . $email . '-' . $titulo . '_' . $descricao;
                 $fotoDestino = './foto' . '/' . $fotoNome;
                 $dados = array(
                     "titulo" => $titulo,
