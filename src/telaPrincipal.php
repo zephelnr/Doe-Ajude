@@ -5,6 +5,7 @@ if (empty($_SESSION['email'])) {
 }
 ?>
 <?php
+//Arquiva publicações com mais de 90 dias da data de publicação
 require_once("arquivarPublicacoes.php");
 ?>
 <!doctype html>

@@ -4,6 +4,10 @@ if (!empty($_SESSION['email'])) {
    header("Location: telaPrincipal.php");
 }
 ?>
+<?php
+//Arquiva publicações com mais de 90 dias da data de publicação
+require_once("arquivarPublicacoes.php");
+?>
 <!doctype html>
 <html lang="pt-br">
     <head>

@@ -24,13 +24,13 @@ function arquivarPublicacoes() {
             $stmt->execute();
 
             if ($stmt->affected_rows > 0) {
-                echo "Publicação \"$titulo\" (ID: $id_publicacao) arquivada com sucesso!<br>";
+                //echo "Publicação \"$titulo\" (ID: $id_publicacao) arquivada com sucesso!<br>";
             } else {
-                echo "Falha ao arquivar a publicação \"$titulo\" (ID: $id_publicacao).<br>";
+                //echo "Falha ao arquivar a publicação \"$titulo\" (ID: $id_publicacao).<br>";
             }
         }
     } else {
-        echo "Nenhuma publicação para arquivar.";
+        //echo "Nenhuma publicação para arquivar.";
     }
 
     // Fecha a conexão com o banco de dados
