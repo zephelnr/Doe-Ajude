@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
         $cidade = $_POST['cidade'] ?? '';
         $estado = $_POST['estado'] ?? '';
         $telefone= trim($_POST['telefone'] ?? '');
-        $foto = $_POST['foto'] ?? '';
+        $foto = $_FILES['foto'] ?? '';
         $status = $_POST['status'] ?? '';
 
         //tratamento de erro telefone
@@ -27,12 +27,18 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
             $telefone = '';
         }
         
-        //print_r($_POST[$_FILES['foto']]);
         // Verifica se todos os campos foram enviados corretamente
         if (!empty($email) && !empty($titulo) && !empty($descricao) && !empty($cidade) && !empty($estado) && !empty($telefone) && !empty($status)) {
-            if (!empty($_POST['foto'])) {
+            if (!empty($_FILES['foto'])) {
+                // Verificar se o diretório de destino existe, caso contrário, criar
+                if (!is_dir('./foto')) {
+                    mkdir('./foto', 0777, true);
+                }
+
+                echo json_encode($foto);
+                echo json_encode($foto['name']);
                 // Cria um array associativo com os dados recebidos
-                $fotoNome = basename($foto);
+                $fotoNome = basename($foto['name']);
                 $fotoDestino = './foto' . '/' . $fotoNome;
                 $dados = array(
                     "titulo" => $titulo,
@@ -47,6 +53,11 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
         
                 // Converte o array em JSON
                 $jsonData = json_encode($dados);
+
+                //mover a foto para a pasta 'foto'
+                if(!move_uploaded_file($foto['tmp_name'], $fotoDestino)){
+                    $fotoDestino = NULL;
+                }
         
                 // Prepara a consulta SQL para inserir os dados
                 $sql = "INSERT INTO publicacao (titulo, descricao, cidade, estado, telefone, foto, `status`, `data`,  usuario_email) VALUES (?, ?, ?, ?, ?, ?, ?, NOW(), ?)";
@@ -179,7 +190,7 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
                 <div class="row p-5">
                     <div class="col-6 p-3 mb-2 offset-md-4 bg-success-subtle rounded-3">
                         <h2 class="mb-3 text-center">Cadastro de Publicação</h2>
-                        <form id="frmPublicar" action="" class="" method="post">
+                        <form id="frmPublicar" action="" class="" method="post" enctype="multipart/form-data">
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email</label>
                                 <input type="email" name="email" class="form-control rounded-pill" id="email" placeholder="Digite o seu e-mail" value="<?= $_SESSION['email']; ?>" disabled>

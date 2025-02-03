@@ -37,10 +37,10 @@ btnPublicar.addEventListener("click", (e) => {
    formData.append("cidade", cidade.value);
    formData.append("estado", estado.value);
    formData.append("telefone", telefone.value);
-   formData.append("foto", foto.value);
+   formData.append("foto", foto.files[0]);
    formData.append("status", "Publicado");
 
-   console.log("foto",foto.value);
+   console.log("foto",foto.files[0]);
    //console.log("cidade",cidade.value)
 
    let xhr = new XMLHttpRequest();

@@ -51,7 +51,7 @@ function carregarSessaoEdit() {
             //cidade.value = cidadeGet;
             //estado.value = estadoGet;
             telefone.value = telefoneGet;
-            foto.value = fotoGet;
+            //foto.value = fotoGet;
             estadoSigla.value = estadoGet;
             estadoId.value = idEstadoGet;
             cidadeNome.value = cidadeGet;
