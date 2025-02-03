@@ -4,6 +4,9 @@ if (empty($_SESSION['email'])) {
    header("Location: index.php");
 }
 ?>
+<?php
+require_once("arquivarPublicacoes.php");
+?>
 <!doctype html>
 <html lang="pt-br">
     <head>
