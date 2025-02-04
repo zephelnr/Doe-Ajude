@@ -38,12 +38,16 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
                 
                 echo "<div class='col'>";
                     echo "<div class='card shadow-sm'>";
-                        echo "<svg class='bd-placeholder-img card-img-top' width='100%' height='225' xmlns='http://www.w3.org/2000/svg'
-                    aria-label='Placeholder: Thumbnail' preserveAspectRatio='xMidYMid slice' role='img' focusable='false'>";
-                            echo "<title>" . $row['titulo'] . "</title>";
-                            echo "<rect width='100%' height='100%' fill='#55595c' /><text x='50%' y='50%' fill='#eceeef'
-                    dy='.3em'>" . $row['titulo'] . "</text>";
-                        echo "</svg>";
+                        if ($row['foto'] != NULL) {
+                            echo "<img class='card-img-top' src='" . $row['foto'] . "' height='350'>";
+                        } else {
+                            echo "<svg class='bd-placeholder-img card-img-top' width='100%' height='350' xmlns='http://www.w3.org/2000/svg'
+                        aria-label='Placeholder: Thumbnail' preserveAspectRatio='xMidYMid slice' role='img' focusable='false'>";
+                                    echo "<title>" . $row['titulo'] . "</title>";
+                                    echo "<rect width='100%' height='100%' fill='#55595c' /><text x='50%' y='50%' fill='#eceeef'
+                            dy='.3em'>" . $row['titulo'] . "</text>";
+                            echo "</svg>";
+                        }
                         echo "<div class='card-body'>";
                             echo "<h4 class='card-text'>" . $row['titulo'] ."</h4>";
                             
