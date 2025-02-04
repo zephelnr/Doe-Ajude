@@ -34,7 +34,11 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
                 echo "<h4>" . $row['cidade'] ."</h4><br>";
                 echo "<h5>" . $row['sigla'] . "<h5><br>";
                 echo "<h6>" . $row['telefone'] ."</h6><br>";
-                echo "<h7>" . str_replace($usuario_email . '-' . $row['titulo'] . '_' . $row['descricao'] . '_','',basename($row['foto'])) ."</h7><br>";
+                if ($row['foto'] != NULL){
+                    echo "<h7>" . str_replace($usuario_email . '-' . $row['titulo'] . '_' . $row['descricao'] . '_','',basename($row['foto'])) ."</h7><br>";
+                } else {
+                    echo "<h7>" . $row['foto'] ."</h7><br>";
+                }                
                 echo "<h8>" . $row['estado'] . "</h8><br>";
                 echo "<h9>" . $row['idCidade'] . "</h9><br>";
             }
