@@ -172,7 +172,7 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
                 <div class="modal-content bg-success-subtle rounded-3">
                 <h2>Doe & Ajude</h2>
                 <p>Cadastro realizado com sucesso!</p>
-                <button class="btn btn-success rounded-pill" id="fecharModal">Ir para página principal</button>
+                <button class="btn btn-success rounded-pill" id="fecharModal">Ir para página de login</button>
                 </div>
             </div>
         </main>
