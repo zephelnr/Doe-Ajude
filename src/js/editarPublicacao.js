@@ -56,7 +56,7 @@ function carregarSessaoEdit() {
             estadoId.value = idEstadoGet;
             cidadeNome.value = cidadeGet;
             cidadeId.value = idCidadeGet;
-            //console.log("XMLHttpRequest Error2",siglaEstado.value);
+            console.log("foto",fotoGet);
         
             if(siglaEstado.value != ""){
                //const siglaEstado = document.getElementById("estadoSigla");
