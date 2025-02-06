@@ -142,7 +142,8 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
                                 <p id="respTelefoneCadEdit"></p> 
                             </div>
                             <div class="mb-3">
-                                <label for="foto" class="form-label">Foto</label>
+                                <p id="fotoAtual">aqui</p>
+                                <label for="foto" class="form-label">Alterar Foto</label>
                                 <div class="input-group mb-3">
                                     <input type="file" class="form-control" id="foto" name="foto" aria-describedby="blocoAjudaFoto">
                                     <label class="input-group-text" for="foto">Upload da foto</label>

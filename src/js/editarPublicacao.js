@@ -22,7 +22,7 @@ function carregarSessaoEdit() {
             //const cidade = document.getElementById("cidade");
             //const estado = document.getElementById("estado");
             const telefone = document.getElementById("telefone");
-            const foto = document.getElementById("foto");
+            const fotoAtual = document.getElementById("fotoAtual");
             const estadoSigla = document.getElementById("estadoSigla");
             const estadoId = document.getElementById("estadoId");
             const cidadeNome = document.getElementById("cidadeNome");
@@ -56,6 +56,7 @@ function carregarSessaoEdit() {
             estadoId.value = idEstadoGet;
             cidadeNome.value = cidadeGet;
             cidadeId.value = idCidadeGet;
+            fotoAtual.innerHTML = `A publicação contém a foto: ` + fotoGet + `.</br>Para manter a foto atual deixe o campo "Alterar Foto" em branco!`;
             console.log("foto",fotoGet);
         
             if(siglaEstado.value != ""){
