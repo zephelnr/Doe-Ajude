@@ -88,13 +88,16 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
                         <div class="row">                           
                             
                             <div class="col">
-                                <div>
+                                <div id="semFoto">
+                                    <!--
                                     <svg class="bd-placeholder-img card-img-top" width="100%" height="325" xmlns="http://www.w3.org/2000/svg"
                                     aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" role="img" focusable="false">
                                         <title>Foto</title>
                                         <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%" fill="#eceeef"
                                         dy=".3em">Foto</text>
                                     </svg>
+                                    -->
+                                    <img class="card-img-top" src="" id="foto" height="350">
                                 </div>                                
                             </div>
                             <div class="col">
