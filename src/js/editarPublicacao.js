@@ -27,6 +27,7 @@ function carregarSessaoEdit() {
             const estadoId = document.getElementById("estadoId");
             const cidadeNome = document.getElementById("cidadeNome");
             const cidadeId = document.getElementById("cidadeId");
+            const fotoLabel = document.getElementById("fotoLabel");
 
             var response = xhr.responseText;
             
@@ -56,7 +57,14 @@ function carregarSessaoEdit() {
             estadoId.value = idEstadoGet;
             cidadeNome.value = cidadeGet;
             cidadeId.value = idCidadeGet;
-            fotoAtual.innerHTML = `A publicação contém a foto: ` + fotoGet + `.</br>Para manter a foto atual deixe o campo "Alterar Foto" em branco!`;
+            if (fotoGet != "") {
+               fotoAtual.innerHTML = `A publicação contém a foto: ` + fotoGet + `.</br>Para manter a foto atual deixe o campo "Alterar Foto" em branco!`;
+               fotoLabel.innerHTML = `Alterar Foto`
+            } else {
+               fotoAtual.innerHTML = `A publicação não contém nenhuma foto!</br><p></p>`;
+               fotoLabel.innerHTML = `Adicionar Foto`
+            }
+            
             console.log("foto",fotoGet);
         
             if(siglaEstado.value != ""){
