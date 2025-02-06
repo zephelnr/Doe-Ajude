@@ -65,7 +65,7 @@ function carregarSessaoEdit() {
                fotoLabel.innerHTML = `Adicionar Foto`
             }
             
-            console.log("foto",fotoGet);
+            //console.log("foto",fotoGet);
         
             if(siglaEstado.value != ""){
                //const siglaEstado = document.getElementById("estadoSigla");
@@ -120,7 +120,7 @@ btnEditar.addEventListener("click", (e) => {
    const cidadeInput = frmEditar.querySelector("#cidade");
    const estadoInput = frmEditar.querySelector("#estado");
    const telefoneInput = frmEditar.querySelector("#telefone");
-   const fotoInput = frmEditar.querySelector("#foto");
+   const fotoInput = document.getElementById("foto");
 
    console.log("cidade", cidadeInput.value);
    console.log("estado",estadoInput.value);
@@ -145,9 +145,10 @@ btnEditar.addEventListener("click", (e) => {
       formData.append("telefone", "");
    }
 
+   console.log("fotoInput", fotoInput.files[0]);
    //inpede o campo foto adicionar lixo na tabela
    if(fotoInput != ""){
-    formData.append("foto", fotoInput.value);
+    formData.append("foto", fotoInput.files[0]);
    } else {
     formData.append("foto", "");
    }

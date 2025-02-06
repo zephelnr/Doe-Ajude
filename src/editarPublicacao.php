@@ -77,7 +77,7 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
                             <button type="button" class="btn btn-success rounded-pill" data-bs-toggle="modal" data-bs-target="#modalIdArquivar">Arquivar publicação</button>
                             <button type="button" class="btn btn-success rounded-pill" data-bs-toggle="modal" data-bs-target="#modalIdDeletar">Deletar publicação</button>
                         </div>                           
-                        <form id="frmEditar" action="" class="" method="post">
+                        <form id="frmEditar" action="" class="" method="post" enctype="multipart/form-data">
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email</label>
                                 <input type="email" name="email" class="form-control rounded-pill" id="email" placeholder="Digite o seu e-mail" value="<?= $_SESSION['email']; ?>" disabled>
