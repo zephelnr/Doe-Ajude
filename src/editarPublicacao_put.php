@@ -59,7 +59,7 @@ if ($_SERVER['REQUEST_METHOD']=='PUT') {
             //verifica o campo foto antiga e a apaga
             if(isset($fotoAntiga) && !empty($fotoAntiga)) {
                 $caminhoFotoAntiga = './foto' . '/' . $fotoAntiga;
-                print_r($caminhoFotoAntiga);
+                //print_r($caminhoFotoAntiga);
                 if (file_exists($caminhoFotoAntiga)){
                     unlink($caminhoFotoAntiga);
                 }

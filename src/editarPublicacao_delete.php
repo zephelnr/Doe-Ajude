@@ -7,24 +7,34 @@ if (empty($_SESSION['email'])) {
 <?php
 require_once("conexao.php");
 if ($_SERVER['REQUEST_METHOD']=='DELETE') {
-   print("<h1>_DELETE</h1>");
+   //print("<h1>_DELETE</h1>");
    // busca a string JSON
    $plainData = file_get_contents('php://input');
    // converter json em um objeto
    $object = json_decode($plainData);
-   print_r($object);
+   //print_r($object);
    // converte json em um array
    $array = json_decode($plainData,true);
-   print_r(($array));
+   //print_r(($array));
 
    // Valida se os dados necessários estão no JSON
-   if (isset($array['idPublicacao']) && isset($array['email'])) {
+   if (isset($array['idPublicacao']) && isset($array['email']) && isset($array['fotoDelete'])) {
         $idPublicacao = $array['idPublicacao'];
         $email = $array['email'];
+        $fotoDelete = $array['fotoDelete'];
 
         // Verifica conexão
         if ($conn->connect_error) {
             die(json_encode(["success" => false, "message" => "Erro de conexão: " . $conn->connect_error]));
+        }
+
+        //apaga a foto na pasta
+        if(!empty($fotoDelete)) {
+            $caminhoFotoDelete = './foto' . '/' . $fotoDelete;
+            //print_r($caminhoFotoDelete);
+            if (file_exists($caminhoFotoDelete)){
+                unlink($caminhoFotoDelete);
+            }
         }
 
         // Query de delete

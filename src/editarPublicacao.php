@@ -189,6 +189,7 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
                         <form id="frmDeletar" action="" method="post">
                             <input type="hidden" name="idPublicacao" id="idPublicacao" value="<?= $idPublicacao; ?>">
                             <input type="hidden" name="email" id="email" value="<?= $_SESSION['email'] ?>">
+                            <input type="hidden" name="fotoDelete" id="fotoDelete" value="">
                         </form>
                     </div>
                     <div class="modal-footer bg-success-subtle">

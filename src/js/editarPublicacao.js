@@ -29,6 +29,7 @@ function carregarSessaoEdit() {
             const cidadeId = document.getElementById("cidadeId");
             const fotoLabel = document.getElementById("fotoLabel");
             const fotoHidden = document.getElementById("fotoAtualNome");
+            const fotoDelete = document.getElementById("fotoDelete");
 
             var response = xhr.responseText;
             
@@ -59,6 +60,7 @@ function carregarSessaoEdit() {
             cidadeNome.value = cidadeGet;
             cidadeId.value = idCidadeGet;
             fotoHidden.value = fotoGet;
+            fotoDelete.value = fotoGet;
             if (fotoGet != "") {
                fotoAtual.innerHTML = `A publicação possui uma foto!</br>Para mantê-la, deixe o campo "Alterar Foto" em branco!`;
                fotoLabel.innerHTML = `Alterar Foto`
