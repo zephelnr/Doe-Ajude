@@ -145,7 +145,7 @@ btnEditar.addEventListener("click", (e) => {
       formData.append("telefone", "");
    }
 
-   console.log("fotoInput", fotoInput.files[0]).name;
+   console.log("fotoInput", fotoInput.files[0].name);
 
    const imagem = fotoInput.files[0];
 
@@ -158,12 +158,18 @@ btnEditar.addEventListener("click", (e) => {
    
    if (imagem) {
       const reader = new FileReader();
-      reader.readAsDataURL(imagem); // Converte a imagem para Base64
+      //converte a imagem para Base64
+      reader.readAsDataURL(imagem); 
 
       reader.onload = function () {
-         formData.append("foto", reader.result); // Adiciona imagem convertida
+         //armazena o nome da foto
+         formData.append("campoFotoNome", "fotoNome");
+         formData.append("fotoNome", fotoInput.files[0].name);
 
-         // Converte para JSON sem interferir nos outros campos
+         //adiciona imagem convertida
+         formData.append("foto", reader.result); 
+
+         //converte para JSON sem interferir nos outros campos
          let jsonData = JSON.stringify(Object.fromEntries(formData));
          console.log("passou",jsonData);
 

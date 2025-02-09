@@ -27,7 +27,8 @@ if ($_SERVER['REQUEST_METHOD']=='PUT') {
          $telefone = $object['telefone'];
          $campoFoto = $object['campoFoto'];
          $foto = $object['foto'];
-         //$foto = '';
+         $campoFotoNome = $object['campoFotoNome'];
+         $fotoNomeObjeto = $object['fotoNome'];
          $status = $object['status'];
  
          // Verifica se a conexão foi bem-sucedida
@@ -50,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD']=='PUT') {
             }
 
             //nomeia a foto e guarda o destino
-            $fotoNome = $usuario_email . '-' . $titulo . '_' . $descricao . '_' . basename($campoFoto);
+            $fotoNome = $usuario_email . '-' . $titulo . '_' . $descricao . '_' . basename($fotoNomeObjeto);
             $fotoDestino = './foto' . '/' . $fotoNome;
 
             //mover a foto para a pasta 'foto'
