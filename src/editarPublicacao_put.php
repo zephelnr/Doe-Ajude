@@ -53,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD']=='PUT') {
             //nomeia a foto e guarda o destino
             //define o fuso horario
             date_default_timezone_set("America/Sao_Paulo");
-            $fotoNome = $usuario_email . '-' . $titulo . '_' . $descricao . '_' . date("Ymd_His") . '_' . basename($fotoNomeObjeto);
+            $fotoNome = $usuario_email . '-' . $titulo . '_' . $descricao . '_' . basename($fotoNomeObjeto);
             $fotoDestino = './foto' . '/' . $fotoNome;
 
             //verifica o campo foto antiga e a apaga

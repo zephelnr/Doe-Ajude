@@ -31,7 +31,6 @@ function carregarSessaoEdit() {
             const fotoHidden = document.getElementById("fotoAtualNome");
             const tituloHidden = document.getElementById("tituloHidden");
             const descricaoHidden = document.getElementById("descricaoHidden");
-            const dataHidden = document.getElementById("dataHidden");
 
             var response = xhr.responseText;
             
@@ -48,7 +47,6 @@ function carregarSessaoEdit() {
             var fotoGet = doc.querySelector("h7").textContent;
             var idEstadoGet = doc.querySelector("h8").textContent;
             var idCidadeGet = doc.querySelector("h9").textContent;
-            var dataGet = doc.querySelector("h1").textContent;
 
 
             // Exibindo os dados
@@ -65,7 +63,6 @@ function carregarSessaoEdit() {
             fotoHidden.value = fotoGet;
             tituloHidden.value = tituloGet;
             descricaoHidden.value = descricaoGet;
-            dataHidden.value = dataGet;
             if (fotoGet != "") {
                fotoAtual.innerHTML = `A publicação contém a foto: ` + fotoGet + `.</br>Para manter a foto atual deixe o campo "Alterar Foto" em branco!`;
                fotoLabel.innerHTML = `Alterar Foto`
@@ -162,7 +159,6 @@ btnEditar.addEventListener("click", (e) => {
    const tituloCaminho = document.getElementById("tituloHidden");
    const descricaoCaminho = document.getElementById("descricaoHidden");
    const fotoAntigaCaminho = document.getElementById("fotoAtualNome") ;
-   const dataCaminho = document.getElementById("dataHidden");
 
    //inpede o campo foto adicionar lixo na tabela
    //if(fotoInput != ""){
@@ -186,7 +182,7 @@ btnEditar.addEventListener("click", (e) => {
          
          //adiciona o caminho da imagem antiga
          formData.append("campoFotoAntiga", "fotoAntiga");
-         formData.append("fotoAntiga", emailCaminho.value + "-" + tituloCaminho.value + "_" + descricaoCaminho.value + "_" + dataCaminho.value + "_" + fotoAntigaCaminho.value);
+         formData.append("fotoAntiga", emailCaminho.value + "-" + tituloCaminho.value + "_" + descricaoCaminho.value + "_"  + fotoAntigaCaminho.value);
 
          //converte para JSON sem interferir nos outros campos
          let jsonData = JSON.stringify(Object.fromEntries(formData));

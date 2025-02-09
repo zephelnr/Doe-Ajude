@@ -82,7 +82,6 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
                                 <label for="email" class="form-label">Email</label>
                                 <input type="email" name="email" class="form-control rounded-pill" id="email" placeholder="Digite o seu e-mail" value="<?= $_SESSION['email']; ?>" disabled>
                                 <input type="hidden" name="idPublicacao" id="idPublicacao" value="<?= $idPublicacao; ?>">
-                                <input type="hidden" name="dataHidden" id="dataHidden" value="">
                             </div>
                             <div class="mb-3">
                                 <label for="titulo" class="form-label">*Título</label>
