@@ -30,6 +30,8 @@ if ($_SERVER['REQUEST_METHOD']=='PUT') {
          $campoFotoNome = $object['campoFotoNome'];
          $fotoNomeObjeto = $object['fotoNome'];
          $status = $object['status'];
+         $campoFotoAntiga = $object['campoFotoAntiga'];
+         $fotoAntiga = $object['fotoAntiga'];
  
          // Verifica se a conexão foi bem-sucedida
          if ($conn->connect_error) {
@@ -42,9 +44,7 @@ if ($_SERVER['REQUEST_METHOD']=='PUT') {
             // Remove o prefixo Base64 (ex: "data:image/png;base64,")
             $fotoBase64 = preg_replace('#^data:image/\w+;base64,#i', '', $foto);
             $fotoDecodificada = base64_decode($fotoBase64); // Converte para binário
-            //if (isset($foto) && !empty($foto)){
-            print_r($fotoDecodificada);
-            //}
+            //print_r($fotoDecodificada);
             // Verificar se o diretório de destino existe, caso contrário, criar
             if (!is_dir('./foto')) {
                 mkdir('./foto', 0777, true);
@@ -53,6 +53,15 @@ if ($_SERVER['REQUEST_METHOD']=='PUT') {
             //nomeia a foto e guarda o destino
             $fotoNome = $usuario_email . '-' . $titulo . '_' . $descricao . '_' . basename($fotoNomeObjeto);
             $fotoDestino = './foto' . '/' . $fotoNome;
+
+            //verifica o campo foto antiga e a apaga
+            if(isset($fotoAntiga) && !empty($fotoAntiga)) {
+                $caminhoFotoAntiga = './foto' . '/' . $fotoAntiga;
+                print_r($caminhoFotoAntiga);
+                if (file_exists($caminhoFotoAntiga)){
+                    unlink($caminhoFotoAntiga);
+                }
+            }
 
             //mover a foto para a pasta 'foto'
             if(!file_put_contents($fotoDestino, $fotoDecodificada)){

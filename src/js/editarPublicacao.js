@@ -28,6 +28,9 @@ function carregarSessaoEdit() {
             const cidadeNome = document.getElementById("cidadeNome");
             const cidadeId = document.getElementById("cidadeId");
             const fotoLabel = document.getElementById("fotoLabel");
+            const fotoHidden = document.getElementById("fotoAtualNome");
+            const tituloHidden = document.getElementById("tituloHidden");
+            const descricaoHidden = document.getElementById("descricaoHidden");
 
             var response = xhr.responseText;
             
@@ -57,6 +60,9 @@ function carregarSessaoEdit() {
             estadoId.value = idEstadoGet;
             cidadeNome.value = cidadeGet;
             cidadeId.value = idCidadeGet;
+            fotoHidden.value = fotoGet;
+            tituloHidden.value = tituloGet;
+            descricaoHidden.value = descricaoGet;
             if (fotoGet != "") {
                fotoAtual.innerHTML = `A publicação contém a foto: ` + fotoGet + `.</br>Para manter a foto atual deixe o campo "Alterar Foto" em branco!`;
                fotoLabel.innerHTML = `Alterar Foto`
@@ -122,6 +128,7 @@ btnEditar.addEventListener("click", (e) => {
    const telefoneInput = frmEditar.querySelector("#telefone");
    const fotoInput = document.getElementById("foto");
 
+
    console.log("cidade", cidadeInput.value);
    console.log("estado",estadoInput.value);
 
@@ -145,9 +152,13 @@ btnEditar.addEventListener("click", (e) => {
       formData.append("telefone", "");
    }
 
-   console.log("fotoInput", fotoInput.files[0].name);
+   //console.log("fotoInput", fotoInput.files[0].name);
 
    const imagem = fotoInput.files[0];
+   const emailCaminho = document.getElementById("email");
+   const tituloCaminho = document.getElementById("tituloHidden");
+   const descricaoCaminho = document.getElementById("descricaoHidden");
+   const fotoAntigaCaminho = document.getElementById("fotoAtualNome") ;
 
    //inpede o campo foto adicionar lixo na tabela
    //if(fotoInput != ""){
@@ -167,7 +178,11 @@ btnEditar.addEventListener("click", (e) => {
          formData.append("fotoNome", fotoInput.files[0].name);
 
          //adiciona imagem convertida
-         formData.append("foto", reader.result); 
+         formData.append("foto", reader.result);
+         
+         //adiciona o caminho da imagem antiga
+         formData.append("campoFotoAntiga", "fotoAntiga");
+         formData.append("fotoAntiga", emailCaminho.value + "-" + tituloCaminho.value + "_" + descricaoCaminho.value + "_" + fotoAntigaCaminho.value);
 
          //converte para JSON sem interferir nos outros campos
          let jsonData = JSON.stringify(Object.fromEntries(formData));

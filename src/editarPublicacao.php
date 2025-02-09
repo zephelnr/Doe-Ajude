@@ -85,11 +85,13 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
                             </div>
                             <div class="mb-3">
                                 <label for="titulo" class="form-label">*Título</label>
+                                <input type="hidden" name="tituloHidden" id="tituloHidden" value="">
                                 <input type="text" name="titulo" class="form-control rounded-pill" id="titulo" placeholder="Digite o título da publicação" autofocus required>
                                 <p id="respTituloCadEdit"></p> 
                             </div>
                             <div class="mb-3">
                                 <label for="descricao" class="form-label">*Descrição</label>
+                                <input type="hidden" name="descricaoHidden" id="descricaoHidden" value="">
                                 <textarea class="form-control rounded" name="descricao" id="descricao" rows="3" placeholder="Digite uma descrição para a publicação" required></textarea>
                                 <p id="respDescricaoCadEdit"></p> 
                             </div>                            
@@ -143,6 +145,7 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
                             </div>
                             <div class="mb-3">
                                 <h6 id="fotoAtual"></h6>
+                                <input type="hidden" name="fotoAtualNome" id="fotoAtualNome" value="">
                                 <label for="foto" class="form-label" id="fotoLabel">Foto</label>
                                 <div class="input-group mb-3">
                                     <input type="file" class="form-control" id="foto" name="foto" aria-describedby="blocoAjudaFoto">
