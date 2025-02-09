@@ -5,13 +5,13 @@ if ($_SERVER['REQUEST_METHOD']=='PUT') {
     $plainData = file_get_contents('php://input');
     // converter json em um objeto
     $object = json_decode($plainData,true);
-    print_r($object);
+    ///print_r($object);
     // converte json em um array associativo
-    parse_str($plainData,$array);
+    //parse_str($plainData,$array);
     // em seguida criar a instrução SQL para fazer o UPDATE no banco
     //print_r($array);
     // Verifica se os dados necessários foram enviados
-    print_r($plainData);
+    //print_r($plainData);
     if (isset($object['email']) && isset($object['idPublicacao']) && !empty($object['titulo']) && !empty($object['descricao']) && !empty($object['cidade']) && !empty($object['estado']) && !empty($object['telefone'])) {
          $idPublicacao= $object['idPublicacao'];        
          $usuario_email = $object['email'];
@@ -37,18 +37,23 @@ if ($_SERVER['REQUEST_METHOD']=='PUT') {
          }
 
         //teste foto
-         
+        // Remove o prefixo Base64 (ex: "data:image/png;base64,")
+        $fotoBase64 = preg_replace('#^data:image/\w+;base64,#i', '', $foto);
+        $fotoDecodificada = base64_decode($fotoBase64); // Converte para binário
+        //if (isset($foto) && !empty($foto)){
+        print_r($fotoDecodificada);
+        //}
         // Verificar se o diretório de destino existe, caso contrário, criar
         if (!is_dir('./foto')) {
             mkdir('./foto', 0777, true);
         }
 
         //nomeia a foto e guarda o destino
-        $fotoNome = $email . '-' . $titulo . '_' . $descricao . '_' . basename($foto['name']);
+        $fotoNome = $usuario_email . '-' . $titulo . '_' . $descricao . '_' . basename($campoFoto);
         $fotoDestino = './foto' . '/' . $fotoNome;
 
         //mover a foto para a pasta 'foto'
-        if(!move_uploaded_file($foto['tmp_name'], $fotoDestino)){
+        if(!file_put_contents($fotoDestino, $fotoDecodificada)){
             $fotoDestino = NULL;
         }
 

@@ -157,7 +157,44 @@ btnEditar.addEventListener("click", (e) => {
    //}
    
    if (imagem) {
+      const reader = new FileReader();
+      reader.readAsDataURL(imagem); // Converte a imagem para Base64
 
+      reader.onload = function () {
+         formData.append("foto", reader.result); // Adiciona imagem convertida
+
+         // Converte para JSON sem interferir nos outros campos
+         let jsonData = JSON.stringify(Object.fromEntries(formData));
+         console.log("passou",jsonData);
+
+         let xhr = new XMLHttpRequest();
+         xhr.onload = function () {
+               if (xhr.status == 200 && xhr.readyState == 4) {
+                  console.log(xhr.responseText);
+                  const response = xhr.responseText;
+
+                  if (response.includes("response")) {
+                     modal.style.display = 'flex';
+
+                     fecharModalBtn.addEventListener('click', () => {
+                           modal.style.display = 'none';
+                           window.location.href = "publicacoes.php";
+                     });
+
+                     window.addEventListener('click', (e) => {
+                           if (e.target === modal) {
+                              modal.style.display = 'none';
+                              window.location.href = "publicacoes.php";
+                           }
+                     });
+                  }
+               } else {
+                  console.log("XMLHttpRequest Error");
+               }
+         };
+         xhr.open("PUT", "editarPublicacao_put.php");
+         xhr.send(jsonData);
+      };
    } else {
 
       let jsonData = JSON.stringify(Object.fromEntries(formData));
