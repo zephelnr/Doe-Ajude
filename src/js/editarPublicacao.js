@@ -209,6 +209,46 @@ btnEditar.addEventListener("click", (e) => {
                            }
                      });
                   }
+
+                  //verifica se o campo título esta vazio
+                  if (tituloInput.value != "") {
+                     respTituloCadEdit.innerHTML = ``;
+                  } else {
+                     respTituloCadEdit.innerHTML = `O campo Título está vazio!`;
+                  }
+
+                  //verifica se o campo descrição esta vazio
+                  if (descricaoInput.value != "") {
+                     respDescricaoCadEdit.innerHTML = ``;
+                  } else {
+                     respDescricaoCadEdit.innerHTML = `O campo Descrição está vazio!`;
+                  }
+
+                  //verifica se o campo cidade esta vazio
+                  if (cidadeInput.value != "") {
+                     respCidadeCadEdit.innerHTML = ``;
+                  } else {
+                     respCidadeCadEdit.innerHTML = `O campo Cidade está vazio!`;
+                  }
+
+                  //verifica se o campo estado esta vazio
+                  if (estadoInput.value != "") {
+                     respEstadoCadEdit.innerHTML = ``;
+                  } else {
+                     respEstadoCadEdit.innerHTML = `O campo Estado está vazio!`;
+                  }
+
+                  //verifica se o campo telefone esta vazio
+                  if (telefoneInput.value != "") {
+                     //verifica o número de dígitos do telefone
+                     if (tamTelefone < 10 || tamTelefone > 11) {
+                        respTelefoneCadEdit.innerHTML = `O campo telefone está com formato incorreto`;
+                     } else {
+                        respTelefoneCadEdit.innerHTML = ``;
+                     }
+                  } else {
+                     respTelefoneCadEdit.innerHTML = `O campo Telefone está vazio!`;
+                  }
                } else {
                   console.log("XMLHttpRequest Error");
                }
