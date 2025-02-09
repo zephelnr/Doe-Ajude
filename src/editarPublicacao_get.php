@@ -36,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
                 echo "<h5>" . $row['sigla'] . "<h5><br>";
                 echo "<h6>" . $row['telefone'] ."</h6><br>";
                 if ($row['foto'] != NULL){
-                    echo "<h7>" . str_replace($usuario_email . '-' . $row['titulo'] . '_' . $row['descricao'] . '_','',basename($row['foto'])) ."</h7><br>";
+                    echo "<h7>" . basename($row['foto']) ."</h7><br>";
                 } else {
                     echo "<h7>" . $row['foto'] ."</h7><br>";
                 }                

@@ -29,8 +29,6 @@ function carregarSessaoEdit() {
             const cidadeId = document.getElementById("cidadeId");
             const fotoLabel = document.getElementById("fotoLabel");
             const fotoHidden = document.getElementById("fotoAtualNome");
-            const tituloHidden = document.getElementById("tituloHidden");
-            const descricaoHidden = document.getElementById("descricaoHidden");
 
             var response = xhr.responseText;
             
@@ -61,8 +59,6 @@ function carregarSessaoEdit() {
             cidadeNome.value = cidadeGet;
             cidadeId.value = idCidadeGet;
             fotoHidden.value = fotoGet;
-            tituloHidden.value = tituloGet;
-            descricaoHidden.value = descricaoGet;
             if (fotoGet != "") {
                fotoAtual.innerHTML = `A publicação contém a foto: ` + fotoGet + `.</br>Para manter a foto atual deixe o campo "Alterar Foto" em branco!`;
                fotoLabel.innerHTML = `Alterar Foto`
@@ -155,9 +151,6 @@ btnEditar.addEventListener("click", (e) => {
    //console.log("fotoInput", fotoInput.files[0].name);
 
    const imagem = fotoInput.files[0];
-   const emailCaminho = document.getElementById("email");
-   const tituloCaminho = document.getElementById("tituloHidden");
-   const descricaoCaminho = document.getElementById("descricaoHidden");
    const fotoAntigaCaminho = document.getElementById("fotoAtualNome") ;
 
    //inpede o campo foto adicionar lixo na tabela
@@ -182,7 +175,7 @@ btnEditar.addEventListener("click", (e) => {
          
          //adiciona o caminho da imagem antiga
          formData.append("campoFotoAntiga", "fotoAntiga");
-         formData.append("fotoAntiga", emailCaminho.value + "-" + tituloCaminho.value + "_" + descricaoCaminho.value + "_"  + fotoAntigaCaminho.value);
+         formData.append("fotoAntiga", fotoAntigaCaminho.value);
 
          //converte para JSON sem interferir nos outros campos
          let jsonData = JSON.stringify(Object.fromEntries(formData));

@@ -40,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
                 //nomeia a foto e guarda o destino
                 //define o fuso horario
                 date_default_timezone_set("America/Sao_Paulo");
-                $fotoNome = $email . '-' . $titulo . '_' . $descricao .  '_' . basename($foto['name']);
+                $fotoNome = $email . '-' .  date("Ymd_His") . '_' . basename($foto['name']);
                 $fotoDestino = './foto' . '/' . $fotoNome;
                 // Cria um array associativo com os dados recebidos
                 $dados = array(
