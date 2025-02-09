@@ -145,7 +145,7 @@ btnEditar.addEventListener("click", (e) => {
       formData.append("telefone", "");
    }
 
-   console.log("fotoInput", fotoInput.files[0]);
+   console.log("fotoInput", fotoInput.files[0]).name;
 
    const imagem = fotoInput.files[0];
 

@@ -37,33 +37,57 @@ if ($_SERVER['REQUEST_METHOD']=='PUT') {
          }
 
         //teste foto
-        // Remove o prefixo Base64 (ex: "data:image/png;base64,")
-        $fotoBase64 = preg_replace('#^data:image/\w+;base64,#i', '', $foto);
-        $fotoDecodificada = base64_decode($fotoBase64); // Converte para binário
-        //if (isset($foto) && !empty($foto)){
-        print_r($fotoDecodificada);
-        //}
-        // Verificar se o diretório de destino existe, caso contrário, criar
-        if (!is_dir('./foto')) {
-            mkdir('./foto', 0777, true);
+        if (!empty($foto)) {
+            // Remove o prefixo Base64 (ex: "data:image/png;base64,")
+            $fotoBase64 = preg_replace('#^data:image/\w+;base64,#i', '', $foto);
+            $fotoDecodificada = base64_decode($fotoBase64); // Converte para binário
+            //if (isset($foto) && !empty($foto)){
+            print_r($fotoDecodificada);
+            //}
+            // Verificar se o diretório de destino existe, caso contrário, criar
+            if (!is_dir('./foto')) {
+                mkdir('./foto', 0777, true);
+            }
+
+            //nomeia a foto e guarda o destino
+            $fotoNome = $usuario_email . '-' . $titulo . '_' . $descricao . '_' . basename($campoFoto);
+            $fotoDestino = './foto' . '/' . $fotoNome;
+
+            //mover a foto para a pasta 'foto'
+            if(!file_put_contents($fotoDestino, $fotoDecodificada)){
+                $fotoDestino = NULL;
+            }
+
+            // Prepara a consulta SQL
+            $sql = "UPDATE publicacao SET `$campoTitulo` = ?, `$campoDescricao` = ?, `$campoCidade` = ?, `$campoEstado` = ?, `$campoTelefone` = ?, `$campoFoto` = ?, `status` = ?, `data` = NOW() WHERE id_publicacao = ? AND usuario_email = ?";
+            $stmt = $conn->prepare($sql);
+
+            if ($stmt) {
+                // Vincula os parâmetros
+                $stmt->bind_param('sssssssss', $titulo, $descricao, $cidade, $estado, $telefone, $fotoDestino, $status, $idPublicacao, $usuario_email);
+
+                // Executa a consulta
+                if ($stmt->execute()) {
+                    echo json_encode(['status' => 'success', 'message' => 'Dados atualizados com sucesso!']);
+                } else {
+                    echo json_encode(['status' => 'error', 'message' => 'Erro ao atualizar os dados: ' . $stmt->error]);
+                }
+
+                // Fecha a declaração
+                $stmt->close();
+                    
+            } else {
+                echo json_encode(['status' => 'error', 'message' => 'Erro ao preparar a consulta: ' . $conn->error]);
+            }
         }
-
-        //nomeia a foto e guarda o destino
-        $fotoNome = $usuario_email . '-' . $titulo . '_' . $descricao . '_' . basename($campoFoto);
-        $fotoDestino = './foto' . '/' . $fotoNome;
-
-        //mover a foto para a pasta 'foto'
-        if(!file_put_contents($fotoDestino, $fotoDecodificada)){
-            $fotoDestino = NULL;
-        }
-
+        
         // Prepara a consulta SQL
-        $sql = "UPDATE publicacao SET `$campoTitulo` = ?, `$campoDescricao` = ?, `$campoCidade` = ?, `$campoEstado` = ?, `$campoTelefone` = ?, `$campoFoto` = ?, `status` = ?, `data` = NOW() WHERE id_publicacao = ? AND usuario_email = ?";
+        $sql = "UPDATE publicacao SET `$campoTitulo` = ?, `$campoDescricao` = ?, `$campoCidade` = ?, `$campoEstado` = ?, `$campoTelefone` = ?, `status` = ?, `data` = NOW() WHERE id_publicacao = ? AND usuario_email = ?";
         $stmt = $conn->prepare($sql);
 
         if ($stmt) {
             // Vincula os parâmetros
-            $stmt->bind_param('sssssssss', $titulo, $descricao, $cidade, $estado, $telefone, $fotoDestino, $status, $idPublicacao, $usuario_email);
+            $stmt->bind_param('ssssssss', $titulo, $descricao, $cidade, $estado, $telefone, $status, $idPublicacao, $usuario_email);
 
             // Executa a consulta
             if ($stmt->execute()) {
@@ -74,10 +98,12 @@ if ($_SERVER['REQUEST_METHOD']=='PUT') {
 
             // Fecha a declaração
             $stmt->close();
-                 
-         } else {
-             echo json_encode(['status' => 'error', 'message' => 'Erro ao preparar a consulta: ' . $conn->error]);
-         }
+                
+        } else {
+            echo json_encode(['status' => 'error', 'message' => 'Erro ao preparar a consulta: ' . $conn->error]);
+        }
+
+        
  
          // Fecha a conexão
          $conn->close();
