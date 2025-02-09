@@ -35,10 +35,12 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
                     mkdir('./foto', 0777, true);
                 }
 
-                echo json_encode($foto);
-                echo json_encode($foto['name']);
+                //echo json_encode($foto);
+                //echo json_encode($foto['name']);
                 //nomeia a foto e guarda o destino
-                $fotoNome = $email . '-' . $titulo . '_' . $descricao . '_' . basename($foto['name']);
+                //define o fuso horario
+                date_default_timezone_set("America/Sao_Paulo");
+                $fotoNome = $email . '-' . $titulo . '_' . $descricao . '_' . date("Ymd_His") . '_' . basename($foto['name']);
                 $fotoDestino = './foto' . '/' . $fotoNome;
                 // Cria um array associativo com os dados recebidos
                 $dados = array(

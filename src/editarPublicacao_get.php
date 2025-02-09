@@ -25,17 +25,20 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
             $result = $conn->query($sql);
 
             // Verificar se o usuário existe
-            if ($result->num_rows > 0) {           
+            if ($result->num_rows > 0) {
                  // Exibir os dados do usuário
                 $row = $result->fetch_assoc();
-                echo "<h1>Informações do Usuário</h1>";
+                //converte a data
+                $dataFormatadaCaminho = date("Ymd_His", strtotime($row['data']));
+
+                echo "<h1>" . $dataFormatadaCaminho . "</h1>";
                 echo "<h2>" . $row['titulo'] . "<h2><br>";
                 echo "<h3>" . $row['descricao'] ."</h3><br>";
                 echo "<h4>" . $row['cidade'] ."</h4><br>";
                 echo "<h5>" . $row['sigla'] . "<h5><br>";
                 echo "<h6>" . $row['telefone'] ."</h6><br>";
                 if ($row['foto'] != NULL){
-                    echo "<h7>" . str_replace($usuario_email . '-' . $row['titulo'] . '_' . $row['descricao'] . '_','',basename($row['foto'])) ."</h7><br>";
+                    echo "<h7>" . str_replace($usuario_email . '-' . $row['titulo'] . '_' . $row['descricao'] . '_' . $dataFormatadaCaminho . '_','',basename($row['foto'])) ."</h7><br>";
                 } else {
                     echo "<h7>" . $row['foto'] ."</h7><br>";
                 }                
