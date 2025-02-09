@@ -60,7 +60,7 @@ function carregarSessaoEdit() {
             cidadeId.value = idCidadeGet;
             fotoHidden.value = fotoGet;
             if (fotoGet != "") {
-               fotoAtual.innerHTML = `A publicação já possui uma foto!</br>Para mantê-la, deixe o campo "Alterar Foto" em branco!`;
+               fotoAtual.innerHTML = `A publicação possui uma foto!</br>Para mantê-la, deixe o campo "Alterar Foto" em branco!`;
                fotoLabel.innerHTML = `Alterar Foto`
             } else {
                fotoAtual.innerHTML = `A publicação não contém nenhuma foto!</br><p></p>`;
