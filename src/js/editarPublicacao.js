@@ -146,90 +146,101 @@ btnEditar.addEventListener("click", (e) => {
    }
 
    console.log("fotoInput", fotoInput.files[0]);
+
+   const imagem = fotoInput.files[0];
+
    //inpede o campo foto adicionar lixo na tabela
-   if(fotoInput != ""){
-    formData.append("foto", fotoInput.files[0]);
+   //if(fotoInput != ""){
+   //   formData.append("foto", fotoInput);
+   //} else {
+   //   formData.append("foto", "");
+   //}
+   
+   if (imagem) {
+
    } else {
-    formData.append("foto", "");
+
+      let jsonData = JSON.stringify(Object.fromEntries(formData));
+      console.log(jsonData);
+
+      let xhr = new XMLHttpRequest();
+      xhr.onload = function() {
+         if (xhr.status==200 && xhr.readyState==4) {
+            console.log(xhr.responseText);
+
+            // Verifica o conteúdo da resposta ou outras condições
+            const response = xhr.responseText;
+
+            // Verifica a resposta para decidir o redirecionamento
+            if (response.includes("response")) {
+               // Abrir o modal
+               modal.style.display = 'flex';
+
+               // Fechar o modal
+               fecharModalBtn.addEventListener('click', () => {
+                  modal.style.display = 'none';
+                  window.location.href = "publicacoes.php";
+               });
+               
+               // Fechar o modal ao clicar fora dele
+               window.addEventListener('click', (e) => {
+                  if (e.target === modal) {
+                  modal.style.display = 'none';
+                  window.location.href = "publicacoes.php";
+                  }
+               });
+            }
+
+            //verifica se o campo título esta vazio
+            if (tituloInput.value != "") {
+               respTituloCadEdit.innerHTML = ``;
+            } else {
+               respTituloCadEdit.innerHTML = `O campo Título está vazio!`;
+            }
+
+            //verifica se o campo descrição esta vazio
+            if (descricaoInput.value != "") {
+               respDescricaoCadEdit.innerHTML = ``;
+            } else {
+               respDescricaoCadEdit.innerHTML = `O campo Descrição está vazio!`;
+            }
+
+            //verifica se o campo cidade esta vazio
+            if (cidadeInput.value != "") {
+               respCidadeCadEdit.innerHTML = ``;
+            } else {
+               respCidadeCadEdit.innerHTML = `O campo Cidade está vazio!`;
+            }
+
+            //verifica se o campo estado esta vazio
+            if (estadoInput.value != "") {
+               respEstadoCadEdit.innerHTML = ``;
+            } else {
+               respEstadoCadEdit.innerHTML = `O campo Estado está vazio!`;
+            }
+
+            //verifica se o campo telefone esta vazio
+            if (telefoneInput.value != "") {
+               //verifica o número de dígitos do telefone
+               if (tamTelefone < 10 || tamTelefone > 11) {
+                  respTelefoneCadEdit.innerHTML = `O campo telefone está com formato incorreto`;
+               } else {
+                  respTelefoneCadEdit.innerHTML = ``;
+               }
+            } else {
+               respTelefoneCadEdit.innerHTML = `O campo Telefone está vazio!`;
+            }
+         }
+         else {
+            console.log("XMLHttpRequest Error");
+         }
+      }
+      xhr.open("PUT","editarPublicacao_put.php");
+      xhr.send(jsonData);  
+
    }
    
-   let jsonData = JSON.stringify(Object.fromEntries(formData));
-   console.log(jsonData);
-
-   let xhr = new XMLHttpRequest();
-   xhr.onload = function() {
-      if (xhr.status==200 && xhr.readyState==4) {
-         console.log(xhr.responseText);
-
-         // Verifica o conteúdo da resposta ou outras condições
-         const response = xhr.responseText;
-
-         // Verifica a resposta para decidir o redirecionamento
-         if (response.includes("response")) {
-            // Abrir o modal
-            modal.style.display = 'flex';
-
-            // Fechar o modal
-            fecharModalBtn.addEventListener('click', () => {
-               modal.style.display = 'none';
-               window.location.href = "publicacoes.php";
-            });
-            
-            // Fechar o modal ao clicar fora dele
-            window.addEventListener('click', (e) => {
-               if (e.target === modal) {
-               modal.style.display = 'none';
-               window.location.href = "publicacoes.php";
-               }
-            });
-         }
-
-         //verifica se o campo título esta vazio
-         if (tituloInput.value != "") {
-            respTituloCadEdit.innerHTML = ``;
-         } else {
-            respTituloCadEdit.innerHTML = `O campo Título está vazio!`;
-         }
-
-         //verifica se o campo descrição esta vazio
-         if (descricaoInput.value != "") {
-            respDescricaoCadEdit.innerHTML = ``;
-         } else {
-            respDescricaoCadEdit.innerHTML = `O campo Descrição está vazio!`;
-         }
-
-         //verifica se o campo cidade esta vazio
-         if (cidadeInput.value != "") {
-            respCidadeCadEdit.innerHTML = ``;
-         } else {
-            respCidadeCadEdit.innerHTML = `O campo Cidade está vazio!`;
-         }
-
-         //verifica se o campo estado esta vazio
-         if (estadoInput.value != "") {
-            respEstadoCadEdit.innerHTML = ``;
-         } else {
-            respEstadoCadEdit.innerHTML = `O campo Estado está vazio!`;
-         }
-
-         //verifica se o campo telefone esta vazio
-         if (telefoneInput.value != "") {
-            //verifica o número de dígitos do telefone
-            if (tamTelefone < 10 || tamTelefone > 11) {
-               respTelefoneCadEdit.innerHTML = `O campo telefone está com formato incorreto`;
-            } else {
-               respTelefoneCadEdit.innerHTML = ``;
-            }
-         } else {
-            respTelefoneCadEdit.innerHTML = `O campo Telefone está vazio!`;
-         }
-      }
-      else {
-         console.log("XMLHttpRequest Error");
-      }
-   }
-   xhr.open("PUT","editarPublicacao_put.php");
-   xhr.send(jsonData);
+   
 })
 
 const btnDeletar = document.getElementById("btnDeletar");

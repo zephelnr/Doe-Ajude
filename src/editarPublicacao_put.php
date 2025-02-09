@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD']=='PUT') {
          $campoTelefone = $object['campoTelefone'];
          $telefone = $object['telefone'];
          $campoFoto = $object['campoFoto'];
-         $foto = $_FILES['foto'];
+         $foto = $object['foto'];
          //$foto = '';
          $status = $object['status'];
  
@@ -36,42 +36,40 @@ if ($_SERVER['REQUEST_METHOD']=='PUT') {
              exit;
          }
 
-         //teste foto
-         if (!empty($_FILES['foto'])) {
-            // Verificar se o diretório de destino existe, caso contrário, criar
-            if (!is_dir('./foto')) {
-                mkdir('./foto', 0777, true);
-            }
-
-            //nomeia a foto e guarda o destino
-            $fotoNome = $email . '-' . $titulo . '_' . $descricao . '_' . basename($foto['name']);
-            $fotoDestino = './foto' . '/' . $fotoNome;
-
-            //mover a foto para a pasta 'foto'
-            if(!move_uploaded_file($foto['tmp_name'], $fotoDestino)){
-                $fotoDestino = NULL;
-            }
-
-            // Prepara a consulta SQL
-            $sql = "UPDATE publicacao SET `$campoTitulo` = ?, `$campoDescricao` = ?, `$campoCidade` = ?, `$campoEstado` = ?, `$campoTelefone` = ?, `$campoFoto` = ?, `status` = ?, `data` = NOW() WHERE id_publicacao = ? AND usuario_email = ?";
-            $stmt = $conn->prepare($sql);
-    
-            if ($stmt) {
-                // Vincula os parâmetros
-                $stmt->bind_param('sssssssss', $titulo, $descricao, $cidade, $estado, $telefone, $fotoDestino, $status, $idPublicacao, $usuario_email);
-    
-                // Executa a consulta
-                if ($stmt->execute()) {
-                    echo json_encode(['status' => 'success', 'message' => 'Dados atualizados com sucesso!']);
-                } else {
-                    echo json_encode(['status' => 'error', 'message' => 'Erro ao atualizar os dados: ' . $stmt->error]);
-                }
-    
-                // Fecha a declaração
-                $stmt->close();
-         }
- 
+        //teste foto
          
+        // Verificar se o diretório de destino existe, caso contrário, criar
+        if (!is_dir('./foto')) {
+            mkdir('./foto', 0777, true);
+        }
+
+        //nomeia a foto e guarda o destino
+        $fotoNome = $email . '-' . $titulo . '_' . $descricao . '_' . basename($foto['name']);
+        $fotoDestino = './foto' . '/' . $fotoNome;
+
+        //mover a foto para a pasta 'foto'
+        if(!move_uploaded_file($foto['tmp_name'], $fotoDestino)){
+            $fotoDestino = NULL;
+        }
+
+        // Prepara a consulta SQL
+        $sql = "UPDATE publicacao SET `$campoTitulo` = ?, `$campoDescricao` = ?, `$campoCidade` = ?, `$campoEstado` = ?, `$campoTelefone` = ?, `$campoFoto` = ?, `status` = ?, `data` = NOW() WHERE id_publicacao = ? AND usuario_email = ?";
+        $stmt = $conn->prepare($sql);
+
+        if ($stmt) {
+            // Vincula os parâmetros
+            $stmt->bind_param('sssssssss', $titulo, $descricao, $cidade, $estado, $telefone, $fotoDestino, $status, $idPublicacao, $usuario_email);
+
+            // Executa a consulta
+            if ($stmt->execute()) {
+                echo json_encode(['status' => 'success', 'message' => 'Dados atualizados com sucesso!']);
+            } else {
+                echo json_encode(['status' => 'error', 'message' => 'Erro ao atualizar os dados: ' . $stmt->error]);
+            }
+
+            // Fecha a declaração
+            $stmt->close();
+                 
          } else {
              echo json_encode(['status' => 'error', 'message' => 'Erro ao preparar a consulta: ' . $conn->error]);
          }
