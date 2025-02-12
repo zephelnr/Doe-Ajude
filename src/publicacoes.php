@@ -52,7 +52,7 @@ require_once("arquivarPublicacoes.php");
                     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                         <div class="navbar-nav">
                             <a class="nav-link" href="perfil.php">Perfil</a>
-                            <a class="nav-link active" aria-current="page" href="publicacoes.php">Publicações</a>
+                            <a class="nav-link active" aria-current="page" href="publicacoes.php">Minhas Publicações</a>
                             <a class="nav-link" href="arquivados.php">Arquivados</a>
                             <a class="nav-link" href="interesses.php">Meus Interesses</a>
                             <a class="nav-link" href="interessados.php">Interessados</a>
@@ -63,7 +63,7 @@ require_once("arquivarPublicacoes.php");
             </nav>
         </header>
         <main>
-            <h2 class="mb-3 text-center">Publicações</h2>
+            <h2 class="mb-3 text-center">Minhas Publicações</h2>
             <p><input type="hidden" name="email" id="email" value="<?= $_SESSION['email']; ?>"></p>
             <div class="mb-3 d-grid gap-5 d-md-flex justify-content-md-left p-2">
                 <a class="btn btn-success rounded-pill" href="cadastrarPublicacao.php" role="button">Nova Publicação</a>    
