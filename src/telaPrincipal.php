@@ -57,6 +57,7 @@ require_once("arquivarPublicacoes.php");
                         </div>
                     </div>
                     <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+                        <p class="texto-nome">Olá, <?= $_SESSION['nomeCompleto']; ?></p>
                         <a class="btn btn-success rounded-pill" href="logout.php" role="button">Sair</a>
                     </div>
                 </div>

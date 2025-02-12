@@ -25,6 +25,7 @@ if (filter_input(INPUT_SERVER, "REQUEST_METHOD") === "POST") {
         } else {
             if ($senha === $resultado["senha"]) { //password_verify($senha, $resultado["senha"]) === false
                 $_SESSION["email"] = $resultado["email"];
+                $_SESSION["nomeCompleto"] = $resultado["nomeCompleto"];
             } else {
                 throw new Exception("Senha invalida!");
             }

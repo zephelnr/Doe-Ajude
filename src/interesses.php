@@ -58,12 +58,15 @@ require_once("arquivarPublicacoes.php");
                             <a class="nav-link" href="interessados.php">Interessados</a>
                         </div>
                     </div>
-                    <a class="btn btn-success rounded-pill" href="logout.php" role="button">Sair</a>
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+                        <p class="texto-nome">Olá, <?= $_SESSION['nomeCompleto']; ?></p>
+                        <a class="btn btn-success rounded-pill" href="logout.php" role="button">Sair</a>
+                    </div>
                 </div>
             </nav>
         </header>
         <main>
-            <h2 class="mb-3 text-center">Interesses</h2>
+            <h2 class="mb-3 text-center">Meus Interesses</h2>
             <p><input type="hidden" name="email" id="email" value="<?= $_SESSION['email']; ?>"></p>
             <div class="mb-3 container d-flex">
                 <!-- Caixa de tamanho fixo com classes Bootstrap -->

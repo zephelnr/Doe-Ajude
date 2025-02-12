@@ -62,7 +62,8 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
                             <a class="nav-link" href="interessados.php">Interessados</a>
                         </div>
                     </div>
-                    <div class="d-grid d-md-flex justify-content-md-center">
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+                        <p class="texto-nome">Olá, <?= $_SESSION['nomeCompleto']; ?></p>
                         <a class="btn btn-success rounded-pill" href="logout.php" role="button">Sair</a>
                     </div>
                 </div>
