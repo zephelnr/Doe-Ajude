@@ -140,7 +140,7 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
                             </div>
                             <div class="mb-3">
                                 <label for="telefone" class="form-label">*Telefone</label>
-                                <input type="number" name="telefone" class="form-control rounded-pill" id="telefone" placeholder="Digite o seu telefone" onkeypress="return event.charCode>=48 && event.charCode <=57" required>
+                                <input type="tel" name="telefone" class="form-control rounded-pill" id="telefone" placeholder="Digite o seu telefone" onkeypress="return event.charCode>=48 && event.charCode <=57" onkeyup="handlePhone(event)" required>
                                 <p id="respTelefoneCadEdit"></p> 
                             </div>
                             <div class="mb-3">
@@ -247,5 +247,6 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
         
         <script src="js/editarPublicacao.js"></script>
         <script src="js/cidade.js"></script>
+        <script src="js/telefone.js"></script>
     </body>
 </html>

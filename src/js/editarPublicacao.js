@@ -48,12 +48,23 @@ function carregarSessaoEdit() {
             var idCidadeGet = doc.querySelector("h9").textContent;
 
 
+            //funcao mascara telefone
+            var i = 0;
+            var telefoneMascara = telefoneGet;
+            while(i < telefoneGet.length){
+               telefoneMascara = telefoneMascara.replace(/\D/g,'');
+               telefoneMascara = telefoneMascara.replace(/(\d{2})(\d)/,"($1) $2");
+               telefoneMascara = telefoneMascara.replace(/(\d)(\d{4})$/,"$1-$2");
+               i = i + 1;
+            }
+            
+            console.log("mascara", telefoneMascara);
             // Exibindo os dados
             titulo.value = tituloGet;
             descricao.value = descricaoGet;
             //cidade.value = cidadeGet;
             //estado.value = estadoGet;
-            telefone.value = telefoneGet;
+            telefone.value = telefoneMascara;
             //foto.value = fotoGet;
             estadoSigla.value = estadoGet;
             estadoId.value = idEstadoGet;
