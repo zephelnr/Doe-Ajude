@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
             
             while ($row = $result->fetch_assoc()) {
 
-                // Aplica a máscara
+                // Aplica a máscara do telefone
                 if (strlen($row['telefone']) === 11) {
                     // Formato para celular com DDD: (XX) XXXXX-XXXX
                     $telefoneMascara = preg_replace('/(\d{2})(\d{5})(\d{4})/', '(\1) \2-\3', $row['telefone']);
@@ -38,6 +38,10 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
                     // Formato para telefone fixo com DDD: (XX) XXXX-XXXX
                     $telefoneMascara = preg_replace('/(\d{2})(\d{4})(\d{4})/', '(\1) \2-\3', $row['telefone']);
                 }
+
+                // Aplica a máscara do CPF
+                $cpfMascara = preg_replace('/(\d{3})(\d{3})(\d{3})(\d{2})/', '\1.\2.\3-\4', $row['cpf']);
+
                 if ($row['status'] != "Arquivado") {
                     echo "<div>";
                         echo "<div class='card border border-dark-subtle'>";
@@ -56,7 +60,7 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
 
                                     echo "<div>";
                                         echo "<div class='p-2 bg-success-subtle rounded'>CPF:</div>";
-                                        echo "<input type='text' name='cpf' class='form-control rounded' id='cpf' value='" . $row['cpf'] . "' disabled>";
+                                        echo "<input type='text' name='cpf' class='form-control rounded' id='cpf' value='" . $cpfMascara . "' disabled>";
                                     echo "</div>";
 
                                     echo "<div>";
