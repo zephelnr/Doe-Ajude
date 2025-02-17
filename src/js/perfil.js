@@ -24,9 +24,20 @@ function carregarSessao() {
             var nomeCompletoGet = doc.querySelector("h3").textContent;
             var senhaGet = doc.querySelector("h4").textContent;
 
+            //funcao mascara cpf
+            var i = 0;
+            var cpfMascara = cpfGet;
+            while(i < cpfGet.length){
+               cpfMascara = cpfMascara.replace(/\D/g,'');
+               cpfMascara = cpfMascara.replace(/(\d{3})(\d)/, '$1.$2');
+               cpfMascara = cpfMascara.replace(/(\d{3})(\d)/, '$1.$2');
+               cpfMascara = cpfMascara.replace(/(\d{3})(\d{2})$/, '$1-$2');
+               i = i + 1;
+            }
+
 
             // Exibindo os dados
-            cpf.value = cpfGet;
+            cpf.value = cpfMascara;
             nomeCompleto.value = nomeCompletoGet;
             senha.value = senhaGet;
             nomeCompletoModal.value = nomeCompletoGet;
