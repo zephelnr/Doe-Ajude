@@ -36,8 +36,8 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
                                 echo "<div class='hstack gap-3'>";
                                 
                                     echo "<div>";
-                                        echo "<div class='p-2 bg-success-subtle rounded'><a href='visualizacaoDetalhada.php?id_publicacao=" . $row['idpub'] . "' class='link-success link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover'>Titulo:</a></div>";
-                                        echo "<input type='text' name='titulo' class='form-control rounded' id='titulo' value='" .  $row['titulo'] . "' disabled>";
+                                        echo "<div class='p-2 bg-success-subtle rounded'>Titulo:</div>";
+                                        echo "<div class='p-2 bg-secondary-subtle rounded' style='width: 200px;'><a href='visualizacaoDetalhada.php?id_publicacao=" . $row['idpub'] . "' class='link-success link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover'>" . $row['titulo'] . "</a></div>";
                                     echo "</div>";
 
                                     echo "<div>";
