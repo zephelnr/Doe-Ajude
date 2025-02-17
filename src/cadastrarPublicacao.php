@@ -268,8 +268,8 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
                                 </div> 
                             </div>
                             <div class="mb-3 d-grid gap-5 d-md-flex justify-content-md-center">
-                                <button class="btn btn-success rounded-pill" type="button" id="btnPublicar">Publicar</button>
-                                <a class="btn btn-success rounded-pill" href="publicacoes.php" role="button">Ir para publicações</a>
+                                <button class="btn btn-success rounded-pill" type="button" id="btnPublicar" style="width: 170px;">Publicar</button>
+                                <a class="btn btn-success rounded-pill" href="publicacoes.php" role="button" style="width: 170px;">Ir para publicações</a>
                             </div>                         
                         </form>
                     </div>    

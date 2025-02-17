@@ -76,8 +76,8 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
                     <div class="col-6 p-3 mb-2 offset-md-4 bg-success-subtle rounded-3">
                         <h2 class="mb-3 text-center">Edição de Publicação</h2>
                         <div class="mb-3 d-grid gap-5 d-md-flex justify-content-md-center">
-                            <button type="button" class="btn btn-success rounded-pill" data-bs-toggle="modal" data-bs-target="#modalIdArquivar">Arquivar publicação</button>
-                            <button type="button" class="btn btn-success rounded-pill" data-bs-toggle="modal" data-bs-target="#modalIdDeletar">Deletar publicação</button>
+                            <button type="button" class="btn btn-success rounded-pill" data-bs-toggle="modal" data-bs-target="#modalIdArquivar" style="width: 170px;">Arquivar publicação</button>
+                            <button type="button" class="btn btn-success rounded-pill" data-bs-toggle="modal" data-bs-target="#modalIdDeletar" style="width: 170px;">Deletar publicação</button>
                         </div>                           
                         <form id="frmEditar" action="" class="" method="post" enctype="multipart/form-data">
                             <div class="mb-3">
@@ -157,8 +157,8 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
                                 </div> 
                             </div>
                             <div class="mb-3 d-grid gap-5 d-md-flex justify-content-md-center">
-                                <button class="btn btn-success rounded-pill" type="button" id="btnEditar">Editar</button>
-                                <a class="btn btn-success rounded-pill" href="publicacoes.php" role="button">Ir para publicações</a>
+                                <button class="btn btn-success rounded-pill" type="button" id="btnEditar" style="width: 170px;">Editar</button>
+                                <a class="btn btn-success rounded-pill" href="publicacoes.php" role="button" style="width: 170px;">Ir para publicações</a>
                             </div>                         
                         </form>
                     </div>    
