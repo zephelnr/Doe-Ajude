@@ -32,6 +32,7 @@ if (empty($_SESSION['email'])) {
                     </button>
                     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                         <div class="navbar-nav">
+                            <a class="nav-link" href="telaPrincipal.php">Home</a>
                             <a class="nav-link active" aria-current="page" href="perfil.php">Perfil</a>
                             <a class="nav-link" href="publicacoes.php">Minhas Publicações</a>
                             <a class="nav-link" href="arquivados.php">Arquivados</a>
