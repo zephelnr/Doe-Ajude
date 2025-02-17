@@ -58,7 +58,7 @@ function carregarSessaoEdit() {
                i = i + 1;
             }
             
-            console.log("mascara", telefoneMascara);
+            //console.log("mascara", telefoneMascara);
             // Exibindo os dados
             titulo.value = tituloGet;
             descricao.value = descricaoGet;
@@ -155,10 +155,14 @@ btnEditar.addEventListener("click", (e) => {
    formData.append("campoFoto", "foto");
    formData.append("status", "Editado");
 
-   //verifica o tamanho do telefone
-   let tamTelefone = telefone.value.length
+   //retira a mascara e verifica o tamanho do telefone
+   var telefoneMascara = telefone.value.replace(/\D/g,'');
+   console.log("telefoneMascara",telefoneMascara);
+   let tamTelefone = telefoneMascara.length
    if (tamTelefone < 10 || tamTelefone > 11){
       formData.append("telefone", "");
+   } else {
+      formData.append("telefone", telefoneMascara);
    }
 
    //console.log("fotoInput", fotoInput.files[0].name);
