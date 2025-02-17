@@ -16,12 +16,14 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
         $descricao = trim($_POST['descricao'] ?? '');
         $cidade = $_POST['cidade'] ?? '';
         $estado = $_POST['estado'] ?? '';
-        $telefone= trim($_POST['telefone'] ?? '');
+        $telefoneMascara= trim($_POST['telefone'] ?? '');
         $foto = $_FILES['foto'] ?? '';
         $status = $_POST['status'] ?? '';
 
         //tratamento de erro telefone
-        //checa se o telefone tem 10 ou 11 digitos
+        //recebe apenas o valor numerico do telefone
+        $telefone = preg_replace('/\D/', '', $telefoneMascara);
+        //checa se o telefone tem 10 ou 11 digitos        
         if (strlen($telefone) !== 10 && strlen($telefone) !== 11){ //&& ctype_digit($cpf   
             echo json_encode(["telefone irregular"]);
             $telefone = '';
