@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
     try {
         // Coleta os dados enviados pelo FormData
         $email = trim($_POST['email'] ?? '');
-        $cpf = $_POST['cpf'] ?? '';
+        $cpfMascara = $_POST['cpf'] ?? '';
         $nomeCompleto = trim($_POST['nomeCompleto'] ?? '');
         $senha = $_POST['senha'] ?? '';
 
@@ -23,8 +23,8 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
         }
 
         //tratamento de erro cpf
-        // Remove espaços em branco e caracteres não numéricos
-        //$cpf = preg_replace('/\D/', '', trim($cpf));
+        //recebe apenas o valor numerico do cpf
+        $cpf = preg_replace('/\D/', '', $cpfMascara);
         //checa se o cpf tem 11 digitos
         if (strlen($cpf) !== 11){ //&& ctype_digit($cpf   
             echo json_encode(["cpf irregular"]);
@@ -142,7 +142,7 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
                             </div>
                             <div class="mb-3">
                                 <label for="cpf" class="form-label">*CPF</label>
-                                <input type="number" name="cpf" class="form-control rounded-pill" id="cpf" placeholder="Digite o seu CPF(Apenas números)" required onkeypress="return event.charCode>=48 && event.charCode <=57">
+                                <input type="text" name="cpf" class="form-control rounded-pill" id="cpf" placeholder="Digite o seu CPF(Apenas números)" required onkeypress="return event.charCode>=48 && event.charCode <=57" onkeyup="handleCPF(event)">
                                 <p id="respCpfCad"></p> 
                             </div>
                             <div class="mb-3">
@@ -189,5 +189,6 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
         <script src="js/cadastro.js"></script>
         <script src="js/sha256.min.js"></script>
+        <script src="js/cpf.js"></script>
     </body>
 </html>
