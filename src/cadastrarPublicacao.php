@@ -251,7 +251,7 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
                             </div>
                             <div class="mb-3">
                                 <label for="telefone" class="form-label">*Telefone</label>
-                                <input type="number" name="telefone" class="form-control rounded-pill" id="telefone" placeholder="Digite o seu telefone (DD + número)" onkeypress="return event.charCode>=48 && event.charCode <=57" required>
+                                <input type="tel" name="telefone" class="form-control rounded-pill" id="telefone" placeholder="Digite o seu telefone (DD + número)" onkeypress="return event.charCode>=48 && event.charCode <=57" onkeyup="handlePhone(event)" required>
                                 <p id="respTelefoneCadPub"></p> 
                             </div>
                             <div class="mb-3">
@@ -296,5 +296,6 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
         <script src="js/cadastrarPublicacao.js"></script>
         <script src="js/estado.js"></script>
         <script src="js/cidade.js"></script>
+        <script src="js/telefone.js"></script>
     </body>
 </html>
