@@ -26,9 +26,18 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
             throw new Exception("Nenhuma Publicação encontrada");
         }
 
-        if ($result->num_rows > 0) {
+        if ($result->num_rows > 0) {            
             
             while ($row = $result->fetch_assoc()) {
+
+                // Aplica a máscara
+                if (strlen($row['telefone']) === 11) {
+                    // Formato para celular com DDD: (XX) XXXXX-XXXX
+                    $telefoneMascara = preg_replace('/(\d{2})(\d{5})(\d{4})/', '(\1) \2-\3', $row['telefone']);
+                } elseif (strlen($row['telefone']) === 10) {
+                    // Formato para telefone fixo com DDD: (XX) XXXX-XXXX
+                    $telefoneMascara = preg_replace('/(\d{2})(\d{4})(\d{4})/', '(\1) \2-\3', $row['telefone']);
+                }
                 if ($row['status'] != "Arquivado") {
                     echo "<div>";
                         echo "<div class='card border border-dark-subtle'>";
@@ -52,7 +61,7 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
 
                                     echo "<div>";
                                         echo "<div class='p-2 bg-success-subtle rounded'>Contato:</div>";
-                                        echo "<input type='text' name='telefone' class='form-control rounded' id='telefone' value='" . $row['telefone'] . "' disabled>";
+                                        echo "<input type='text' name='telefone' class='form-control rounded' id='telefone' value='" . $telefoneMascara . "' disabled>";
                                     echo "</div>";
 
                                 echo "</div>";
