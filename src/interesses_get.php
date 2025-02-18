@@ -38,9 +38,6 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
                     $telefoneMascara = preg_replace('/(\d{2})(\d{4})(\d{4})/', '(\1) \2-\3', $row['telefone']);
                 }
 
-                // Aplica a máscara do CPF
-                $cpfMascara = preg_replace('/(\d{3})(\d{3})(\d{3})(\d{2})/', '\1.\2.\3-\4', $row['cpf']);
-
                 if ($row['pubidpub'] != NULL) {
                     if ($row['status'] != "Arquivado") {            
                         echo "<div>";
@@ -59,11 +56,6 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
                                             echo "<div class='p-2 bg-success-subtle rounded'>Nome Completo</div>";
                                             echo "<input type='text' name='nomeCompleto' class='form-control rounded' id='nomeCompleto' value='" . $row['nome'] . "' disabled>";
                                         echo "</div> ";
-
-                                        echo "<div>";
-                                            echo "<div class='p-2 bg-success-subtle rounded'>CPF:</div>";
-                                            echo "<input type='text' name='cpf' class='form-control rounded' id='cpf' value='" . $cpfMascara . "' disabled>";
-                                        echo "</div>";
 
                                         echo "<div>";
                                             echo "<div class='p-2 bg-success-subtle rounded'>Localização:</div>";

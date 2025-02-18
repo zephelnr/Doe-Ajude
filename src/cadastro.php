@@ -155,7 +155,7 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
                                 <input type="password" name="senha" id="senha" class="form-control rounded-pill" aria-describedby="blocoAjudaSenha" placeholder="Digite uma senha" required>
                                 <p id="respSenhaCad"></p> 
                                 <div id="blocoAjudaSenha" class="form-text">
-                                    Senha deve possuir no mínimo 8 caracteres. 
+                                    Senha deve possuir no mínimo 8 caracteres.</br> 
                                     (*)Campos obrigatórios.
                                 </div>
                             </div>
