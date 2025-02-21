@@ -260,7 +260,6 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
                                 <label for="foto" class="form-label">Foto</label>
                                 <div class="input-group mb-3">
                                     <input type="file" class="form-control" id="foto" aria-describedby="blocoAjudaFoto">
-                                    <label class="input-group-text" for="foto">Upload da foto</label>
                                 </div>
                                 <p id="respFotoCadPub"></p>
                                 <div id="blocoAjudaFoto" class="form-text">

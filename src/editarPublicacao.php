@@ -149,7 +149,6 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
                                 <label for="foto" class="form-label" id="fotoLabel">Foto</label>
                                 <div class="input-group mb-3">
                                     <input type="file" class="form-control" id="foto" name="foto" aria-describedby="blocoAjudaFoto">
-                                    <label class="input-group-text" for="foto">Upload da foto</label>
                                 </div>
                                 <p id="respFotoCadEdit"></p>
                                 <div id="blocoAjudaFoto" class="form-text">
